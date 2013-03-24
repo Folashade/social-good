@@ -2,8 +2,9 @@
 
 ## Collaborators ##
 + Folashade Okunubi
-+ Srinivasdjksjksan 
-+ Nishita Gooole
++ Srinivasan 
++ Nishita Muhnot
+
 
 ## Resources ## 
 + [Google](google.com)
