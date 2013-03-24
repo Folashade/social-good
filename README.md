@@ -3,9 +3,6 @@
 ## Collaborators ##
 + Folashade Okunubi
 + Srinivasan Vijayaraghavan
-+ Nishita 
-=======
-+ Srinivasan 
 + Nishita Muhnot
 
 
