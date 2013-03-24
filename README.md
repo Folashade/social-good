@@ -2,14 +2,12 @@
 
 ## Collaborators ##
 + Folashade Okunubi
++ Srinivasan Vijayaraghavan
++ Nishita 
+=======
 + Srinivasan 
 + Nishita Muhnot
 
 
 ## Resources ## 
 + [Google](google.com)
-
-I MAKEE MONEEYYY
-
-
-I GET PAPERRRR
