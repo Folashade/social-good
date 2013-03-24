@@ -2,10 +2,13 @@
 
 ## Collaborators ##
 + Folashade Okunubi
-+ Srinivasan 
-+ Nishita 
++ Srinivasdjksjksan 
++ Nishita Gooole
 
 ## Resources ## 
 + [Google](google.com)
 
 I MAKEE MONEEYYY
+
+
+I GET PAPERRRR
