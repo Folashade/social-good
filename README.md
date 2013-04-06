@@ -2,7 +2,7 @@
 
 ## Setup ##
 + npm install express
-+ npm install socket.io
++ npm install request
 
 ## Collaborators ##
 + Folashade Okunubi
