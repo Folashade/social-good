@@ -2,7 +2,8 @@
 // Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
 
 var http = require('http');
-var express = require("express");
+var request = require('request');
+var express = require('express');
 var app = express();
 
 app.use(express.bodyParser());
@@ -19,12 +20,29 @@ var callback = function(response) {
   });
   
   response.on('end', function () { 
-    return JSON.parse(str);
+    console.log(JSON.parse(str));
   });
 };
 
 
-console.log(http.request(options, callback).end());
+// console.log(http.request(options, callback).end());
+
+var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
+
+var reqCallback = function(error, response, body)  {
+  if (!error && response.statusCode == 200) {
+    return ((body));
+  }
+}
+
+console.log (request(hostpath, reqCallback));
+
+  
+/* request(hostpath, function(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    return (JSON.parse(body));
+  }
+}); */
 
 
 /* Just fetching all levels of questions for now
@@ -33,7 +51,7 @@ console.log(http.request(options, callback).end());
  * Finally, send back the appended object to the client
  */
 app.get('/all', function (request, response) {
-  var allQuestions = http.request(options, callback).end();
+  var allQuestions = request(hostpath, reqCallback);
   allQuestions.push({"success": "true"});
   response.send(allQuestions);
 
@@ -50,7 +68,5 @@ app.get("/static/:staticFilename", function (request, response) {
 
 // Finally, activate the server at port 8889
 // app.listen(8889);
-
-
 
 
