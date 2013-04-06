@@ -1,7 +1,6 @@
 // app.js
 // Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
 
-var http = require('http');
 var request = require('request');
 var express = require('express');
 var app = express();
@@ -10,51 +9,30 @@ app.use(express.bodyParser());
 
 /* Code to fetch content from existing server
  * Provided by Sachin Hegde */
-var options = {"host": 'gentle-shore-9072.herokuapp.com', 
-               "path": '/register', "method": 'GET'};
-
-var callback = function(response) { 
-  var str = ''; 
-  response.on('data', function (chunk) {
-    str += chunk; 
-  });
-  
-  response.on('end', function () { 
-    console.log(JSON.parse(str));
-  });
-};
-
-
-// console.log(http.request(options, callback).end());
 
 var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
 
 var reqCallback = function(error, response, body)  {
   if (!error && response.statusCode == 200) {
-    return ((body));
+    var questions = JSON.parse(body);
+    questions.push({"success": "true"});
+    return questions;
   }
 }
 
-console.log (request(hostpath, reqCallback));
+// request(hostpath, reqCallback);
 
   
-/* request(hostpath, function(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    return (JSON.parse(body));
-  }
-}); */
-
-
 /* Just fetching all levels of questions for now
  * First, fetch the questions object from existing server. 
  * Then, add a success attribute to it
  * Finally, send back the appended object to the client
  */
-app.get('/all', function (request, response) {
-  var allQuestions = request(hostpath, reqCallback);
-  allQuestions.push({"success": "true"});
-  response.send(allQuestions);
-
+app.get('/all', function (clientRequest, clientResponse) {
+  request(hostpath, function(error, response, body) {
+    var allQuestions = reqCallback(error, response, body);
+    clientResponse.send(allQuestions);
+  });
 });
 
 
@@ -67,6 +45,6 @@ app.get("/static/:staticFilename", function (request, response) {
 });
 
 // Finally, activate the server at port 8889
-// app.listen(8889);
+ app.listen(8889);
 
 
