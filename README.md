@@ -1,5 +1,9 @@
 # Social Good Project #
 
+## Setup ##
++ npm install express
++ npm install socket.io
+
 ## Collaborators ##
 + Folashade Okunubi
 + Srinivasan Vijayaraghavan
