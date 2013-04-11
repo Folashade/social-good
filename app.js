@@ -1,23 +1,43 @@
-var http = require('http');
-var express = require("express");
+// app.js
+// Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
+
+var request = require('request');
+var express = require('express');
 var app = express();
 
 app.use(express.bodyParser());
 
 /* Code to fetch content from existing server
  * Provided by Sachin Hegde */
-var options = {"host": 'gentle-shore-9072.herokuapp.com', 
-               "path": '/register', "method": 'GET'};
 
-var callback = function(response) { 
-  var str = ''; 
-  response.on('data', function (chunk) {
-    str += chunk; 
-  });
-  
-  response.on('end', function () { 
-    console.log(JSON.parse(str));
-  });
-};
+var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
 
-http.request(options,callback).end();
+/* Just fetching all levels of questions for now
+ * First, fetch the questions object from existing server. 
+ * Then, add a success attribute to it
+ * Finally, send back the appended object to the client
+ *
+ * Note: Client sends a request to our server, which causes our server
+ * to send a request to their server. Two requests and responses going on
+ * at the same time here */
+app.get('/all', function (clientRequest, clientResponse) {
+  request(hostpath, function(error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var questions = JSON.parse(body);
+        questions.push({"success": "true"});
+        clientResponse.send(questions);
+      }
+  });
+});
+
+
+/* Rest of the code is from lecture notes 
+ */
+
+// This is for serving files in the static directory
+app.get("/static/:staticFilename", function (request, response) {
+    response.sendfile("static/" + request.params.staticFilename);
+});
+
+// Finally, activate the server at port 8889
+ app.listen(8889);
