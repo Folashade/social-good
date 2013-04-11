@@ -19,7 +19,7 @@ var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
  *
  * Note: Client sends a request to our server, which causes our server
  * to send a request to their server. Two requests and responses going on
- * at the same time here */
+ * at the same time here, one set is prefixed with client */
 app.get('/all', function (clientRequest, clientResponse) {
   request(hostpath, function(error, response, body) {
       if (!error && response.statusCode == 200) {
