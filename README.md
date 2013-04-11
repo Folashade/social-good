@@ -10,5 +10,6 @@
 + Nishita Muhnot
 
 
-## Resources ## 
+## Resources
 + [Google](google.com)
++ [237 notes](cs.cmu.edu/~237)
