@@ -4,10 +4,23 @@
 /* TODO:
  * touchStart, touchMove, touchEnd functions
  * updateAllPositions function
+ * remove drawCircle and onclick
  */
 
 var canvas = $("#myCanvas");
 var ctx = canvas.getContext("2d");
+
+function drawCircle(ctx, cx, cy, radius) {
+    ctx.arc(cx, cy, radius, 0, 2*Math.PI, true);
+}
+
+function onMouseDown (event)  {
+  var x = event.pageX - canvas.offsetLeft;
+  var y = event.pageY - canvas.offsetTop;
+  drawCircle(ctx, x, y, 10);
+}
+
+
 
 
 // Patch Bind -- from course notes
@@ -23,6 +36,8 @@ function patchBind(){
        };
    }
 }
+
+
 
 
 function onTouchStart(event)  {
@@ -67,9 +82,12 @@ window.requestAnimFrame = (function(){
 
 
 function run()  {
+  // Delete the first line
+  canvas.addEventListener('mousedown', onMouseDown, false);
   canvas.addEventListener('touchstart', onTouchStart, false);
   canvas.addEventListener('touchend', onTouchEnd, false);
   canvas.addEventListener('touchmove', onTouchMove, false);
+  canvas.addEventListener('
   canvas.setAttribute('tabindex', '0');
   canvas.focus();
   intervalId = setInterval(onTimer, timerDelay);
