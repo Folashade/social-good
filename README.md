@@ -1,10 +1,10 @@
-# Social Good Project #
+# Social Good Project
 
-## Setup ##
+## Setup
 + npm install express
 + npm install request
 
-## Collaborators ##
+## Collaborators 
 + Folashade Okunubi
 + Srinivasan Vijayaraghavan
 + Nishita Muhnot
@@ -13,3 +13,7 @@
 ## Resources
 + [Google](google.com)
 + [237 notes](cs.cmu.edu/~237)
+
+## Screen Size 
++ 960 x 540
++ DPI = 234 

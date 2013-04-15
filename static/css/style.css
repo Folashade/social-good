@@ -1,0 +1,19 @@
+
+/* Main Styles
+*******************************************************************************/
+body {
+}
+
+#myCanvas {
+	border: 10px ridge #DDD;
+}
+
+.page-wrapper {
+	margin-top: 10em;
+	text-align:center;
+}
+
+.content-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+}
