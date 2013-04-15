@@ -21,8 +21,6 @@ function onMouseDown (event)  {
 }
 
 
-
-
 // Patch Bind -- from course notes
 // iOS5 or less does not have .bind so add it if needed (iOS6 has it!)
 function patchBind(){
@@ -36,8 +34,6 @@ function patchBind(){
        };
    }
 }
-
-
 
 
 function onTouchStart(event)  {
@@ -87,7 +83,6 @@ function run()  {
   canvas.addEventListener('touchstart', onTouchStart, false);
   canvas.addEventListener('touchend', onTouchEnd, false);
   canvas.addEventListener('touchmove', onTouchMove, false);
-  canvas.addEventListener('
   canvas.setAttribute('tabindex', '0');
   canvas.focus();
   intervalId = setInterval(onTimer, timerDelay);
