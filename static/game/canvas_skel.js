@@ -55,7 +55,14 @@ function onTouchEnd(event)  {
 }
 
 
-function onTimer()  {
+function gameStep() {
+  cy = cy + 5;
+  setTimeout(gameStep, timerDelay);
+}
+
+
+
+function render()  {
   ctx.beginPath();
   drawCircle(ctx);
   ctx.fill();
@@ -84,11 +91,13 @@ function run()  {
   canvas.addEventListener('touchmove', onTouchMove, false);
   canvas.setAttribute('tabindex', '0');
   canvas.focus();
+
+  gameStep();
   
   //instead of intervalId = setInterval(onTimer, timerDelay);
   (function animloop()  {
     requestAnimFrame(animloop);
-    onTimer();
+    render();
   })();
 }
 
