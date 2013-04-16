@@ -7,17 +7,21 @@
  * remove drawCircle and onclick
  */
 
-var canvas = $("#myCanvas");
+var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+var timerDelay = 30;
 
-function drawCircle(ctx, cx, cy, radius) {
-    ctx.arc(cx, cy, radius, 0, 2*Math.PI, true);
+var cx, cy;
+
+
+function drawCircle(ctx) {
+    ctx.arc(cx, cy, 10, 0, 2*Math.PI, true);
 }
 
 function onMouseDown (event)  {
-  var x = event.pageX - canvas.offsetLeft;
-  var y = event.pageY - canvas.offsetTop;
-  drawCircle(ctx, x, y, 10);
+  console.log("Hi!");
+  cx = event.pageX - canvas.offsetLeft;
+  cy = event.pageY - canvas.offsetTop;
 }
 
 
@@ -58,23 +62,23 @@ function onTimer()  {
 }
 
 
-
 // shim layer with setTimeout fallback
 // Code from paulirish.com
 window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame       ||
+  return (window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
           window.mozRequestAnimationFrame    ||
           function( callback ){
             window.setTimeout(callback, 1000 / 60);
-          };
+          }
+        );
 })();
 
 
-(function animloop() {
+function animloop() {
   requestAnimFrame(animloop);
-  render();
-})();
+  drawCircle(ctx);
+};
 
 
 function run()  {
@@ -88,3 +92,5 @@ function run()  {
   intervalId = setInterval(onTimer, timerDelay);
   animloop();
 }
+
+run()
