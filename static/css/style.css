@@ -4,10 +4,6 @@
 body {
 }
 
-#myCanvas {
-	border: 10px ridge #DDD;
-}
-
 .page-wrapper {
 	margin-top: 10em;
 	text-align:center;
@@ -18,13 +14,32 @@ body {
 	margin-right: auto;
 }
 
+#gameboard {
+	background-color: pink;
+	width: 960px;
+	height: 540px;
+	border: 10px ridge #DDD;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#myCanvas {
+	border: 1px solid #333;
+	width: 700px;
+	height: 540px;
+	position:absolute;
+	right:0;
+	background-color: orange;
+	opacity: .4;
+}
+
 /* Side Bar
 *******************************************************************************/
 #side-bar {
-	width: 100px;
-	height:100px;
+	width: 260px;
+	height: 540px;
 	background-color:red;
-	position:static;
-	left:0;
+	right:0;
 	top:0;
 }
