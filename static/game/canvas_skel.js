@@ -19,7 +19,6 @@ function drawCircle(ctx) {
 }
 
 function onMouseDown (event)  {
-  console.log("Hi!");
   cx = event.pageX - canvas.offsetLeft;
   cy = event.pageY - canvas.offsetTop;
 }
@@ -57,7 +56,9 @@ function onTouchEnd(event)  {
 
 
 function onTimer()  {
-  //updateAllPositions();
+  ctx.beginPath();
+  drawCircle(ctx);
+  ctx.fill();
   return;
 }
 
@@ -75,12 +76,6 @@ window.requestAnimFrame = (function(){
 })();
 
 
-function animloop() {
-  requestAnimFrame(animloop);
-  drawCircle(ctx);
-};
-
-
 function run()  {
   // Delete the first line
   canvas.addEventListener('mousedown', onMouseDown, false);
@@ -89,8 +84,13 @@ function run()  {
   canvas.addEventListener('touchmove', onTouchMove, false);
   canvas.setAttribute('tabindex', '0');
   canvas.focus();
-  intervalId = setInterval(onTimer, timerDelay);
-  animloop();
+  
+  //instead of intervalId = setInterval(onTimer, timerDelay);
+  (function animloop()  {
+    requestAnimFrame(animloop);
+    onTimer();
+  })();
 }
+
 
 run()
