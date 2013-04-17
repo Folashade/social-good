@@ -1,3 +1,4 @@
+// canvas.js
 // Skeleton for canvas
 // Srinivasan Vijayaraghavan (srinivav)
 
@@ -19,63 +20,19 @@
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var timerDelay = 30;
-
-var cx, cy;
-
 
 function drawBalloons() {
-  ctx.beginPath();
-  ctx.arc(cx, cy, 10, 0, 2*Math.PI, true);
-  ctx.fill();
+  var len = balloons.length;
+  var i;
+
+  for (i = 0; i < len; i++) {
+    balloons[i].draw();
+  }
 }
-
-function onMouseDown (event)  {
-  cx = event.pageX - canvas.offsetLeft;
-  cy = event.pageY - canvas.offsetTop;
-}
-
-
-// Patch Bind -- from course notes
-// iOS5 or less does not have .bind so add it if needed (iOS6 has it!)
-function patchBind(){
-   if (Function.prototype.bind === undefined){
-      Function.prototype.bind = function (bind) {
-           var self = this;
-           return function () {
-               var args = Array.prototype.slice.call(arguments);
-               return self.apply(bind || null, args);
-           };
-       };
-   }
-}
-
-
-function onTouchStart(event)  {
-  event.preventDefault();
-  return;
-}
-
-function onTouchMove(event) {
-  event.preventDefault();
-  return;
-}
-
-function onTouchEnd(event)  {
-  event.preventDefault();
-  return;
-}
-
-
-function gameStep() {
-  cy = cy + 5;
-  setTimeout(gameStep, timerDelay);
-}
-
 
 
 function render()  {
-  ctx.clearRect(0, 0, 400, 400);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBalloons();
   return;
 }
@@ -112,4 +69,4 @@ function run()  {
 }
 
 
-run()
+run();
