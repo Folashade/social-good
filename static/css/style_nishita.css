@@ -1,0 +1,43 @@
+@font-face
+{
+font-family: titlefont;
+src: url('../fonts/Rumpelstiltskin.ttf'),
+}
+
+#background
+{
+	background: url("../assets/bg_startandend.png");
+	width:960px;
+	height:540px;
+}
+
+#title h1
+{
+	font-family: titlefont;
+	float:left;
+	margin-top: 5%;
+	margin-left: 5%;
+}
+
+#play
+{
+float:right;
+margin-top: 10%;
+margin-right: 5%;
+font-size: 25px;
+}
+
+#instructions
+{
+position:fixed;
+left: 5%;
+top:50%;
+
+}
+
+#highscore
+{
+position:fixed;
+left: 10%;
+top:50%;
+}
