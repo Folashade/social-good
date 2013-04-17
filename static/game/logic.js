@@ -3,12 +3,20 @@
 // Srinivasan Vijayaraghavan (srinivav)
 
 
-
 var timerDelay = 30;
-
-
+var maxVy;
 var acceleration = 2;
 var balloons = [];
+
+// AP Physics + 'up is down'
+// Think before modifying these
+function __findMaxVy()  {
+  return 39-Math.sqrt(2*acceleration*canvas.height);
+}
+
+function getRandomVy()  {
+  return -37 + maxVy*Math.random();
+}
 
 
 /* TODO: Add source image and touch info */
@@ -27,8 +35,36 @@ var balloon = function(x, y, vx, vy) {
 }
 
 
-function createNewBalloon(x, y, vx, vy) {
-  balloons.push(new balloon(x, y, vx, vy));
+
+
+
+/* The balloon always appears at the bottom edge of the scree
+ * If the option is: 
+ * 1, the balloon starts from the left side, moving right
+ * 2, it starts on the right side, moving left
+ * x, it starts anywhere, and moves purely vertically
+ */
+function createNewBalloon(option) {
+
+  if (option === 1) {
+    
+    balloons.push(new balloon(x, y, vx, vy));
+  }
+
+  else if (option === 2)  {
+    
+    balloons.push(new balloon(x, y, vx, vy));
+  }
+
+  else  {
+    // Pure vertical motion
+    var x = canvas.width * Math.random();
+    var vx = 0;
+    var y = canvas.height;
+    var vy = getRandomVy();
+    balloons.push(new balloon(x, y, vx, vy));
+  }
+
 }
 
 

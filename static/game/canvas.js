@@ -51,6 +51,7 @@ window.requestAnimFrame = (function(){
 
 
 function run()  {
+  maxVy = __findMaxVy();  // No point doing this calculation everytime; store it
   // Delete the first line
   canvas.addEventListener('mousedown', onMouseDown, false);
   canvas.addEventListener('touchstart', onTouchStart, false);
