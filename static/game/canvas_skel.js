@@ -1,6 +1,16 @@
 // Skeleton for canvas
 // Srinivasan Vijayaraghavan (srinivav)
 
+/* requestAnimFrame is used to implement requestAnimationFrame with a fallback
+ * to setTimeout. Inspired from paulirish.com
+ * 
+ * gameStep() is used to update game logic, such as posiiton of objects,
+ * at the end of every time quantum, and render() is used to draw the objects 
+ * on the screen.
+ * This usage inspired from chandlerprall.com
+ */
+
+
 /* TODO:
  * touchStart, touchMove, touchEnd functions
  * updateAllPositions function
@@ -14,8 +24,10 @@ var timerDelay = 30;
 var cx, cy;
 
 
-function drawCircle(ctx) {
-    ctx.arc(cx, cy, 10, 0, 2*Math.PI, true);
+function drawBalloons() {
+  ctx.beginPath();
+  ctx.arc(cx, cy, 10, 0, 2*Math.PI, true);
+  ctx.fill();
 }
 
 function onMouseDown (event)  {
@@ -63,15 +75,13 @@ function gameStep() {
 
 
 function render()  {
-  ctx.beginPath();
-  drawCircle(ctx);
-  ctx.fill();
+  ctx.clearRect(0, 0, 400, 400);
+  drawBalloons();
   return;
 }
 
 
 // shim layer with setTimeout fallback
-// Code from paulirish.com
 window.requestAnimFrame = (function(){
   return (window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
