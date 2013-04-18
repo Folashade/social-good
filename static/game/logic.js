@@ -13,12 +13,13 @@
 // Think carefully before modifying any function starting with an underscore
 
 var timerDelay = 30;
-var radius = 15;
+var radius = 20;
 var maxVy;
 var acceleration = 1;
 var balloons = [];
 var minVy = -20
 var timer = 0;
+var isPaused = false;
 
 // AP Physics + 'up is down'
 function _findMaxVy()  {
@@ -126,7 +127,9 @@ function gameStep() {
     }
   } 
   
-  setTimeout(gameStep, timerDelay);
+  
+  if (isPaused === false)
+    setTimeout(gameStep, timerDelay);
 }
 
 

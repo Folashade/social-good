@@ -3,8 +3,9 @@
 // Srinivasan Vijayaraghavan (srinivav)
 
 
-/* TODO: Implement touch */
+var verbose = false;
 
+/* TODO: Implement touch */
 // For when multiTouch is implemented
 var touches = [];
 
@@ -19,6 +20,10 @@ function onMouseDown (event)  {
 function onMouseDown(event) {
   var cx = event.pageX - canvas.offsetLeft;
   var cy = event.pageY - canvas.offsetTop;
+
+  if (verbose)  {
+    console.log (cx + ", " + cy);
+  }
 
   var i;
 
