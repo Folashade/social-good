@@ -6,6 +6,7 @@
 // createNewBalloon(option) creates a balloon which moves in a direction
 // specified by option. The balloon always appears at the bottom of the
 // canvas, and its trajectory is guaranteed to stay within the canvas.
+// TODO: Make the whole balloon stay within the canvas, not just the center
 // If option is 1, the balloon moves on a right trajectory
 // If option is 2, the balloon moves on a left trajectory
 // If option is anything else, the balloon moves only vertically.
