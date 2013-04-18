@@ -12,12 +12,12 @@
 
 // Think carefully before modifying any function starting with an underscore
 
-var timerDelay = 60;
-var radius = 10;
+var timerDelay = 30;
+var radius = 15;
 var maxVy;
-var acceleration = 2;
+var acceleration = 1;
 var balloons = [];
-var minVy = -37
+var minVy = -20
 var timer = 0;
 
 // AP Physics + 'up is down'
@@ -101,20 +101,25 @@ function createNewBalloon(option) {
 
 function gameStep() {
   timer += timerDelay;
-  var len = balloons.length;
   var i;
   
-  //TODO: Map or something more efficient
-  for (i = 0; i < len; i++) {
+  //TODO: Map or something more efficient?
+  // For now, need to recalculate length each time
+  for (i = 0; i < balloons.length; i++) {
     balloons[i].x += balloons[i].vx;
     balloons[i].y += balloons[i].vy;
     balloons[i].vy += window.acceleration;
+
+    if (balloons[i].y > (canvas.height + radius)) {
+      //Balloon has fallen back. Remove it.
+      balloons.splice(i, 1);
+    }
   }
     
   // Every now and then, create a bunch of balloons
   if (timer % 1000 == 0)  {
     var numBalloons = Math.floor(4*Math.random());
-
+  
     for (i = 0; i < numBalloons; i++) {
       var opt = Math.floor(1 + 2*Math.random());
       createNewBalloon(opt);
