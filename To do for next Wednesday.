@@ -11,6 +11,9 @@ Should at least be completely done on Desktop
 OR
 Start mobile, be playable.
 
+Use Evan's onTap() for touch+mouse. On his todo list
+libs/jq folder on his github (es92)
+
 
 Final week:
 For different screens: Show and hide different divs when onClick handler.
