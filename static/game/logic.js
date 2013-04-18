@@ -13,7 +13,7 @@
 // Think carefully before modifying any function starting with an underscore
 
 var timerDelay = 30;
-var radius = 20;
+var radius = 100;
 var maxVy;
 var acceleration = 1;
 var balloons = [];
@@ -43,6 +43,9 @@ function _getRandomVxLeft(x, vy)  {
   return -x * acceleration / (2 * vy) * Math.random();
 }
 
+function getRandomColor() {
+  return Math.floor(3*Math.random());
+}
 
 
 /* TODO: Add source image and touch info */
@@ -52,13 +55,15 @@ var balloon = function(x, y, vx, vy, color) {
   this.vx = vx;
   this.vy = vy;
 
-  this.image = new Image
+  this.image = new Image();
+  this.image.src = images[color];
 
   this.draw = function() {
-    // Just draws a black circle for now
+    ctx.drawImage(this.image, this.x-100, this.y-100);
+    /* Just draws a black circle for now
     ctx.beginPath();
     ctx.arc(this.x, this.y, radius, 0, 2*Math.PI, true);
-    ctx.fill();
+    ctx.fill(); */
   };
 }
 
@@ -77,7 +82,7 @@ function createNewBalloon(option) {
     var vy = _getRandomVy();
     var vx = _getRandomVxRight(x, Math.abs(vy));   
     
-    balloons.push(new balloon(x, y, vx, vy));
+    balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
   }
 
   else if (option === 2)  {   //left
@@ -87,7 +92,7 @@ function createNewBalloon(option) {
     var vx = _getRandomVxLeft(x, Math.abs(vy));
   
     
-    balloons.push(new balloon(x, y, vx, vy));
+    balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
   }
 
   else  {
@@ -96,7 +101,7 @@ function createNewBalloon(option) {
     var vx = 0;
     var y = canvas.height;
     var vy = _getRandomVy();
-    balloons.push(new balloon(x, y, vx, vy));
+    balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
   }
 
 }
@@ -113,7 +118,7 @@ function gameStep() {
     balloons[i].y += balloons[i].vy;
     balloons[i].vy += window.acceleration;
 
-    if (balloons[i].y > (canvas.height + radius)) {
+    if (balloons[i].y > (canvas.height + 2*radius)) {
       //Balloon has fallen back. Remove it.
       balloons.splice(i, 1);
     }

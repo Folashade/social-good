@@ -6,5 +6,5 @@
 //
 // Pink, orange, green
 
-var images = ["../assets/balloon-pink.png", "../assets/balloon-orange.png", 
-              "../assets/balloon-green.png"];
+var images = ["assets/balloon_pink.png", "assets/balloon_orange.png", 
+              "assets/balloon_green.png"];
