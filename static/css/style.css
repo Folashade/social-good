@@ -9,7 +9,7 @@
 body {
 }
 
-#back {
+/*#back {
 	width:100%;
 	height:540px;
 	border:10px solid transparent;
@@ -17,9 +17,8 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	z-index: 100px;
-	background: url(../assets/bg_wood.png);
 	
-}
+}*/
 
 .page-wrapper {
 	margin-top: 5em;
@@ -29,6 +28,8 @@ body {
 .content-wrapper {
 	margin-left: auto;
 	margin-right: auto;
+	background: url(../assets/bg_wood.png);
+	width:960px;
 }
 
 #gameboard {
