@@ -12,11 +12,13 @@
 
 // Think carefully before modifying any function starting with an underscore
 
-var timerDelay = 30;
+var timerDelay = 60;
+var radius = 10;
 var maxVy;
 var acceleration = 2;
 var balloons = [];
 var minVy = -37
+var timer = 0;
 
 // AP Physics + 'up is down'
 function _findMaxVy()  {
@@ -39,8 +41,6 @@ function _getRandomVxLeft(x, vy)  {
   // Moving left, so our range is just x
   return -x * acceleration / (2 * vy) * Math.random();
 }
-  
-
 
 
 
@@ -54,7 +54,7 @@ var balloon = function(x, y, vx, vy) {
   this.draw = function() {
     // Just draws a black circle for now
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 10, 0, 2*Math.PI, true);
+    ctx.arc(this.x, this.y, radius, 0, 2*Math.PI, true);
     ctx.fill();
   };
 }
@@ -100,6 +100,7 @@ function createNewBalloon(option) {
 
 
 function gameStep() {
+  timer += timerDelay;
   var len = balloons.length;
   var i;
   
@@ -110,6 +111,16 @@ function gameStep() {
     balloons[i].vy += window.acceleration;
   }
     
+  // Every now and then, create a bunch of balloons
+  if (timer % 1000 == 0)  {
+    var numBalloons = Math.floor(4*Math.random());
+
+    for (i = 0; i < numBalloons; i++) {
+      var opt = Math.floor(1 + 2*Math.random());
+      createNewBalloon(opt);
+    }
+  } 
+  
   setTimeout(gameStep, timerDelay);
 }
 
