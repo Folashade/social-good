@@ -3,20 +3,45 @@
 // Srinivasan Vijayaraghavan (srinivav)
 
 
+// createNewBalloon(option) creates a balloon which moves in a direction
+// specified by option. The balloon always appears at the bottom of the
+// canvas, and its trajectory is guaranteed to stay within the canvas.
+// If option is 1, the balloon moves on a right trajectory
+// If option is 2, the balloon moves on a left trajectory
+// If option is anything else, the balloon moves only vertically.
+
+// Think very carefully before modifying any function starting with an underscore
+
 var timerDelay = 30;
 var maxVy;
 var acceleration = 2;
 var balloons = [];
+var minVy = -37
 
 // AP Physics + 'up is down'
-// Think before modifying these
-function __findMaxVy()  {
-  return 39-Math.sqrt(2*acceleration*canvas.height);
+function _findMaxVy()  {
+  return -minVy + 2 - Math.sqrt(2 * acceleration * canvas.height);
 }
 
-function getRandomVy()  {
-  return -37 + maxVy*Math.random();
+function _getRandomVy()  {
+  return minVy + maxVy * Math.random();
 }
+
+
+// Range of a projectile = 2*vx*vy/acceleration
+function _getRandomVxRight(x, vy)  {
+  // Moving right, so our range is canvas.width-x
+  return (canvas.width - x) *acceleration / (2 * vy) * Math.random();
+
+}
+
+function _getRandomVxLeft(x, vy)  {
+  // Moving left, so our range is just x
+  return -x * acceleration / (2 * vy) * Math.random();
+}
+  
+
+
 
 
 /* TODO: Add source image and touch info */
@@ -40,18 +65,27 @@ var balloon = function(x, y, vx, vy) {
 
 /* The balloon always appears at the bottom edge of the scree
  * If the option is: 
- * 1, the balloon starts from the left side, moving right
- * 2, it starts on the right side, moving left
+ * 1, the balloon moves right
+ * 2, the balloon moves left
  * x, it starts anywhere, and moves purely vertically
  */
 function createNewBalloon(option) {
 
-  if (option === 1) {
+  if (option === 1) {         //right
+    var x = canvas.width * Math.random();
+    var y = canvas.height;
+    var vy = _getRandomVy();
+    var vx = _getRandomVxRight(x, Math.abs(vy));   
     
     balloons.push(new balloon(x, y, vx, vy));
   }
 
-  else if (option === 2)  {
+  else if (option === 2)  {   //left
+    var x = canvas.width * Math.random();
+    var y = canvas.height;
+    var vy = _getRandomVy();
+    var vx = _getRandomVxLeft(x, Math.abs(vy));
+  
     
     balloons.push(new balloon(x, y, vx, vy));
   }
@@ -61,7 +95,7 @@ function createNewBalloon(option) {
     var x = canvas.width * Math.random();
     var vx = 0;
     var y = canvas.height;
-    var vy = getRandomVy();
+    var vy = _getRandomVy();
     balloons.push(new balloon(x, y, vx, vy));
   }
 
