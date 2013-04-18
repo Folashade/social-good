@@ -46,11 +46,13 @@ function _getRandomVxLeft(x, vy)  {
 
 
 /* TODO: Add source image and touch info */
-var balloon = function(x, y, vx, vy) {
+var balloon = function(x, y, vx, vy, color) {
   this.x = x;
   this.y = y;
   this.vx = vx;
   this.vy = vy;
+
+  this.image = new Image
 
   this.draw = function() {
     // Just draws a black circle for now
