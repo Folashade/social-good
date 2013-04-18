@@ -10,7 +10,7 @@
 // If option is 2, the balloon moves on a left trajectory
 // If option is anything else, the balloon moves only vertically.
 
-// Think very carefully before modifying any function starting with an underscore
+// Think carefully before modifying any function starting with an underscore
 
 var timerDelay = 30;
 var maxVy;
@@ -58,9 +58,6 @@ var balloon = function(x, y, vx, vy) {
     ctx.fill();
   };
 }
-
-
-
 
 
 /* The balloon always appears at the bottom edge of the scree

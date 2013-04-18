@@ -9,10 +9,11 @@
 var touches = [];
 
 function onMouseDown (event)  {
-  var cx = event.pageX - canvas.offsetLeft;
-  var cy = event.pageY - canvas.offsetTop;
-
-  createNewBalloon(cx, cy, 5, -10);
+//  var cx = event.pageX - canvas.offsetLeft;
+//  var cy = event.pageY - canvas.offsetTop;
+  
+  var opt = Math.floor(1 + 2*Math.random());
+  createNewBalloon(opt);
 }
 
 
