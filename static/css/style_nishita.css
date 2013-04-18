@@ -3,6 +3,11 @@
 	src: url(../fonts/Rumpelstiltskin.ttf);
 }
 
+@font-face {
+	font-family: Ravie;
+	src: url(../fonts/Ravie.ttf);
+}
+
 #page-wrapper{
 	text-align:center;
 }
@@ -11,7 +16,6 @@
 	background: url("../assets/bg_startandend.png");
 	width:960px;
 	height:540px;
-	border: 5px solid black;
 	position: relative;
 	margin-left:auto;
 	margin-right:auto;
@@ -32,7 +36,6 @@
 	float:right;
 	/*margin-top: 10%;*/
 	margin-right: 5%;
-	font-size: 25px;
 }
 
 #instructions {
@@ -59,5 +62,8 @@ p {
 }
 
 #play-button {
+	margin-top: -5em;
+	font-family: Ravie;
 	color: #24e500;
+	font-size: 32px;
 }
