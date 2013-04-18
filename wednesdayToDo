@@ -22,6 +22,6 @@ Final week:
 For different screens: Show and hide different divs when onClick handler.
 AJAX the images, don't load everything.
 
-
-Once document.ready, AJAX request for the large spritesheet and display loading screen.
 One large spritesheet? Also add a loading screen then.
+Once document.ready, AJAX request for the large spritesheet and display loading screen.
+
