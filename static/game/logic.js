@@ -10,13 +10,16 @@
 // If option is 2, the balloon moves on a left trajectory
 // If option is anything else, the balloon moves only vertically.
 
-// Think very carefully before modifying any function starting with an underscore
+// Think carefully before modifying any function starting with an underscore
 
 var timerDelay = 30;
+var radius = 20;
 var maxVy;
-var acceleration = 2;
+var acceleration = 1;
 var balloons = [];
-var minVy = -37
+var minVy = -20
+var timer = 0;
+var isPaused = false;
 
 // AP Physics + 'up is down'
 function _findMaxVy()  {
@@ -39,8 +42,6 @@ function _getRandomVxLeft(x, vy)  {
   // Moving left, so our range is just x
   return -x * acceleration / (2 * vy) * Math.random();
 }
-  
-
 
 
 
@@ -54,13 +55,10 @@ var balloon = function(x, y, vx, vy) {
   this.draw = function() {
     // Just draws a black circle for now
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 10, 0, 2*Math.PI, true);
+    ctx.arc(this.x, this.y, radius, 0, 2*Math.PI, true);
     ctx.fill();
   };
 }
-
-
-
 
 
 /* The balloon always appears at the bottom edge of the scree
@@ -103,17 +101,35 @@ function createNewBalloon(option) {
 
 
 function gameStep() {
-  var len = balloons.length;
+  timer += timerDelay;
   var i;
   
-  //TODO: Map or something more efficient
-  for (i = 0; i < len; i++) {
+  //TODO: Map or something more efficient?
+  // For now, need to recalculate length each time
+  for (i = 0; i < balloons.length; i++) {
     balloons[i].x += balloons[i].vx;
     balloons[i].y += balloons[i].vy;
     balloons[i].vy += window.acceleration;
+
+    if (balloons[i].y > (canvas.height + radius)) {
+      //Balloon has fallen back. Remove it.
+      balloons.splice(i, 1);
+    }
   }
     
-  setTimeout(gameStep, timerDelay);
+  // Every now and then, create a bunch of balloons
+  if (timer % 1000 == 0)  {
+    var numBalloons = Math.floor(4*Math.random());
+  
+    for (i = 0; i < numBalloons; i++) {
+      var opt = Math.floor(1 + 2*Math.random());
+      createNewBalloon(opt);
+    }
+  } 
+  
+  
+  if (isPaused === false)
+    setTimeout(gameStep, timerDelay);
 }
 
 
