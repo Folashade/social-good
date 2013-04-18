@@ -7,6 +7,7 @@ Hook *everything* up
 All buttons should exist work (Can maybe fake it for this deadline - 
   so maybe all teacher or content buttons can do the same thing)
 
+Question balloons. Need a class for them/inheritance. Need to implement questions UI and AJAX.
 
 Game should work. Doesn't have to be polished, but should work. 
 
