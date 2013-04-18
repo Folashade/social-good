@@ -22,12 +22,14 @@ function onMouseDown(event) {
 
   var len = balloons.length;
   var i;
+
   for (i=0; i < len; i++) {
-    if (Math.abs(balloons[i].x - cx) <= 2*radius &&
-        Math.abs(balloons[i].y - cx) <= 2*radius)  {
+    if ((Math.abs(balloons[i].x - cx) <= 4*radius) &&
+        (Math.abs(balloons[i].y - cx) <= 4*radius))  {
       // remove this circle from the list
       balloons.splice(i, 1);
-      i -= 1
+      i -= 1;
+      len -= 1;
     }
   }
 }
