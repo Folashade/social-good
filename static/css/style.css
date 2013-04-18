@@ -1,3 +1,8 @@
+#Colors {
+	maroon: #c54232;
+	taupe: #c5b69b;
+	cream: #fef6dd;
+}
 
 /* Main Styles
 *******************************************************************************/
@@ -15,7 +20,6 @@ body {
 }
 
 #gameboard {
-	background-color: pink;
 	width: 960px;
 	height: 540px;
 	border: 10px ridge #DDD;
@@ -25,21 +29,69 @@ body {
 }
 
 #myCanvas {
-	border: 1px solid #333;
-	width: 700px;
+/*	border: 1px solid #333;*/
+	width: 780px;
 	height: 540px;
 	position:absolute;
 	right:0;
-	background-color: orange;
-	opacity: .4;
+	background: url(../assets/bg_game.png);
+	
 }
 
 /* Side Bar
 *******************************************************************************/
 #side-bar {
-	width: 260px;
+	width: 180px;
 	height: 540px;
-	background-color:red;
-	right:0;
+/*	background-color:red;*/
+	left:0;
 	top:0;
+/*	background: url(../assets/bg_wood.png);*/
+	position: absolute;
+}
+
+.box {
+	border: 4px ridge #c5b69b;
+/*	width: 10.5em;*/
+/*	height: 10.5em;*/
+	width: 150px;
+	height: 170px;
+	display: inline-block;
+	border-radius: 10px;
+	position: relative;
+}
+
+.house {
+	
+}
+
+#house1 {
+	background: url(../assets/house1.png);
+/*	background-color:blue;*/
+	background-size:100%;
+	background-repeat: no-repeat;
+}
+
+#house2 {
+	background: url(../assets/house2.png);
+/*	background-color:blue;*/
+	background-size:110%;
+	background-repeat: no-repeat;
+}
+
+.water {
+	background-color: #00bcab;
+	width: 150px;
+	height: 80px;
+	bottom: 0;
+	position: absolute;
+}
+
+.innerbox {
+	border: 4px ridge #c5b69b;
+	width: 150px;
+	height: 170px;
+	display: inline-block;
+	border-radius: 10px;
+	position: relative;
 }
