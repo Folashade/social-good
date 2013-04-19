@@ -17,3 +17,5 @@
 ## Screen Size 
 + 960 x 540
 + DPI = 234 
+
+-webkit-mask-image: url(../assets/house1.jpeg);
