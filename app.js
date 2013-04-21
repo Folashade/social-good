@@ -4,8 +4,10 @@
 var request = require('request');
 var express = require('express');
 var app = express();
+// var path = require("path");
 
 app.use(express.bodyParser());
+// app.use(express.static(path.join(__dirname, 'static')));
 
 /* Code to fetch content from existing server
  * Provided by Sachin Hegde */
@@ -39,5 +41,9 @@ app.get("/static/:staticFilename", function (request, response) {
     response.sendfile("static/" + request.params.staticFilename);
 });
 
+
+
 // Finally, activate the server at port 8889
- app.listen(8889);
+ app.listen(8889, function(){
+	console.log("Now Running on Port 8889....");
+});
