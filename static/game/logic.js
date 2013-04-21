@@ -16,7 +16,8 @@
 // Think carefully before modifying any function starting with an underscore
 
 var timerDelay = 30;
-var radius = 100;
+var radius = 60;
+var qRadius = 100;
 var maxVy;
 var acceleration = 1;
 var balloons = [];
@@ -68,7 +69,7 @@ var balloon = function(x, y, vx, vy, color) {
 }
 
 /* TODO: Inheritance */
-var qBalloon = function(x, y, vx, vy, color) {
+var qBalloon = function(x, y, vx, vy) {
   this.x = x;
   this.y = y;
   this.vx = vx;
@@ -125,7 +126,7 @@ function createNewBalloon(option, isQuestionBalloon) {
   }
 
   if (isQuestionBalloon === true)
-    qBalloons.push(new qBalloon(x, y, vx, vy, getRandomColor()));
+    qBalloons.push(new qBalloon(x, y, vx, vy));
   
   else if (isQuestionBalloon === false)  
     balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
@@ -150,6 +151,18 @@ function gameStep() {
     }
   }
     
+  for (i = 0; i < qBalloons.length; i++) {
+    qBalloons[i].x += qBalloons[i].vx;
+    qBalloons[i].y += qBalloons[i].vy;
+    qBalloons[i].vy += window.acceleration;
+
+    if (qBalloons[i].y > (canvas.height + 2*radius)) {
+      //Balloon has fallen back. Remove it.
+      qBalloons.splice(i, 1);
+    }
+  }
+
+  
   // Every now and then, create a bunch of balloons
   if (timer % 1000 == 0)  {
     var numBalloons = Math.floor(4*Math.random());
@@ -159,6 +172,16 @@ function gameStep() {
       createNewBalloon(opt, false);
     }
   } 
+
+  // Every now and then, create a questionBalloon
+  if (timer % 5000 == 0)  {
+  
+    var opt = Math.floor(1 + 2*Math.random());
+    createNewBalloon(opt, true);
+  } 
+
+
+
   
   
   if (isPaused === false)
