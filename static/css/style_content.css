@@ -1,0 +1,56 @@
+@font-face {
+	font-family: Rumpelstiltskin;
+	src: url(../fonts/Rumpelstiltskin.ttf);
+}
+
+#background {
+	background: url("../assets/bg_wood.png");
+	width:960px;
+	height:540px;
+	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 4em;
+	text-align: center;
+}
+
+p {
+	font-family: Rumpelstiltskin;
+	font-size: 3em;
+	margin-top:0;
+	margin-bottom:0;
+	text-shadow: 3px 3px 30px #a77c50;
+}
+
+#menu p{
+	position: relative;
+	top: .2em;
+	left: 8em;
+}
+
+#back p{
+	position: relative;
+	top: .5em;
+}
+
+#menu-container{
+	width: 600px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.menu-buttons {
+	background: url(../assets/button.png);
+	width: 289px;
+	height: 123px;
+	display: inline-block;
+}
+
+.menu-buttons p{
+	font-family: 'Maven Pro', sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	color: #a77c50;
+	margin-top: 1.8em;
+}
+

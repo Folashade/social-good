@@ -10,33 +10,41 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-progressbar.css">
+	<link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
 	
+	<style>
+	body {
+		background-color: blue;
+	}
+		#the-mask {
+			width: 300px;
+			height: 300px;
+			overflow: hidden;
+		    color: #fff;
+		    background: url(assets/bg_wood.png);
+		    -webkit-mask-image: url(assets/house2.png);
+		}
+	</style>
+
 </head>
 
 <body>
+	
 	<div class="page-wrapper">
 		<div id="nav-bar-wrapper">
 			<div id="logo"></div>
 			<div id="home"></div>
 		</div>
 		
-		<div class="content-wrapper">
-			
-			<div id="gameboard">
-				<canvas id="myCanvas" width="900px"  height="540px">
-					Canvas is not supported.  
-				</canvas>
-			
-				<div id="side-bar"></div>
-			</div>
-			
-		</div>
-	</div>
+		
+		<div id="the-mask"></div>
 	
 	<script src="js/jquery-1.9.0.js"></script>
-	<script src="game/canvas_skel.js"></script>
 	<script src="game/logic.js"></script>
 	<script src="game/time.js"></script>
+	<script type="text/javascript" src="js/bootstrap-progressbar.js"></script>
+	
 	
 	
 </body>
