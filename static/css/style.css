@@ -35,20 +35,17 @@ body {
 #gameboard {
 	width: 960px;
 	height: 540px;
-	border: 10px ridge #DDD;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
 }
 
 #myCanvas {
-/*	border: 1px solid #333;*/
 	width: 780px;
 	height: 540px;
 	position:absolute;
 	right:0;
-	background: url(../assets/bg_game.png);
-	
+	background: url(../assets/bg_game.png);	
 }
 
 /* Side Bar
@@ -79,7 +76,7 @@ body {
 }
 
 #house1 {
-	background: url(../assets/house1.png);
+	background: url(../assets/house_orange.png);
 /*	background-color:blue;*/
 	background-size:100%;
 	background-repeat: no-repeat;
@@ -94,19 +91,22 @@ body {
 
 .water {
 	background-color: #00bcab;
+	background-color: #14e2e2;
 	width: 150px;
-	height: 80px;
-	bottom: 0;
+	height: 130px;
+	bottom: -3px;
 	position: absolute;
+	
 }
 
 .innerbox {
-	border: 4px ridge #c5b69b;
+/*	border: 4px ridge #c5b69b;*/
 	width: 150px;
 	height: 170px;
 	display: inline-block;
 	border-radius: 10px;
 	position: relative;
+	
 }
 
 
