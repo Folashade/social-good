@@ -28,6 +28,11 @@ function drawBalloons() {
   for (i = 0; i < len; i++) {
     balloons[i].draw();
   }
+
+  len = qBalloons = length;
+  for (i = 0; i < len; i++) {
+    qBalloons[i].draw();
+  }
 }
 
 
