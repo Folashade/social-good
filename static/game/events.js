@@ -30,11 +30,21 @@ function onMouseDown(event) {
   for (i=0; i < balloons.length; i++) {
     if ((Math.abs(balloons[i].x - cx) <= 4*radius) &&
         (Math.abs(balloons[i].y - cx) <= 4*radius))  {
-      // remove this circle from the list
+      // remove this balloon from the list
       balloons.splice(i, 1);
       i -= 1;
     }
   }
+
+  for (i=0; i < qBalloons.length; i++)  {
+    if ((Math.abs(qBalloons[i].x - cx) <= 4*qRadius) &&
+        (Math.abs(qBalloons[i].y - cx) <= 4*qRadius))  {
+      // remove this balloon from the list
+      qBalloons.splice(i, 1);
+      i -= 1;
+    }
+  }
+
 }
 
 function onTouchStart(event)  {
