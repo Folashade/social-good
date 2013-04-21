@@ -3,9 +3,11 @@
 // Srinivasan Vijayaraghavan (srinivav)
 
 
-// createNewBalloon(option) creates a balloon which moves in a direction
-// specified by option. The balloon always appears at the bottom of the
-// canvas, and its trajectory is guaranteed to stay within the canvas.
+// createNewBalloon(option, isQuestionBalloon) creates a balloon which moves 
+// in a direction specified by option. It creates a Question Balloon if and
+// only if the second argument is true.
+// The balloon always appears at the bottom of the canvas, and its 
+// trajectory is guaranteed to stay within the canvas.
 // TODO: Make the whole balloon stay within the canvas, not just the center
 // If option is 1, the balloon moves on a right trajectory
 // If option is 2, the balloon moves on a left trajectory
@@ -18,6 +20,7 @@ var radius = 100;
 var maxVy;
 var acceleration = 1;
 var balloons = [];
+var qBalloons = [];
 var minVy = -20
 var timer = 0;
 var isPaused = false;
@@ -60,50 +63,72 @@ var balloon = function(x, y, vx, vy, color) {
   this.image.src = images[color];
 
   this.draw = function() {
-    ctx.drawImage(this.image, this.x-100, this.y-100);
-    /* Just draws a black circle for now
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, radius, 0, 2*Math.PI, true);
-    ctx.fill(); */
+    ctx.drawImage(this.image, this.x-54, this.y-65);
+  };
+}
+
+/* TODO: Inheritance */
+var qBalloon = function(x, y, vx, vy, color) {
+  this.x = x;
+  this.y = y;
+  this.vx = vx;
+  this.vy = vy;
+
+  this.image = new Image();
+  this.image.src = questionImage;
+
+  this.draw = function() {
+    ctx.drawImage(this.image, this.x-102, this.y-103);
   };
 }
 
 
-/* The balloon always appears at the bottom edge of the scree
+
+/* The balloon always appears at the bottom edge of the screen
  * If the option is: 
  * 1, the balloon moves right
  * 2, the balloon moves left
  * x, it starts anywhere, and moves purely vertically
  */
-function createNewBalloon(option) {
+function createNewBalloon(option, isQuestionBalloon) {
 
-  if (option === 1) {         //right
-    var x = canvas.width * Math.random();
-    var y = canvas.height;
-    var vy = _getRandomVy();
-    var vx = _getRandomVxRight(x, Math.abs(vy));   
-    
-    balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
-  }
-
-  else if (option === 2)  {   //left
-    var x = canvas.width * Math.random();
-    var y = canvas.height;
-    var vy = _getRandomVy();
-    var vx = _getRandomVxLeft(x, Math.abs(vy));
+  var x;
+  var y;
+  var vy;
+  var vx;
   
-    
-    balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
+  switch(option)  {
+    case 1: {         //right
+      var x = canvas.width * Math.random();
+      var y = canvas.height;
+      var vy = _getRandomVy();
+      var vx = _getRandomVxRight(x, Math.abs(vy));   
+      break;
+    }
+
+    case 2:  {   //left
+      var x = canvas.width * Math.random();
+      var y = canvas.height;
+      var vy = _getRandomVy();
+      var vx = _getRandomVxLeft(x, Math.abs(vy));
+      break;
+    }
+
+    default:  {
+      // Pure vertical motion
+      var x = canvas.width * Math.random();
+      var vx = 0;
+      var y = canvas.height;
+      var vy = _getRandomVy();
+      break;
+    }
   }
 
-  else  {
-    // Pure vertical motion
-    var x = canvas.width * Math.random();
-    var vx = 0;
-    var y = canvas.height;
-    var vy = _getRandomVy();
+  if (isQuestionBalloon === true)
+    qBalloons.push(new qBalloon(x, y, vx, vy, getRandomColor()));
+  
+  else if (isQuestionBalloon === false)  
     balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
-  }
 
 }
 
@@ -131,7 +156,7 @@ function gameStep() {
   
     for (i = 0; i < numBalloons; i++) {
       var opt = Math.floor(1 + 2*Math.random());
-      createNewBalloon(opt);
+      createNewBalloon(opt, false);
     }
   } 
   
