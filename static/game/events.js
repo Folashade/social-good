@@ -13,7 +13,7 @@ var touches = [];
 function onMouseDown (event)  {
   
   var opt = Math.floor(1 + 2*Math.random());
-  createNewBalloon(opt);
+  createNewBalloon(opt, true);
 }
 */
 
