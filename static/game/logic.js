@@ -68,7 +68,7 @@ var balloon = function(x, y, vx, vy, color) {
 }
 
 /* TODO: Inheritance */
-var qBalloon = function(x, y, vx, vy, color) {
+var qBalloon = function(x, y, vx, vy) {
   this.x = x;
   this.y = y;
   this.vx = vx;
@@ -125,7 +125,7 @@ function createNewBalloon(option, isQuestionBalloon) {
   }
 
   if (isQuestionBalloon === true)
-    qBalloons.push(new qBalloon(x, y, vx, vy, getRandomColor()));
+    qBalloons.push(new qBalloon(x, y, vx, vy));
   
   else if (isQuestionBalloon === false)  
     balloons.push(new balloon(x, y, vx, vy, getRandomColor()));

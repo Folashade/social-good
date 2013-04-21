@@ -29,7 +29,7 @@ function drawBalloons() {
     balloons[i].draw();
   }
 
-  len = qBalloons = length;
+  len = qBalloons.length;
   for (i = 0; i < len; i++) {
     qBalloons[i].draw();
   }
