@@ -25,6 +25,22 @@ var qBalloons = [];
 var minVy = -20
 var timer = 0;
 var isPaused = false;
+var inQuestion = false;
+
+
+// Using both inQuestion and isPaused for extensibility (pause button, etc)
+function enterQuestionMode()  {
+  inQuestion = true;
+  isPaused = true;
+}
+
+function leaveQuestionMode()  {
+  // Since gameStep uses setTimeout from itself, we'll need to run it again
+  inQuestion = false;
+  isPaused = false;
+  gameStep();
+}
+
 
 // AP Physics + 'up is down'
 function _findMaxVy()  {
@@ -180,10 +196,6 @@ function gameStep() {
     createNewBalloon(opt, true);
   } 
 
-
-
-  
-  
   if (isPaused === false)
     setTimeout(gameStep, timerDelay);
 }

@@ -35,10 +35,18 @@ function drawBalloons() {
   }
 }
 
+function drawQuestionScreen() {
+  return;
+}
+
 
 function render()  {
+  // Background being drawn whether or not in question mode
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBalloons();
+  if (inQuestion === true)  {
+    drawQuestionScreen();
+  }
   return;
 }
 
