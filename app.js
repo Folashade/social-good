@@ -10,12 +10,13 @@ var app = express();
 
 app.use(express.bodyParser());
 
-
 /* Route to fetch teacher list */
 app.get('/teachers', function(clientRequest, clientResponse)  {
   techcafe.getTeacherList(function(tList) {
-    tList.push({"success": "true"});
-    clientResponse.send(tList);
+    clientResponse.send({
+      "teacherList": tList,
+      "success": true
+    });
   });
 });
 
@@ -24,27 +25,16 @@ app.get("/teacher/:teacherID", function(clientRequest, clientResponse)  {
   var teacherID = clientRequest.params.teacherID;
   console.log(teacherID);
   techcafe.getContentByTeacher(teacherID, function(content) {
-
-    clientResponse.send(content);
+    clientResponse.send({
+      "content": content,
+      "success": true
+    });
   });
 });
 
 
-/* 
-app.get('/all', function (clientRequest, clientResponse) {
-  request(hostpath, function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        var questions = JSON.parse(body);
-        questions.push({"success": "true"});
-        clientResponse.send(questions);
-      }
-  });
-});
-*/
 
-
-/* Rest of the code is from lecture notes 
- */
+/* Rest of the code is from lecture notes */
 
 // This is for serving files in the static directory
 app.get("/static/:staticFilename", function (request, response) {
