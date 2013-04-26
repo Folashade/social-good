@@ -1,40 +1,36 @@
 // app.js
 // Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
 
+// Fetching content set data using the TechCaFE API, documented at
+// http://www.cs.cmu.edu/~239/projects/techcafe-games/apidoc.html
+
 var techcafe = require('./node_modules/node_techcafe/node_techcafe');
 var express = require('express');
 var app = express();
 
 app.use(express.bodyParser());
 
-/* Code to fetch content from existing server
- * Provided by Sachin Hegde */
 
 techcafe.getTeacherList(function(tList)  {
   console.log(tList);
 });
 
 
+techcafe.getContentByTeacher('teacher1', function(content) {
+  console.log(content);
+});
 
 
+/* Route to fetch teacher list */
+app.get('/teachers', function(clientRequest, clientResponse)  {
+  techcafe.getTeacherList(function(tList) {
+    tList.push({"success": "true"});
+    clientResponse.send(tList);
+  });
+});
 
 
-
-
-
-
-
-
-var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
-
-/* Just fetching all levels of questions for now
- * First, fetch the questions object from existing server. 
- * Then, add a success attribute to it
- * Finally, send back the appended object to the client
- *
- * Note: Client sends a request to our server, which causes our server
- * to send a request to their server. Two requests and responses going on
- * at the same time here, one set is prefixed with client */
+/* 
 app.get('/all', function (clientRequest, clientResponse) {
   request(hostpath, function(error, response, body) {
       if (!error && response.statusCode == 200) {
@@ -44,6 +40,7 @@ app.get('/all', function (clientRequest, clientResponse) {
       }
   });
 });
+*/
 
 
 /* Rest of the code is from lecture notes 
@@ -55,4 +52,4 @@ app.get("/static/:staticFilename", function (request, response) {
 });
 
 // Finally, activate the server at port 8889
- app.listen(8889);
+app.listen(8889);
