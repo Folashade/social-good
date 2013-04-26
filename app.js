@@ -11,21 +11,21 @@ var app = express();
 app.use(express.bodyParser());
 
 
-techcafe.getTeacherList(function(tList)  {
-  console.log(tList);
-});
-
-
-techcafe.getContentByTeacher('teacher1', function(content) {
-  console.log(content);
-});
-
-
 /* Route to fetch teacher list */
 app.get('/teachers', function(clientRequest, clientResponse)  {
   techcafe.getTeacherList(function(tList) {
     tList.push({"success": "true"});
     clientResponse.send(tList);
+  });
+});
+
+/* Route to fetch content by teacher */
+app.get("/teacher/:teacherID", function(clientRequest, clientResponse)  {
+  var teacherID = clientRequest.params.teacherID;
+  console.log(teacherID);
+  techcafe.getContentByTeacher(teacherID, function(content) {
+
+    clientResponse.send(content);
   });
 });
 
