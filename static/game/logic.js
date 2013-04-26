@@ -21,7 +21,6 @@ var qRadius = 100;
 var maxVy;
 var acceleration = 1;
 var balloons = [];
-var qBalloons = [];
 var minVy = -20
 var timer = 0;
 var isPaused = false;
@@ -30,15 +29,32 @@ var inQuestion = false;
 
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
 function enterQuestionMode()  {
-  inQuestion = true;
-  isPaused = true;
+  // If we're already in question mode, do nothing
+  if (!(inQuestion === true && isPaused === true))  {
+    inQuestion = true;
+    isPaused = true;
+  }
 }
 
 function leaveQuestionMode()  {
   // Since gameStep uses setTimeout from itself, we'll need to run it again
-  inQuestion = false;
-  isPaused = false;
-  gameStep();
+  if (!(inQuestion === false && isPaused === false)) {
+    inQuestion = false;
+    isPaused = false;
+    gameStep();
+  }
+}
+
+function isQuestionBalloon(balloon) {
+  if (balloon.color === 3)
+    return true;
+  else
+    return false;
+}
+
+function removeBalloon(i) {
+  // Add animations
+  balloons.splice(i, 1);
 }
 
 
@@ -75,30 +91,21 @@ var balloon = function(x, y, vx, vy, color) {
   this.y = y;
   this.vx = vx;
   this.vy = vy;
+  this.color = color
 
   this.image = new Image();
-  this.image.src = images[color];
+  this.image.src = images[this.color];
 
   this.draw = function() {
-    ctx.drawImage(this.image, this.x-54, this.y-65);
+    if (this.color == 3)  {   // If question balloon
+      ctx.drawImage(this.image, this.x-102, this.y-103);
+    }
+      
+    else  {  
+      ctx.drawImage(this.image, this.x-54, this.y-65);
+    }
   };
 }
-
-/* TODO: Inheritance */
-var qBalloon = function(x, y, vx, vy) {
-  this.x = x;
-  this.y = y;
-  this.vx = vx;
-  this.vy = vy;
-
-  this.image = new Image();
-  this.image.src = questionImage;
-
-  this.draw = function() {
-    ctx.drawImage(this.image, this.x-102, this.y-103);
-  };
-}
-
 
 
 /* The balloon always appears at the bottom edge of the screen
@@ -142,7 +149,7 @@ function createNewBalloon(option, isQuestionBalloon) {
   }
 
   if (isQuestionBalloon === true)
-    qBalloons.push(new qBalloon(x, y, vx, vy));
+    balloons.push(new balloon(x, y, vx, vy, 3));
   
   else if (isQuestionBalloon === false)  
     balloons.push(new balloon(x, y, vx, vy, getRandomColor()));
@@ -167,22 +174,10 @@ function gameStep() {
     }
   }
     
-  for (i = 0; i < qBalloons.length; i++) {
-    qBalloons[i].x += qBalloons[i].vx;
-    qBalloons[i].y += qBalloons[i].vy;
-    qBalloons[i].vy += window.acceleration;
-
-    if (qBalloons[i].y > (canvas.height + 2*radius)) {
-      //Balloon has fallen back. Remove it.
-      qBalloons.splice(i, 1);
-    }
-  }
-
-  
   // Every now and then, create a bunch of balloons
   if (timer % 1000 == 0)  {
     var numBalloons = Math.floor(4*Math.random());
-  
+
     for (i = 0; i < numBalloons; i++) {
       var opt = Math.floor(1 + 2*Math.random());
       createNewBalloon(opt, false);
@@ -191,13 +186,14 @@ function gameStep() {
 
   // Every now and then, create a questionBalloon
   if (timer % 5000 == 0)  {
-  
     var opt = Math.floor(1 + 2*Math.random());
     createNewBalloon(opt, true);
   } 
 
   if (isPaused === false)
     setTimeout(gameStep, timerDelay);
+
+  return;
 }
 
 

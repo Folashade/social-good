@@ -17,38 +17,57 @@ function onMouseDown (event)  {
 }
 */
 
+
+function inRadius (x, cx, y, cy, radius) {
+  if ((Math.abs(x-cx) <= 4*qRadius) && (Math.abs(y-cy) <= radius))
+    return true;
+
+  else 
+    return false;
+}
+
+
+
 function onMouseDown(event) {
   var cx = event.pageX - canvas.offsetLeft;
   var cy = event.pageY - canvas.offsetTop;
+  var wasQuestionPopped = false;
 
   if (verbose === true)  {
     console.log (cx + ", " + cy);
   }
 
-  if (inQuestion === true)  {
+  if (inQuestion === false)  {
     var i, j;
 
+    
+    // Check qRadius?
     for (i=0; i < balloons.length; i++) {
-      if ((Math.abs(balloons[i].x - cx) <= 4*radius) &&
-          (Math.abs(balloons[i].y - cx) <= 4*radius))  {
-        // remove this balloon from the list
-        balloons.splice(i, 1);
+      curBalloon = balloons[i];
+      x = curBalloon.x;
+      y = curBalloon.y;
+      if (isQuestionBalloon(curBalloon) === true &&
+          inRadius(x, cx, y, cy, qRadius) === true) {
+        //Question balloon has been popped!
+        removeBalloon(i);
+        i -= 1;
+        wasQuestionPopped = true;
+        console.log("QPOP");
+      }
+
+      else if (inRadius(x, cx, y, cy, radius) === true) {
+        removeBalloon(i);
         i -= 1;
       }
     }
-
-    for (j=0; j < qBalloons.length; j++)  {
-      if ((Math.abs(qBalloons[j].x - cx) <= 4*qRadius) &&
-          (Math.abs(qBalloons[j].y - cx) <= 4*qRadius))  {
-        // remove this qBalloon from the list
-        qBalloons.splice(j, 1);
-        j -= 1;
-        enterQuestionMode();
-      }
-    }
+      
+    if (wasQuestionPopped === true) {
+      console.log("YOLO");
+      enterQuestionMode(); 
+    }  
   }
 
-  else if (inQuestion === false)  {
+  else if (inQuestion === true)  {
     // Just leave question mode if tap is in the right half, for now
     if (cx >= canvas.height/2)  {
       leaveQuestionMode();
