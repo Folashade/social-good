@@ -1,8 +1,13 @@
 // app.js
 // Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
 
-// Fetching content set data using the TechCaFE API, documented at
-// http://www.cs.cmu.edu/~239/projects/techcafe-games/apidoc.html
+/* Routes:
+ * /teachers returns a list of teachers
+ * /teacher/teacherID returns the content set for that teacherID 
+ *
+ * Fetching content set data using the TechCaFE API, documented at
+ * http://www.cs.cmu.edu/~239/projects/techcafe-games/apidoc.html
+ */
 
 var techcafe = require('./node_modules/node_techcafe/node_techcafe');
 var express = require('express');
@@ -10,7 +15,7 @@ var app = express();
 
 app.use(express.bodyParser());
 
-/* Route to fetch teacher list */
+/* Route to fetch teacher list. Callback responds to the client */
 app.get('/teachers', function(clientRequest, clientResponse)  {
   techcafe.getTeacherList(function(tList) {
     clientResponse.send({
