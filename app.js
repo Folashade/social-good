@@ -42,9 +42,35 @@ app.get("/teacher/:teacherID", function(clientRequest, clientResponse)  {
 /* Rest of the code is from lecture notes */
 
 // This is for serving files in the static directory
+// assets, css, fonts, game, js
 app.get("/static/:staticFilename", function (request, response) {
     response.sendfile("static/" + request.params.staticFilename);
 });
+
+app.get("/static/assets/:staticFilename", function (request, response) {
+    response.sendfile("static/assets/" + request.params.staticFilename);
+});
+
+
+app.get("/static/css/:staticFilename", function (request, response) {
+    response.sendfile("static/css/" + request.params.staticFilename);
+});
+
+
+app.get("/static/fonts/:staticFilename", function (request, response) {
+    response.sendfile("static/fonts/" + request.params.staticFilename);
+});
+
+app.get("/static/game/:staticFilename", function (request, response) {
+    response.sendfile("static/game/" + request.params.staticFilename);
+});
+
+
+app.get("/static/js/:staticFilename", function (request, response) {
+    response.sendfile("static/js/" + request.params.staticFilename);
+});
+
+
 
 // Finally, activate the server at port 8889
 app.listen(8889);
