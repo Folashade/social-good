@@ -1,7 +1,7 @@
 // app.js
 // Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
 
-var request = require('request');
+var techcafe = require('./node_modules/node_techcafe/node_techcafe');
 var express = require('express');
 var app = express();
 
@@ -9,6 +9,21 @@ app.use(express.bodyParser());
 
 /* Code to fetch content from existing server
  * Provided by Sachin Hegde */
+
+techcafe.getTeacherList(function(tList)  {
+  console.log(tList);
+});
+
+
+
+
+
+
+
+
+
+
+
 
 var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
 
