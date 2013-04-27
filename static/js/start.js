@@ -5,46 +5,47 @@ window.onload=function()
 	var screen3div = document.getElementById("screen3");
   var menu = document.getElementsByClassName("menu");
   var back = document.getElementsByClassName("back");
-  var screendiv, currentscreen;
+  var playbutton = document.getElementById("play");
 
-for (var i = 0; i < menu.length; i++){
-                    menu[i].onclick=function()
+
+                    menu[0].onclick=function()
                     {
-                      if(i==0)
-                        screendiv=screen2div;
-                      else
-                        screendiv=screen3div;
 
                       screen1div.style.visibility="visible";
                       screen1div.style.display="";
-                      screendiv.style.visibility="hidden";
-                      screendiv.style.display="none";
+                      screen2div.style.visibility="hidden";
+                      screen2div.style.display="none";
                     }
-                }
-
-
-for (var i = 0; i < back.length; i++){
-                    back[i].onclick=function()
+               
+  menu[1].onclick=function()
                     {
-                      if(i==0)
-                      {
-                        screendiv=screen1div;
-                        currentscreen=screen2div;
-                      }
-                      else
-                      {
-                        screendiv=screen2div;
-                        currentscreen=screen3div;
-                      }
 
-                      screendiv.style.visibility="visible";
-                      screendiv.style.display="";
-                      currentscreen.style.visibility="hidden";
-                      currentscreen.style.display="none";
+                      screen1div.style.visibility="visible";
+                      screen1div.style.display="";
+                      screen3div.style.visibility="hidden";
+                      screen3div.style.display="none";
                     }
-                }
 
-	var playbutton = document.getElementById("play");
+                    back[0].onclick=function()
+                    {
+                      
+                      screen1div.style.visibility="visible";
+                      screen1div.style.display="";
+                      screen2div.style.visibility="hidden";
+                      screen2div.style.display="none";
+                    }
+
+                     back[1].onclick=function()
+                    {
+                      
+                      screen2div.style.visibility="visible";
+                      screen2div.style.display="";
+                      screen3div.style.visibility="hidden";
+                      screen3div.style.display="none";
+                    }
+                
+
+	
 	playbutton.onclick=function()
                     {
                     	
