@@ -8,6 +8,7 @@ lib-cov
 *.gz
 *.db
 
+
 pids
 logs
 results
@@ -15,3 +16,4 @@ results
 npm-debug.log
 node_modules
 static/assets/Thumbs.db
+

@@ -1,7 +1,15 @@
 // app.js
 // Srinivasan Vijayaraghavan (srinivav@andrew.cmu.edu)
 
-var request = require('request');
+/* Routes:
+ * /teachers returns a list of teachers
+ * /teacher/teacherID returns the content set for that teacherID 
+ *
+ * Fetching content set data using the TechCaFE API, documented at
+ * http://www.cs.cmu.edu/~239/projects/techcafe-games/apidoc.html
+ */
+
+var techcafe = require('./node_modules/node_techcafe/node_techcafe');
 var express = require('express');
 var app = express();
 // var path = require("path");
@@ -9,36 +17,59 @@ var app = express();
 app.use(express.bodyParser());
 // app.use(express.static(path.join(__dirname, 'static')));
 
-/* Code to fetch content from existing server
- * Provided by Sachin Hegde */
+/* Route to fetch teacher list. Callback responds to the client */
+app.get('/teachers', function(clientRequest, clientResponse)  {
+  techcafe.getTeacherList(function(tList) {
+    clientResponse.send({
+      "teacherList": tList,
+      "success": true
+    });
+  });
+});
 
-var hostpath = "http://gentle-shore-9072.herokuapp.com/register";
-
-/* Just fetching all levels of questions for now
- * First, fetch the questions object from existing server. 
- * Then, add a success attribute to it
- * Finally, send back the appended object to the client
- *
- * Note: Client sends a request to our server, which causes our server
- * to send a request to their server. Two requests and responses going on
- * at the same time here, one set is prefixed with client */
-app.get('/all', function (clientRequest, clientResponse) {
-  request(hostpath, function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        var questions = JSON.parse(body);
-        questions.push({"success": "true"});
-        clientResponse.send(questions);
-      }
+/* Route to fetch content by teacher */
+app.get("/teacher/:teacherID", function(clientRequest, clientResponse)  {
+  var teacherID = clientRequest.params.teacherID;
+  console.log(teacherID);
+  techcafe.getContentByTeacher(teacherID, function(content) {
+    clientResponse.send({
+      "content": content,
+      "success": true
+    });
   });
 });
 
 
-/* Rest of the code is from lecture notes 
- */
+
+/* Rest of the code is from lecture notes */
 
 // This is for serving files in the static directory
+// assets, css, fonts, game, js
 app.get("/static/:staticFilename", function (request, response) {
     response.sendfile("static/" + request.params.staticFilename);
+});
+
+app.get("/static/assets/:staticFilename", function (request, response) {
+    response.sendfile("static/assets/" + request.params.staticFilename);
+});
+
+
+app.get("/static/css/:staticFilename", function (request, response) {
+    response.sendfile("static/css/" + request.params.staticFilename);
+});
+
+
+app.get("/static/fonts/:staticFilename", function (request, response) {
+    response.sendfile("static/fonts/" + request.params.staticFilename);
+});
+
+app.get("/static/game/:staticFilename", function (request, response) {
+    response.sendfile("static/game/" + request.params.staticFilename);
+});
+
+
+app.get("/static/js/:staticFilename", function (request, response) {
+    response.sendfile("static/js/" + request.params.staticFilename);
 });
 
 
