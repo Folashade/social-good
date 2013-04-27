@@ -52,7 +52,6 @@ function onMouseDown(event) {
         removeBalloon(i);
         i -= 1;
         wasQuestionPopped = true;
-        console.log("QPOP");
       }
 
       else if (inRadius(x, cx, y, cy, radius) === true) {
@@ -62,7 +61,6 @@ function onMouseDown(event) {
     }
       
     if (wasQuestionPopped === true) {
-      console.log("YOLO");
       enterQuestionMode(); 
     }  
   }
