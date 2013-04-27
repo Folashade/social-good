@@ -1,0 +1,116 @@
+#Colors {
+	maroon: #c54232;
+	taupe: #c5b69b;
+	cream: #fef6dd;
+}
+
+/* Main Styles
+*******************************************************************************/
+body {
+	width: 100%;
+}
+
+.page-wrapper {
+	margin-top: 5em;
+	text-align:center;
+}
+
+.content-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+/*	background: url(../assets/bg_wood.png);*/
+    /* ^ unneccessary now I think.. */
+	width:960px;
+}
+
+#gameboard {
+	width: 960px;
+	height: 540px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+#myCanvas {
+	width: 780px;
+	height: 540px;
+	position:absolute;
+	right:0;
+	background: url(../assets/bg_game.png);	
+}
+
+/* Side Bar
+*******************************************************************************/
+
+/* houses before bar class*/
+.house {
+	
+}
+
+.house1 {
+	background: url(../assets/house_orange.png);
+	border: 2px solid black;
+}
+
+.house1 #progress-slider {
+	-webkit-mask-position: center; 
+	-webkit-mask-image: url(../assets/houses_orange_mask.png);
+}
+
+.house2 {
+	background: url(../assets/house_green.png);
+}
+
+.house2 #progress-slider {
+	-webkit-mask-position: center; 
+	-webkit-mask-image: url(../assets/house_green_mask.png);
+}
+
+.house3 {
+	background: url(../assets/house_pink.png);
+}
+
+.house3 #progress-slider {
+	-webkit-mask-position: center; 
+	-webkit-mask-image: url(../assets/houses_pink_mask.png);
+}
+
+
+#side-bar {
+	width: 180px;
+	height: 540px;
+	left:0;
+	top:0;
+	background: url(../assets/bg_wood.png);
+	/* ^^ still works */
+	position: absolute;
+}
+
+.box {
+/*	width: 10.5em;*/
+/*	height: 10.5em;*/
+	width: 150px;
+	height: 166px;
+	display: inline-block;
+	border: 4px ridge #c5b69b;
+	border-radius: 10px;
+	position: relative;
+	background-position: center;
+/*	background-image: url(../assets/house_orange2.png);*/
+}
+
+#progress-slider {
+	margin:0; 
+	width: 150px;  
+	background-color: #77cc77; 
+	background-color:transparent;  	
+	
+}
+
+#progress-bar {
+	background-color: #77cc77; 
+	background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#14e2e2), to(#00bcab));
+}
+
+
+
