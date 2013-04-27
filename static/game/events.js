@@ -51,12 +51,14 @@ function onMouseDown(event) {
         //Question balloon has been popped!
         removeBalloon(i);
         i -= 1;
+        points += qPointsIncr;
         wasQuestionPopped = true;
       }
 
       else if (inRadius(x, cx, y, cy, radius) === true) {
         removeBalloon(i);
         i -= 1;
+        points += pointsIncr;
       }
     }
       
