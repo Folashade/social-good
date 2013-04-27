@@ -30,7 +30,7 @@ ctx.fill();
 
 
 function inRadius (x, cx, y, cy, radius) {
-  if ((Math.abs(x-cx) <= 4*qRadius) && (Math.abs(y-cy) <= radius))
+  if ((Math.abs(x-cx) <= 2*radius) && (Math.abs(y-cy) <= 2*radius))
     return true;
 
   else 
