@@ -16,6 +16,7 @@
 // Think carefully before modifying any function starting with an underscore
 
 var timerDelay = 30;
+var qTimeout = 25000;
 var radius = 60;
 var qRadius = 100;
 var maxVy;
@@ -23,6 +24,7 @@ var acceleration = 1;
 var balloons = [];
 var minVy = -20
 var timer = 0;
+var questionTimer = 0;
 var isPaused = false;
 var inQuestion = false;
 
@@ -30,18 +32,17 @@ var inQuestion = false;
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
 function enterQuestionMode()  {
   // If we're already in question mode, do nothing
-  if (!(inQuestion === true && isPaused === true))  {
+  if (!(inQuestion === true))  {
+    questionTimer = 0;
     inQuestion = true;
-    isPaused = true;
   }
 }
 
 function leaveQuestionMode()  {
   // Since gameStep uses setTimeout from itself, we'll need to run it again
-  if (!(inQuestion === false && isPaused === false)) {
+  if (!(inQuestion === false)) {
     inQuestion = false;
     isPaused = false;
-    gameStep();
   }
 }
 
@@ -158,37 +159,47 @@ function createNewBalloon(option, isQuestionBalloon) {
 
 
 function gameStep() {
-  timer += timerDelay;
-  var i;
-  
-  //TODO: Map or something more efficient?
-  // For now, need to recalculate length each time
-  for (i = 0; i < balloons.length; i++) {
-    balloons[i].x += balloons[i].vx;
-    balloons[i].y += balloons[i].vy;
-    balloons[i].vy += window.acceleration;
-
-    if (balloons[i].y > (canvas.height + 2*radius)) {
-      //Balloon has fallen back. Remove it.
-      balloons.splice(i, 1);
+  if (inQuestion === true)  {
+    questionTimer += timerDelay;
+    if (questionTimer > qTimeout) {
+      leaveQuestionMode();
     }
   }
+  
+  else  {
+    timer += timerDelay;
+  
+    var i;
     
-  // Every now and then, create a bunch of balloons
-  if (timer % 1000 == 0)  {
-    var numBalloons = Math.floor(4*Math.random());
+    //TODO: Map or something more efficient?
+    // For now, need to recalculate length each time
+    for (i = 0; i < balloons.length; i++) {
+      balloons[i].x += balloons[i].vx;
+      balloons[i].y += balloons[i].vy;
+      balloons[i].vy += window.acceleration;
 
-    for (i = 0; i < numBalloons; i++) {
-      var opt = Math.floor(1 + 2*Math.random());
-      createNewBalloon(opt, false);
+      if (balloons[i].y > (canvas.height + 2*radius)) {
+        //Balloon has fallen back. Remove it.
+        balloons.splice(i, 1);
+      }
     }
-  } 
+      
+    // Every now and then, create a bunch of balloons
+    if (timer % 1000 == 0)  {
+      var numBalloons = Math.floor(4*Math.random());
 
-  // Every now and then, create a questionBalloon
-  if (timer % 5000 == 0)  {
-    var opt = Math.floor(1 + 2*Math.random());
-    createNewBalloon(opt, true);
-  } 
+      for (i = 0; i < numBalloons; i++) {
+        var opt = Math.floor(1 + 2*Math.random());
+        createNewBalloon(opt, false);
+      }
+    } 
+
+    // Every now and then, create a questionBalloon
+    if (timer % 5000 == 0)  {
+      var opt = Math.floor(1 + 2*Math.random());
+      createNewBalloon(opt, true);
+    } 
+  }
 
   if (isPaused === false)
     setTimeout(gameStep, timerDelay);

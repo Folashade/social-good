@@ -21,6 +21,24 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+//from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
+function roundedRect(ctx,x,y,width,height,radius) {
+    ctx.beginPath();
+    ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+    ctx.moveTo(x,y+radius);
+    ctx.lineTo(x,y+height-radius);
+    ctx.quadraticCurveTo(x,y+height,x+radius,y+height);
+    ctx.lineTo(x+width-radius,y+height);
+    ctx.quadraticCurveTo(x+width,y+height,x+width,y+height-radius);
+    ctx.lineTo(x+width,y+radius);
+    ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
+    ctx.lineTo(x+radius,y);
+    ctx.quadraticCurveTo(x,y,x,y+radius);
+    ctx.stroke();
+    ctx.fill();
+}
+
+
 function drawBalloons() {
   var len = balloons.length;
   var i;
@@ -31,7 +49,13 @@ function drawBalloons() {
 }
 
 function drawQuestionScreen() {
-  return;
+  roundedRect(ctx, 75, 100, 630, 340, 20);
+  var text = String(Math.ceil(window.questionTimer/1000));
+  ctx.font = "bold 14px sans-serif";
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  ctx.strokeStyle = "aqua";
+  ctx.strokeText(text, 675, 120);
 }
 
 
