@@ -66,5 +66,12 @@ window.onload=function()
                       screen3div.style.display="";
                     }
                 }
+                  var screen3buttons = document.getElementsByClassName("s3");
+                for (var i = 0; i < screen3buttons.length; i++){
+                    screen3buttons[i].onclick=function()
+                    {
+                      window.open('gameplay.html',"_self");
+                      }
+                    }
 
 }
