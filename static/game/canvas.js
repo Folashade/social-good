@@ -43,6 +43,10 @@ var isPaused;
 var inQuestion;
 var verbose;
 
+// Spritesheet
+var spriteSheet = new Image();
+spriteSheet.src = "assets/sprite_sheet_canvas.png";
+
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 function roundedRect(ctx,x,y,width,height,radius) {
     ctx.beginPath();
@@ -59,6 +63,8 @@ function roundedRect(ctx,x,y,width,height,radius) {
     ctx.stroke();
     ctx.fill();
 }
+
+
 
 
 function drawBalloons() {

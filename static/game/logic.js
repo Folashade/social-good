@@ -62,7 +62,7 @@ function isQuestionBalloon(balloon) {
 
 function removeBalloon(i) {
   // Add animations
-  balloons.splice(i, 1);
+  //balloons[i].popped = true;
 }
 
 
@@ -99,18 +99,34 @@ var balloon = function(x, y, vx, vy, color) {
   this.y = y;
   this.vx = vx;
   this.vy = vy;
-  this.color = color
+  this.color = color;
+  this.popped = false;
+  this.frame = 0.0;
 
   this.image = new Image();
   this.image.src = window.images[this.color];
 
   this.draw = function() {
-    if (this.color == 3)  {   // If question balloon
-      ctx.drawImage(this.image, this.x-102, this.y-103);
-    }
+    if (this.popped === true) {
+     
+      ctx.drawImage(spriteSheet, 
+                    Math.floor(Math.floor(this.frame)%5)*200, 
+                    Math.floor(Math.floor(this.frame)/5)*200, 
+                    200, 200, 
+                    this.x, this.y, 200, 200);
       
-    else  {  
-      ctx.drawImage(this.image, this.x-54, this.y-65);
+      if (this.frame < 9) {
+        this.frame += 0.2;
+      }   
+    }
+    else {
+      if (this.color == 3)  {   // If question balloon
+        ctx.drawImage(this.image, this.x-102, this.y-103);
+      }
+        
+      else  {  
+        ctx.drawImage(this.image, this.x-54, this.y-65);
+      }
     }
   };
 }
