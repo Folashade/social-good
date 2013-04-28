@@ -21,8 +21,8 @@ function onTouchStart(event)  {
   var t;
   var l = event.touches.length;
   for (t = 0; t < l; t++)  {   
-    var cx = event.touches[t]pageX - canvas.offsetLeft;
-    var cy = event.touches[t]pageY - canvas.offsetTop;
+    var cx = event.touches[t].pageX - canvas.offsetLeft;
+    var cy = event.touches[t].pageY - canvas.offsetTop;
     var wasQuestionPopped = false;
 
     if (window.verbose === true)  {
