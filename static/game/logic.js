@@ -208,8 +208,8 @@ function gameStep() {
     } 
   }
 
-  if (isPaused === false)
-    setTimeout(gameStep, timerDelay);
+  if (window.isPaused === false)
+    setTimeout(gameStep, window.timerDelay);
 
   return;
 }

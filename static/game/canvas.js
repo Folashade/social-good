@@ -62,11 +62,11 @@ function roundedRect(ctx,x,y,width,height,radius) {
 
 
 function drawBalloons() {
-  var len = balloons.length;
+  var len = window.balloons.length;
   var i;
 
   for (i = 0; i < len; i++) {
-    balloons[i].draw();
+    window.balloons[i].draw();
   }
 }
 
@@ -94,7 +94,7 @@ function render()  {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBalloons();
   drawPoints();
-  if (inQuestion === true)  {
+  if (window.inQuestion === true)  {
     drawQuestionScreen();
   }
   return;
