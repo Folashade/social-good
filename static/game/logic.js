@@ -39,17 +39,17 @@ function resetVariables() {
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
 function enterQuestionMode()  {
   // If we're already in question mode, do nothing
-  if (!(inQuestion === true))  {
-    questionTimer = 0;
-    inQuestion = true;
+  if (!(window.inQuestion === true))  {
+    window.questionTimer = 0;
+    window.inQuestion = true;
   }
 }
 
 function leaveQuestionMode()  {
   // Since gameStep uses setTimeout from itself, we'll need to run it again
-  if (!(inQuestion === false)) {
-    inQuestion = false;
-    isPaused = false;
+  if (!(window.inQuestion === false)) {
+    window.inQuestion = false;
+    window.isPaused = false;
   }
 }
 
@@ -102,7 +102,7 @@ var balloon = function(x, y, vx, vy, color) {
   this.color = color
 
   this.image = new Image();
-  this.image.src = images[this.color];
+  this.image.src = window.images[this.color];
 
   this.draw = function() {
     if (this.color == 3)  {   // If question balloon
@@ -166,15 +166,15 @@ function createNewBalloon(option, isQuestionBalloon) {
 
 
 function gameStep() {
-  if (inQuestion === true)  {
-    questionTimer += timerDelay;
-    if (questionTimer > qTimeout) {
+  if (window.inQuestion === true)  {
+    window.questionTimer += window.timerDelay;
+    if (window.questionTimer > window.qTimeout) {
       leaveQuestionMode();
     }
   }
   
   else  {
-    timer += timerDelay;
+    window.timer += window.timerDelay;
   
     var i;
     
