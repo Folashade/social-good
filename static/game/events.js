@@ -3,8 +3,6 @@
 // Srinivasan Vijayaraghavan (srinivav)
 
 
-var verbose = false;
-
 /* TODO: Implement touch */
 // For when multiTouch is implemented
 var touches = [];

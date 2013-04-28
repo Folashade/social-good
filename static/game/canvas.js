@@ -21,6 +21,28 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+// Declare globals
+var points;
+var pointsIncr;
+var qPointsIncr;
+var balloonsPopped;
+
+var timer;
+var questionTimer;
+var timerDelay;
+var qTimeout;
+
+var radius;
+var qRadius;
+var maxVy;
+var acceleration;
+var minVy;
+
+var balloons;
+var isPaused;
+var inQuestion;
+var verbose;
+
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 function roundedRect(ctx,x,y,width,height,radius) {
     ctx.beginPath();
@@ -110,5 +132,5 @@ function run()  {
   })();
 }
 
-
+resetVariables();
 run();

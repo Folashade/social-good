@@ -15,22 +15,25 @@
 
 // Think carefully before modifying any function starting with an underscore
 
-var points = 0;
-var pointsIncr = 20;
-var qPointsIncr = 100;
-var balloonsPopped = 0;
-var timerDelay = 30;
-var qTimeout = 25000;
-var radius = 60;
-var qRadius = 100;
-var maxVy;
-var acceleration = 1;
-var balloons = [];
-var minVy = -20
-var timer = 0;
-var questionTimer = 0;
-var isPaused = false;
-var inQuestion = false;
+function resetVariables() {
+  window.points = 0;
+  window.pointsIncr = 20;
+  window.qPointsIncr = 100;
+  window.balloonsPopped = 0;
+  window.timerDelay = 30;
+  window.qTimeout = 25000;
+  window.radius = 60;
+  window.qRadius = 100;
+  window.maxVy;
+  window.acceleration = 1;
+  window.balloons = [];
+  window.minVy = -20
+  window.timer = 0;
+  window.questionTimer = 0;
+  window.isPaused = false;
+  window.inQuestion = false;
+  window.verbose = false;
+}
 
 
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
