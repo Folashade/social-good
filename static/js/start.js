@@ -6,8 +6,21 @@ window.onload=function()
   var menu = document.getElementsByClassName("menu");
   var back = document.getElementsByClassName("back");
   var playbutton = document.getElementById("play");
+  var instructions = document.getElementById("instructions");
+  var screeninstructions = document.getElementById("screeninstructions");
+  screen2div.style.display="none";
+  screen3div.style.display="none";
+  screeninstructions.style.display="none";
 
-
+  instructions.onclick=function()
+  {
+    screen1div.style.visibility="hidden";
+                      screen1div.style.display="none";
+                      screeninstructions.style.visibility="visible";
+                      screeninstructions.style.display="";
+                      screen2div.style.display="none";
+                      screen3div.style.display="none";
+  }
                     menu[0].onclick=function()
                     {
 
@@ -25,6 +38,8 @@ window.onload=function()
                       screen3div.style.visibility="hidden";
                       screen3div.style.display="none";
                     }
+
+          
 
                     back[0].onclick=function()
                     {
@@ -44,6 +59,14 @@ window.onload=function()
                       screen3div.style.display="none";
                     }
                 
+                    back[2].onclick=function()
+                    {
+
+                      screen1div.style.visibility="visible";
+                      screen1div.style.display="";
+                      screeninstructions.style.visibility="hidden";
+                      screeninstructions.style.display="none";
+                    }
 
 	
 	playbutton.onclick=function()
