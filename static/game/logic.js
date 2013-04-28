@@ -15,38 +15,41 @@
 
 // Think carefully before modifying any function starting with an underscore
 
-var points = 0;
-var pointsIncr = 20;
-var qPointsIncr = 100;
-var balloonsPopped = 0;
-var timerDelay = 30;
-var qTimeout = 25000;
-var radius = 60;
-var qRadius = 100;
-var maxVy;
-var acceleration = 1;
-var balloons = [];
-var minVy = -20
-var timer = 0;
-var questionTimer = 0;
-var isPaused = false;
-var inQuestion = false;
+function resetVariables() {
+  window.points = 0;
+  window.pointsIncr = 20;
+  window.qPointsIncr = 100;
+  window.balloonsPopped = 0;
+  window.timerDelay = 30;
+  window.qTimeout = 25000;
+  window.radius = 60;
+  window.qRadius = 100;
+  window.maxVy;
+  window.acceleration = 1;
+  window.balloons = [];
+  window.minVy = -20
+  window.timer = 0;
+  window.questionTimer = 0;
+  window.isPaused = false;
+  window.inQuestion = false;
+  window.verbose = false;
+}
 
 
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
 function enterQuestionMode()  {
   // If we're already in question mode, do nothing
-  if (!(inQuestion === true))  {
-    questionTimer = 0;
-    inQuestion = true;
+  if (!(window.inQuestion === true))  {
+    window.questionTimer = 0;
+    window.inQuestion = true;
   }
 }
 
 function leaveQuestionMode()  {
   // Since gameStep uses setTimeout from itself, we'll need to run it again
-  if (!(inQuestion === false)) {
-    inQuestion = false;
-    isPaused = false;
+  if (!(window.inQuestion === false)) {
+    window.inQuestion = false;
+    window.isPaused = false;
   }
 }
 
@@ -99,7 +102,7 @@ var balloon = function(x, y, vx, vy, color) {
   this.color = color
 
   this.image = new Image();
-  this.image.src = images[this.color];
+  this.image.src = window.images[this.color];
 
   this.draw = function() {
     if (this.color == 3)  {   // If question balloon
@@ -163,15 +166,15 @@ function createNewBalloon(option, isQuestionBalloon) {
 
 
 function gameStep() {
-  if (inQuestion === true)  {
-    questionTimer += timerDelay;
-    if (questionTimer > qTimeout) {
+  if (window.inQuestion === true)  {
+    window.questionTimer += window.timerDelay;
+    if (window.questionTimer > window.qTimeout) {
       leaveQuestionMode();
     }
   }
   
   else  {
-    timer += timerDelay;
+    window.timer += window.timerDelay;
   
     var i;
     
@@ -205,8 +208,8 @@ function gameStep() {
     } 
   }
 
-  if (isPaused === false)
-    setTimeout(gameStep, timerDelay);
+  if (window.isPaused === false)
+    setTimeout(gameStep, window.timerDelay);
 
   return;
 }
