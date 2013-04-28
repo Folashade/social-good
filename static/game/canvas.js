@@ -21,6 +21,28 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+// Declare globals
+var points;
+var pointsIncr;
+var qPointsIncr;
+var balloonsPopped;
+
+var timer;
+var questionTimer;
+var timerDelay;
+var qTimeout;
+
+var radius;
+var qRadius;
+var maxVy;
+var acceleration;
+var minVy;
+
+var balloons;
+var isPaused;
+var inQuestion;
+var verbose;
+
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 function roundedRect(ctx,x,y,width,height,radius) {
     ctx.beginPath();
@@ -40,11 +62,11 @@ function roundedRect(ctx,x,y,width,height,radius) {
 
 
 function drawBalloons() {
-  var len = balloons.length;
+  var len = window.balloons.length;
   var i;
 
   for (i = 0; i < len; i++) {
-    balloons[i].draw();
+    window.balloons[i].draw();
   }
 }
 
@@ -58,12 +80,21 @@ function drawQuestionScreen() {
   ctx.strokeText(text, 675, 120);
 }
 
+function drawPoints() {
+  var text = String(window.points);
+  ctx.font = "vold 14px sans-serif";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+  ctx.strokeStyle = "aqua";
+  ctx.strokeText(text, 10, 10);
+}
 
 function render()  {
   // Background being drawn whether or not in question mode
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBalloons();
-  if (inQuestion === true)  {
+  drawPoints();
+  if (window.inQuestion === true)  {
     drawQuestionScreen();
   }
   return;
@@ -101,5 +132,5 @@ function run()  {
   })();
 }
 
-
+resetVariables();
 run();

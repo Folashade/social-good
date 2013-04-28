@@ -30,7 +30,7 @@ app.get('/teachers', function(clientRequest, clientResponse)  {
 /* Route to fetch content by teacher */
 app.get("/teacher/:teacherID", function(clientRequest, clientResponse)  {
   var teacherID = clientRequest.params.teacherID;
-  console.log(teacherID);
+//  console.log(teacherID);
   techcafe.getContentByTeacher(teacherID, function(content) {
     clientResponse.send({
       "content": content,

@@ -7,8 +7,6 @@
 // Srinivasan Vijayaraghavan (srinivav)
 
 
-var verbose = false;
-
 /* TODO: Implement touch */
 // For when multiTouch is implemented
 var touches = [];
@@ -48,11 +46,11 @@ function onMouseDown(event) {
   var cy = event.pageY - canvas.offsetTop;
   var wasQuestionPopped = false;
 
-  if (verbose === true)  {
+  if (window.verbose === true)  {
     console.log (cx + ", " + cy);
   }
 
-  if (inQuestion === false)  {
+  if (window.inQuestion === false)  {
     var i, j;
 
     
@@ -66,24 +64,23 @@ function onMouseDown(event) {
         //Question balloon has been popped!
         removeBalloon(i);
         i -= 1;
+        points += qPointsIncr;
         wasQuestionPopped = true;
-
-        console.log("QPOP");
       }
 
       else if (inRadius(x, cx, y, cy, radius) === true) {
         removeBalloon(i);
         i -= 1;
+        points += pointsIncr;
       }
     }
       
     if (wasQuestionPopped === true) {
-      console.log("YOLO");
       enterQuestionMode(); 
     }  
   }
 
-  else if (inQuestion === true)  {
+  else if (window.inQuestion === true)  {
     // Just leave question mode if tap is in the right half, for now
     if (cx >= canvas.height/2)  {
       leaveQuestionMode();
