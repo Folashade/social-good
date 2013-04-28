@@ -12,7 +12,8 @@ function get() {
     type: "get",  // read in cRud
     url: "/teachers",
     success: function(data) {
-      console.log(JSON.stringify(data));
+      console.log("Hi");
+      //console.log(JSON.stringify(data));
     }
   });
 }
