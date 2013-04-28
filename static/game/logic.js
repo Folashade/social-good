@@ -124,7 +124,7 @@ var balloon = function(x, y, vx, vy, color) {
                     200, 200, 
                     this.x-100, this.y-100, 200, 200);
       
-      if (this.frame < 9) {
+      if (this.frame < 9 && window.inQuestion === false) {
         this.frame += 0.2;
       }   
     }
