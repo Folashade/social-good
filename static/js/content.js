@@ -5,10 +5,42 @@
  */
 
 // For example, the callback can be a function which draws from the list
-function getTeacherList(callback) {
-  $.ajax({type: "get",
-          url: "/teachers",
-          success: callback(data);
-         });
+
+
+function get() {
+  $.ajax({
+    type: "get",  // read in cRud
+    url: "/teachers",
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  });
 }
 
+/*
+function fetchTeacherList() {
+  $.ajax({
+    type: "get",
+    url: "/teachers",
+    success: function(data) {
+      console.log(data);
+    }
+  });
+}
+*/
+
+
+/*
+  // Implement the get() function
+  function get() {
+    $.ajax({
+      type: "get",
+      url: "/listings",
+      success: function(data) {
+        listings = data.listings;
+        //console.log(listings);
+        refreshDOM();
+      }
+    });
+  }
+*/
