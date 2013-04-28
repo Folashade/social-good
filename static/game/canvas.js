@@ -58,11 +58,20 @@ function drawQuestionScreen() {
   ctx.strokeText(text, 675, 120);
 }
 
+function drawPoints() {
+  var text = String(window.points);
+  ctx.font = "vold 14px sans-serif";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+  ctx.strokeStyle = "aqua";
+  ctx.strokeText(text, 10, 10);
+}
 
 function render()  {
   // Background being drawn whether or not in question mode
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawBalloons();
+  drawPoints();
   if (inQuestion === true)  {
     drawQuestionScreen();
   }

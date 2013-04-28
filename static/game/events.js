@@ -51,18 +51,18 @@ function onMouseDown(event) {
         //Question balloon has been popped!
         removeBalloon(i);
         i -= 1;
+        points += qPointsIncr;
         wasQuestionPopped = true;
-        console.log("QPOP");
       }
 
       else if (inRadius(x, cx, y, cy, radius) === true) {
         removeBalloon(i);
         i -= 1;
+        points += pointsIncr;
       }
     }
       
     if (wasQuestionPopped === true) {
-      console.log("YOLO");
       enterQuestionMode(); 
     }  
   }

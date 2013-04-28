@@ -15,6 +15,10 @@
 
 // Think carefully before modifying any function starting with an underscore
 
+var points = 0;
+var pointsIncr = 20;
+var qPointsIncr = 100;
+var balloonsPopped = 0;
 var timerDelay = 30;
 var qTimeout = 25000;
 var radius = 60;
