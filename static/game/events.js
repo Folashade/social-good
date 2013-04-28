@@ -1,3 +1,7 @@
+
+
+
+
 // events.js
 // Has code for handling various events
 // Srinivasan Vijayaraghavan (srinivav)
@@ -17,20 +21,20 @@ function onMouseDown (event)  {
 }
 */
 
-function circle(ctx, cx, cy, radius) {
-    ctx.arc(cx, cy, radius, 0, 2*Math.PI, true);
-}
-ctx.beginPath();
-var cx = 200;
-var cy = 200;
-var radius = 100;
-circle(ctx, cx, cy, radius);
-ctx.fill();
+// function circle(ctx, cx, cy, radius) {
+//     // ctx.arc(cx, cy, radius, 0, 2*Math.PI, true);
+// }
+// ctx.beginPath();
+// var cx = 200;
+// var cy = 200;
+// var radius = 100;
+// circle(ctx, cx, cy, radius);
+// ctx.fill();
 
 
 
 function inRadius (x, cx, y, cy, radius) {
-  if ((Math.abs(x-cx) <= 2*radius) && (Math.abs(y-cy) <= 2*radius))
+  if ((Math.abs(x-cx) <= 4*radius) && (Math.abs(y-cy) <= 4*radius))
     return true;
 
   else 
@@ -60,15 +64,14 @@ function onMouseDown(event) {
       if (isQuestionBalloon(curBalloon) === true &&
           inRadius(x, cx, y, cy, qRadius) === true) {
         //Question balloon has been popped!
-		circle(ctx, cx, cy, qRadius)
         removeBalloon(i);
         i -= 1;
         wasQuestionPopped = true;
+
         console.log("QPOP");
       }
 
       else if (inRadius(x, cx, y, cy, radius) === true) {
-		circle(ctx, cx, cy, radius)
         removeBalloon(i);
         i -= 1;
       }

@@ -185,7 +185,7 @@ function gameStep() {
     }
       
     // Every now and then, create a bunch of balloons
-    if (timer % 1000 == 0)  {
+    if (timer % 500 == 0)  {
       var numBalloons = Math.floor(4*Math.random());
 
       for (i = 0; i < numBalloons; i++) {
