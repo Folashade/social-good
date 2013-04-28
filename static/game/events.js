@@ -7,14 +7,6 @@
 // For when multiTouch is implemented
 var touches = [];
 
-/*
-function onMouseDown (event)  {
-  
-  var opt = Math.floor(1 + 2*Math.random());
-  createNewBalloon(opt, true);
-}
-*/
-
 
 function inRadius (x, cx, y, cy, radius) {
   if ((Math.abs(x-cx) <= 2*radius) && (Math.abs(y-cy) <= 2*radius))
@@ -40,22 +32,21 @@ function onMouseDown(event) {
 
     
     // Check qRadius?
-    for (i=0; i < balloons.length; i++) {
+    for (i = 0; i < balloons.length; i++) {
       curBalloon = balloons[i];
       x = curBalloon.x;
       y = curBalloon.y;
       if ((isQuestionBalloon(curBalloon) === true) &&
-          (inRadius(x, cx, y, cy, qRadius) === true)) {
-        //Question balloon has been popped!
-        //removeBalloon(i);
-        //i -= 1;
+          (inRadius(x, cx, y, cy, qRadius) === true) &&
+          (curBalloon.popped === false)) {
+        balloons[i].popped = true;
         points += qPointsIncr;
         wasQuestionPopped = true;
       }
 
-      else if (inRadius(x, cx, y, cy, radius) === true) {
-        //balloons[i].popped = true; <-- causing problems!
-        //i -= 1;
+      else if ((inRadius(x, cx, y, cy, radius) === true) &&
+               curBalloon.popped === false) {
+        balloons[i].popped = true;
         points += pointsIncr;
       }
     }
