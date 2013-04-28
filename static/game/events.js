@@ -44,18 +44,18 @@ function onMouseDown(event) {
       curBalloon = balloons[i];
       x = curBalloon.x;
       y = curBalloon.y;
-      if (isQuestionBalloon(curBalloon) === true &&
-          inRadius(x, cx, y, cy, qRadius) === true) {
+      if ((isQuestionBalloon(curBalloon) === true) &&
+          (inRadius(x, cx, y, cy, qRadius) === true)) {
         //Question balloon has been popped!
-        removeBalloon(i);
-        i -= 1;
+        //removeBalloon(i);
+        //i -= 1;
         points += qPointsIncr;
         wasQuestionPopped = true;
       }
 
       else if (inRadius(x, cx, y, cy, radius) === true) {
-        removeBalloon(i);
-        i -= 1;
+        //balloons[i].popped = true; <-- causing problems!
+        //i -= 1;
         points += pointsIncr;
       }
     }
@@ -67,7 +67,7 @@ function onMouseDown(event) {
 
   else if (window.inQuestion === true)  {
     // Just leave question mode if tap is in the right half, for now
-    if (cx >= canvas.height/2)  {
+    if (cx >= canvas.width/2)  {
       leaveQuestionMode();
     }
   }
