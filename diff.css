@@ -1,0 +1,92 @@
+diff static/css/start.css static/css/nexus.css
+11a12,15
+> html, body {
+> 	width:100%;
+> 	height:100%;	
+> }
+18,19c22,23
+< width:960px;
+< height:540px;
+---
+> /*width:960px;*/
+> /*height:540px;*/
+23c27
+< margin-top: 4em;
+---
+> /*margin-top: 4em;*/
+24a29,32
+> width:100%;
+> height:100%;
+> background-size:100%;
+> 
+33c41,43
+< font-size: 8em;
+---
+> /*font-size: 5.3em;*/
+> /*font-size: 8em;*/
+> position: fixed;
+39a50,54
+> margin-top: 2em;
+> }
+> 
+> #play img {
+> 	height: 82%;
+44c59
+< left: 4em;
+---
+> left: 0em;
+50c65
+< left: 17em;
+---
+> left: 6em;
+59,60c74,75
+< bottom: 0em;
+< font-size: 25px;
+---
+> /*bottom: 0em;*/
+> /*font-size: 25px;*/
+62,63c77,78
+< margin-top: -30px;
+< margin-bottom: 8px;
+---
+> /*margin-top: -10px;*/
+> /*margin-bottom: 0px;*/
+68c83
+< margin-top: -5em;
+---
+> margin-top: -3.8em;
+115c130
+< .menu-buttons {
+---
+> .menu-buttons{
+133c148,174
+< }
+\ No newline at end of file
+---
+> }
+> 
+> 
+> #instructions img,
+> #highscore img
+>  {
+> 	margin-bottom: -25%;
+> 	height: 50%;
+> }
+> 
+> #instructions p,
+> #highscore p
+>  {
+> 	font-size:80%;
+> }
+> 
+> @media (min-width: 530px) {
+> 	#title h1 {
+> 		font-size: 5.4em;
+> 	}
+> 	
+> 	#instructions p,
+> 	#highscore p
+> 	 {
+> 		font-size:1em;
+> 	}
+> }
