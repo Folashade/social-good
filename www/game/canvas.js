@@ -26,6 +26,7 @@ var points;
 var pointsIncr;
 var qPointsIncr;
 var balloonsPopped;
+var waterLevels = [];
 
 var timer;
 var questionTimer;
@@ -42,6 +43,7 @@ var balloons;
 var isPaused;
 var inQuestion;
 var verbose;
+var touches;
 
 // Spritesheet
 var spriteSheet = new Image();

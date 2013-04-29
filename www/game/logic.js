@@ -36,6 +36,8 @@ function resetVariables() {
   window.teachers = [];
   window.contentList = [];
   window.content = [];
+  window.waterLevels = [];
+  window.touches = [];
 }
 
 
