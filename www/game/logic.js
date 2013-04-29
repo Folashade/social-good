@@ -198,6 +198,8 @@ function gameStep() {
   
   else  {
     window.timer += window.timerDelay;
+
+    
   
     var i;
     

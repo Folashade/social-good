@@ -111,6 +111,7 @@ function onMouseDown(event) {
 
 function onTouchMove(event) {
   event.preventDefault();
+  window.touches = event.touches;
   return;
 }
 
