@@ -45,31 +45,31 @@ app.get("/teacher/:teacherID", function(clientRequest, clientResponse)  {
 
 // This is for serving files in the static directory
 // assets, css, fonts, game, js
-app.get("/static/:staticFilename", function (request, response) {
-    response.sendfile("static/" + request.params.staticFilename);
+app.get("/www/:staticFilename", function (request, response) {
+    response.sendfile("www/" + request.params.staticFilename);
 });
 
-app.get("/static/assets/:staticFilename", function (request, response) {
-    response.sendfile("static/assets/" + request.params.staticFilename);
-});
-
-
-app.get("/static/css/:staticFilename", function (request, response) {
-    response.sendfile("static/css/" + request.params.staticFilename);
+app.get("/www/assets/:staticFilename", function (request, response) {
+    response.sendfile("www/assets/" + request.params.staticFilename);
 });
 
 
-app.get("/static/fonts/:staticFilename", function (request, response) {
-    response.sendfile("static/fonts/" + request.params.staticFilename);
-});
-
-app.get("/static/game/:staticFilename", function (request, response) {
-    response.sendfile("static/game/" + request.params.staticFilename);
+app.get("/www/css/:staticFilename", function (request, response) {
+    response.sendfile("www/css/" + request.params.staticFilename);
 });
 
 
-app.get("/static/js/:staticFilename", function (request, response) {
-    response.sendfile("static/js/" + request.params.staticFilename);
+app.get("/www/fonts/:staticFilename", function (request, response) {
+    response.sendfile("www/fonts/" + request.params.staticFilename);
+});
+
+app.get("/www/game/:staticFilename", function (request, response) {
+    response.sendfile("www/game/" + request.params.staticFilename);
+});
+
+
+app.get("/www/js/:staticFilename", function (request, response) {
+    response.sendfile("www/js/" + request.params.staticFilename);
 });
 
 
