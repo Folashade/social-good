@@ -198,9 +198,42 @@ function gameStep() {
   
   else  {
     window.timer += window.timerDelay;
-  
-    var i;
     
+    // Before moving balloon positions, check touches
+    var len = window.touches.length;
+    var i, cx, cy, x, y, j, curBalloon;
+    for (i = 0; i < len; i++) {
+      cx = touches[i].pageX - canvas.offsetLeft;
+      cy = touches[i].pageY - canvas.offsetTop;
+      var wasQuestionPopped = false;
+    
+      for (j = 0; j < balloons.length; j++) {
+        curBalloon = balloons[j];
+        x = curBalloon.x;
+        y = curBalloon.y;
+
+        // Check if there is a touch on a question balloon
+        if ((isQuestionBalloon(curBalloon) === true) &&
+            (inRadius(x, cx, y, cy, qRadius) === true) &&
+            (curBalloon.popped === false))  {
+          balloons[j].popped = true;
+          points += qPointsIncr;
+          wasQuestionPopped = true;
+        }
+
+        // Check if there is a touch on a regular balloon
+        else if ((inRadius(x, cx, y, cy, radius) === true) &&
+                 (curBalloon.popped === false))  {
+          balloons[j].popped = true;
+          points += pointsIncr;
+        }
+      }
+    }
+
+    if (wasQuestionPopped === true) {
+      enterQuestionMode();
+    }
+
     //TODO: Map or something more efficient?
     // For now, need to recalculate length each time
     for (i = 0; i < balloons.length; i++) {
