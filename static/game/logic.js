@@ -119,10 +119,10 @@ var balloon = function(x, y, vx, vy, color) {
 
     if (this.popped === true) {
       ctx.drawImage(spriteSheet, 
-                    Math.floor(Math.floor(this.frame)%5)*200, 
-                    Math.floor(Math.floor(this.frame)/5)*200, 
-                    200, 200, 
-                    this.x-100, this.y-100, 200, 200);
+                    Math.floor(Math.floor(this.frame)%5)*194, 
+                    Math.floor(Math.floor(this.frame)/5)*216, 
+                    194, 216, 
+                    this.x-97, this.y-108, 194, 216);
       
       if (this.frame < 9 && window.inQuestion === false) {
         this.frame += 0.2;
@@ -248,4 +248,5 @@ function patchBind(){
        };
    }
 }
+
 

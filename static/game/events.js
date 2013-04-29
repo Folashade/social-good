@@ -1,11 +1,4 @@
-// events.js
-// Has code for handling various events
-// Srinivasan Vijayaraghavan (srinivav)
-
-
-/* TODO: Implement touch */
-// For when multiTouch is implemented
-var touches = [];
+es = [];
 
 
 function inRadius (x, cx, y, cy, radius) {
@@ -18,12 +11,15 @@ function inRadius (x, cx, y, cy, radius) {
 
 
 function onTouchStart(event)  {
+  event.preventDefault();
   var t;
   var l = event.touches.length;
+  console.log(event.touches);
   for (t = 0; t < l; t++)  {   
     var cx = event.touches[t].pageX - canvas.offsetLeft;
     var cy = event.touches[t].pageY - canvas.offsetTop;
     var wasQuestionPopped = false;
+
 
     if (window.verbose === true)  {
       console.log (cx + ", " + cy);
@@ -110,11 +106,6 @@ function onMouseDown(event) {
     }
   }
 
-}
-
-function onTouchStart(event)  {
-  event.preventDefault();
-  return;
 }
 
 function onTouchMove(event) {
@@ -257,3 +248,4 @@ function addTappableJQPlugin(){
 window.addEventListener('load', function(){
     addTappableJQPlugin();
 });
+
