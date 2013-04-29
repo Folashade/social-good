@@ -1,0 +1,19 @@
+1. Change file/directory structure (www), see bkase github
+2. Change server routes to reflect www
+3. PhoneGap
+
+10. 4 lines of JavaScript to take care of the offset
+
+
+21. Add individual water levels for different colors, decrease with time, increase when popped a balloon of that color
+22. Hook up those water levels with the sidebar
+23. Game is over if any water level goes below zero
+24. Question balloon adds to all the water levels.
+
+31.  Fetch content from server
+32. Implement questions UI (still)
+
+9999. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
+
+Final to-do list before submitting:
+- Remove highscores if not implemented
