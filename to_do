@@ -8,7 +8,7 @@
 
 21. Add individual water levels for different colors, decrease with time, increase when popped a balloon of that color
                                                                                       - srinivasan and nishita
-possibly: Have a levels[], so you can change levels[curBalloon.color].
+possibly: Have a waterLevels[], so you can change waterLevels[curBalloon.color].
 22. Hook up those water levels with the sidebar - foo
 23. Game is over if any water level goes below zero, Question balloon adds to all the water levels - srinivasan+help
 
