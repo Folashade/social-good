@@ -71,7 +71,6 @@ window.onload=function()
 	
 	playbutton.onclick=function()
   {
-    
     fetchTeachers(loadTeachers);   
     screen1div.style.visibility="hidden";
     screen1div.style.display="none";

@@ -1,0 +1,2 @@
+In js/content.js and index.html, for the teacher and content selection page,
+why not only create the page if needed?
