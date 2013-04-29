@@ -14,7 +14,10 @@ var content;
 //console.log(curQuestions[1]);
 
 function loadTeachers(data) {
-  window.teachers = data;
+  window.teachers = data.teacherList;
+  for (var i=0; i < window.teachers.length; i++)  {
+    $("#t"+i).text(window.teachers[i].username);
+  }
 }
 
 function fetchTeachers(callbackFn) {
