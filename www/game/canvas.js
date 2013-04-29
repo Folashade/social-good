@@ -124,7 +124,6 @@ function run()  {
   // Delete the first line
   canvas.addEventListener('mousedown', onMouseDown, false);
   canvas.addEventListener('touchstart', onTouchStart, false);
-  console.log("Happening");
   canvas.addEventListener('touchend', onTouchEnd, false);
   canvas.addEventListener('touchmove', onTouchMove, false);
   canvas.setAttribute('tabindex', '0');

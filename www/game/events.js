@@ -14,7 +14,7 @@ function onTouchStart(event)  {
   event.preventDefault();
   var t;
   var l = event.touches.length;
-  console.log(event.touches);
+  if (window.verbose === true) console.log(event.touches);
   for (t = 0; t < l; t++)  {   
     var cx = event.touches[t].pageX - canvas.offsetLeft;
     var cy = event.touches[t].pageY - canvas.offsetTop;
