@@ -93,7 +93,7 @@ window.onload=function()
                 for (var i = 0; i < screen3buttons.length; i++){
                     screen3buttons[i].onclick=function()
                     {
-                      window.open('gameplay.html',"_self");
+                      window.open('static/gameplay.html',"_self");
                       }
                     }
 
