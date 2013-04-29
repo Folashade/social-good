@@ -10,8 +10,24 @@ function inRadius (x, cx, y, cy, radius) {
     return false;
 }
 
-
 function onTouchStart(event)  {
+  event.preventDefault();
+  if (window.inQuestion === true)  {
+      var len = event.touches.length;
+      for (var t = 0; t < len; t++)  {
+        var cx = event.touches[t].pageX - canvas.offsetLeft;
+        var cy = event.touches[t].pageY - canvas.offsetTop;
+        // Just leave question mode if tap is in the right half, for now
+        if (cx >= canvas.width/2)  {
+          leaveQuestionMode();
+        }
+      }
+  }
+}
+
+
+
+/* function onTouchStart(event)  {
   event.preventDefault();
   var t;
   var l = event.touches.length;
@@ -61,9 +77,9 @@ function onTouchStart(event)  {
       }
     }
   }
-}
+} */
 
-function onMouseDown(event) {
+/* function onMouseDown(event) {
   var cx = event.pageX - canvas.offsetLeft;
   var cy = event.pageY - canvas.offsetTop;
   var wasQuestionPopped = false;
@@ -107,10 +123,11 @@ function onMouseDown(event) {
     }
   }
 
-}
+}*/
 
 function onTouchMove(event) {
   event.preventDefault();
+  window.touches = event.touches;
   return;
 }
 
