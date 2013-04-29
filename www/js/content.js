@@ -6,8 +6,42 @@
 
 // For example, the callback can be a function which draws from the list
 
+var teachers;
+var contentList;
+var content;
 
-var GlobalsAreBad;
+//var curQuestions = currentSet.questions;
+//console.log(curQuestions[1]);
+
+function loadTeachers(data) {
+  window.teachers = data.teacherList;
+  for (var i=0; i < window.teachers.length; i++)  {
+    $("#t"+i).text(window.teachers[i].username);
+  }
+}
+
+function fetchTeachers(callbackFn) {
+  $.ajax({
+    type: "get",  // read in cRud
+    url: "/teachers",
+    success: callbackFn
+  });
+}
+
+function loadContent(data)  {
+  window.content = data;
+}
+
+
+function fetchByTeacher(teacherID, callbackFn)  {
+  $.ajax({
+    type: "get",
+    url: "teachers/" + teacherID + "",
+    success: callbackFn
+  });
+}
+
+
 
 var currentSet = {
         "name": "test set",
@@ -95,53 +129,3 @@ var currentSet = {
         ]
       }
 
-var curQuestions = currentSet.questions;
-
-console.log(curQuestions[1]);
-
-
-function get(callbackFn) {
-  $.ajax({
-    type: "get",  // read in cRud
-    url: "/teachers",
-    success: callbackFn
-  });
-}
-
-function cb(data) {
-  GlobalsAreBad = data;
-}
-
-/*
-game code
-get(function(data) {
-    displayQuestions(data);
-});
-*/
-/*
-function fetchTeacherList() {
-  $.ajax({
-    type: "get",
-    url: "/teachers",
-    success: function(data) {
-      console.log(data);
-    }
-  });
-}
-*/
-
-
-/*
-  // Implement the get() function
-  function get() {
-    $.ajax({
-      type: "get",
-      url: "/listings",
-      success: function(data) {
-        listings = data.listings;
-        //console.log(listings);
-        refreshDOM();
-      }
-    });
-  }
-*/

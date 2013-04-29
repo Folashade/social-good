@@ -70,13 +70,14 @@ window.onload=function()
 
 	
 	playbutton.onclick=function()
-                    {
-                    	
-                   		screen1div.style.visibility="hidden";
-                      screen1div.style.display="none";
-                   		screen2div.style.visibility="visible";
-                      screen2div.style.display="";
-                    }
+  {
+    
+    fetchTeachers(loadTeachers);   
+    screen1div.style.visibility="hidden";
+    screen1div.style.display="none";
+    screen2div.style.visibility="visible";
+    screen2div.style.display="";
+  }
 
 	var screen2buttons = document.getElementsByClassName("s2");
                 for (var i = 0; i < screen2buttons.length; i++){

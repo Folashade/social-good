@@ -33,6 +33,9 @@ function resetVariables() {
   window.isPaused = false;
   window.inQuestion = false;
   window.verbose = false;
+  window.teachers = [];
+  window.contentList = [];
+  window.content = [];
 }
 
 
