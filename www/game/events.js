@@ -1,4 +1,5 @@
-es = [];
+// events.js
+// Handlers and helpers for various events (touchmove, mousedown)
 
 
 function inRadius (x, cx, y, cy, radius) {

@@ -10,7 +10,6 @@ var teachers;
 var contentList;
 var content;
 
-//var curQuestions = currentSet.questions;
 //console.log(curQuestions[1]);
 
 function loadTeachers(data) {
@@ -129,3 +128,4 @@ var currentSet = {
         ]
       }
 
+var curQuestions = currentSet.questions;
