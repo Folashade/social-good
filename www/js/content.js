@@ -10,10 +10,14 @@ var teachers;
 var contentList;
 var content;
 
-var curQuestions = currentSet.questions;
-console.log(curQuestions[1]);
+//var curQuestions = currentSet.questions;
+//console.log(curQuestions[1]);
 
-function get(callbackFn) {
+function loadTeachers(data) {
+  window.teachers = data;
+}
+
+function fetchTeachers(callbackFn) {
   $.ajax({
     type: "get",  // read in cRud
     url: "/teachers",
@@ -21,11 +25,12 @@ function get(callbackFn) {
   });
 }
 
-function loadTeachers(data) {
-  window.teachers = data;
+function loadContent(data)  {
+  window.content = data;
 }
 
-function getByTeacher(teacherID, callbackFn)  {
+
+function fetchByTeacher(teacherID, callbackFn)  {
   $.ajax({
     type: "get",
     url: "teachers/" + teacherID + "",
@@ -33,9 +38,7 @@ function getByTeacher(teacherID, callbackFn)  {
   });
 }
 
-function loadContent(data)  {
-  window.content = data;
-}
+
 
 var currentSet = {
         "name": "test set",
