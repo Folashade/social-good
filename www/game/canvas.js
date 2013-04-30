@@ -26,6 +26,7 @@ var timer;
 var questionTimer;
 var timerDelay;
 var qTimeout;
+var wasTouched;
 
 var radius;
 var qRadius;
