@@ -47,19 +47,21 @@ function onTouchStart(event)  {
 
         //TODO: Make sure that touchBox actually exists!
         
-        if(currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
-        {
-          if (wasTouched === false)  {
-            points+=qPointsIncr;
-            ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
-            wasTouched = true;
+        if (touchBox !== 0)  {
+          if (currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
+          {
+            if (wasTouched === false)  {
+              points+=qPointsIncr;
+              ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
+              wasTouched = true;
+            }
           }
-        }
-        else
-        {
-          if (wasTouched === false)  {
-            ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
-            wasTouched = true;
+          else
+          {
+            if (wasTouched === false)  {
+              ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+              wasTouched = true;
+            }
           }
         }
         ctx.fillRect(touchBoxX, touchBoxY, 270, 100);
