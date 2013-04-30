@@ -20,7 +20,7 @@ function resetVariables() {
   window.pointsIncr = 20;
   window.qPointsIncr = 100;
   window.balloonsPopped = 0;
-  window.timerDelay = 30;
+  window.timerDelay = 20;
   window.qTimeout = 25000;
   window.radius = 60;
   window.qRadius = 100;
@@ -111,8 +111,10 @@ var balloon = function(x, y, vx, vy, color) {
   this.image = new Image();
   this.image.src = window.images[this.color];
 
+  this.sprite = window.spriteSheet
+
   this.draw = function() {
-    if (this.popped === false || this.frame < 3) {
+    if (this.popped === false  || this.frame < 3 ) {
       if (this.color == 3)  {   // If question balloon
         ctx.drawImage(this.image, this.x-102, this.y-103);
       }
@@ -123,14 +125,14 @@ var balloon = function(x, y, vx, vy, color) {
     }
 
     if (this.popped === true) {
-      ctx.drawImage(spriteSheet, 
+      ctx.drawImage(this.sprite, 
                     Math.floor(Math.floor(this.frame)%5)*194, 
                     Math.floor(Math.floor(this.frame)/5)*216, 
                     194, 216, 
                     this.x-97, this.y-108, 194, 216);
       
       if (this.frame < 9 && window.inQuestion === false) {
-        this.frame += 0.2;
+        this.frame += 0.3;
       }   
     }
 
@@ -200,9 +202,8 @@ function gameStep() {
     window.timer += window.timerDelay;
     
     // Before moving balloon positions, check touches
-    var len = window.touches.length;
     var i, cx, cy, x, y, j, curBalloon;
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < window.touches.length; i++) {
       cx = touches[i].pageX - canvas.offsetLeft;
       cy = touches[i].pageY - canvas.offsetTop;
       var wasQuestionPopped = false;
