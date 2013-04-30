@@ -61,6 +61,7 @@ function enterQuestionMode()  {
   if (!(window.inQuestion === true))  {
     window.questionTimer = window.qTimeout;
     window.inQuestion = true;
+    window.wasTouched = false;
   }
 }
 
