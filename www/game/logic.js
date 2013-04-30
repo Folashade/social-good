@@ -36,9 +36,23 @@ function resetVariables() {
   window.teachers = [];
   window.contentList = [];
   window.content = [];
-  window.waterLevels = [];
+  window.waterLevels = [0.6, 0.6, 0.6];
   window.touches = [];
 }
+
+
+// map -- from lecture notes
+function map(fn, list) {
+    var result = [ ]
+    for (var i=0; i<list.length; i++)
+        result[i] = fn(list[i])
+    return result;
+}
+
+function increaseLevel(curLevel)  {
+  return Math.min(1.0, curLevel+0.5);
+}
+
 
 
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
@@ -85,7 +99,6 @@ function _getRandomVy()  {
 function _getRandomVxRight(x, vy)  {
   // Moving right, so our range is canvas.width-x
   return (canvas.width - x) *acceleration / (2 * vy) * Math.random();
-
 }
 
 function _getRandomVxLeft(x, vy)  {
@@ -141,7 +154,6 @@ var balloon = function(x, y, vx, vy, color) {
  * x, it starts anywhere, and moves purely vertically
  */
 function createNewBalloon(option, isQuestionBalloon) {
-
   var x;
   var y;
   var vy;
@@ -183,6 +195,11 @@ function createNewBalloon(option, isQuestionBalloon) {
 }
 
 
+function decreaseLevel(level) {
+  return Math.max(0, level - 0.001);
+}
+
+
 function gameStep() {
   if (window.inQuestion === true)  {
     window.questionTimer -= window.timerDelay;
@@ -194,6 +211,8 @@ function gameStep() {
   else  {
     window.timer += window.timerDelay;
     
+    waterLevels = map(decreaseLevel, waterLevels);
+
     // Before moving balloon positions, check touches
     var i, cx, cy, x, y, j, curBalloon;
     for (i = 0; i < window.touches.length; i++) {
@@ -212,6 +231,8 @@ function gameStep() {
             (curBalloon.popped === false))  {
           balloons[j].popped = true;
           points += qPointsIncr;
+          
+          waterLevels = map(increaseLevel, waterLevels);
           wasQuestionPopped = true;
         }
 
@@ -219,6 +240,8 @@ function gameStep() {
         else if ((inRadius(x, cx, y, cy, radius) === true) &&
                  (curBalloon.popped === false))  {
           balloons[j].popped = true;
+          waterLevels[curBalloon.color] =
+              increaseLevel(waterLevels[curBalloon.color]);
           points += pointsIncr;
         }
       }
