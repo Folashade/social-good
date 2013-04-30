@@ -45,7 +45,7 @@ function resetVariables() {
 function enterQuestionMode()  {
   // If we're already in question mode, do nothing
   if (!(window.inQuestion === true))  {
-    window.questionTimer = 0;
+    window.questionTimer = window.qTimeout;
     window.inQuestion = true;
   }
 }
@@ -108,29 +108,24 @@ var balloon = function(x, y, vx, vy, color) {
   this.popped = false;
   this.frame = 0.0;
 
-  this.image = new Image();
-  this.image.src = window.images[this.color];
-
   this.draw = function() {
-    if (this.popped === false || this.frame < 3) {
-      if (this.color == 3)  {   // If question balloon
-        ctx.drawImage(this.image, this.x-102, this.y-103);
-      }
-        
-      else  {  
-        ctx.drawImage(this.image, this.x-54, this.y-65);
-      }
+    if (this.popped === false  || this.frame < 3 ) {
+       ctx.drawImage(window.spriteSheet, 
+                    Math.floor(Math.floor(this.color + 11)%5)*194, 
+                    Math.floor(Math.floor(this.color + 11)/5)*216,
+                    194, 216, 
+                    this.x-97, this.y-108, 194, 216);
     }
 
     if (this.popped === true) {
-      ctx.drawImage(spriteSheet, 
+      ctx.drawImage(window.spriteSheet, 
                     Math.floor(Math.floor(this.frame)%5)*194, 
                     Math.floor(Math.floor(this.frame)/5)*216, 
                     194, 216, 
                     this.x-97, this.y-108, 194, 216);
       
       if (this.frame < 9 && window.inQuestion === false) {
-        this.frame += 0.2;
+        this.frame += 0.3;
       }   
     }
 
@@ -190,8 +185,8 @@ function createNewBalloon(option, isQuestionBalloon) {
 
 function gameStep() {
   if (window.inQuestion === true)  {
-    window.questionTimer += window.timerDelay;
-    if (window.questionTimer > window.qTimeout) {
+    window.questionTimer -= window.timerDelay;
+    if (window.questionTimer < 0.0) {
       leaveQuestionMode();
     }
   }
@@ -200,9 +195,8 @@ function gameStep() {
     window.timer += window.timerDelay;
     
     // Before moving balloon positions, check touches
-    var len = window.touches.length;
     var i, cx, cy, x, y, j, curBalloon;
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < window.touches.length; i++) {
       cx = touches[i].pageX - canvas.offsetLeft;
       cy = touches[i].pageY - canvas.offsetTop;
       var wasQuestionPopped = false;
