@@ -18,7 +18,9 @@ update: Have a waterLevels[], so you can change waterLevels[curBalloon.color].
 32. Fetch (or parse from getContentByTeacher) content list by client
 34. Implement questions UI (still)- nishita
 
-41. Swipes - srinivasan
+41. Swipes - srinivasan -- works with touch emulation in Chrome but weird on S3.
+
+51. Add some visual feedback on whether or not their answer was correct.
 
 9999. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
 
