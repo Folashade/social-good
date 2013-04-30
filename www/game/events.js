@@ -13,7 +13,7 @@ function inRadius (x, cx, y, cy, radius) {
 function onTouchStart(event)  {
   event.preventDefault();
   if (window.inQuestion === true)  {
-    var touchBox=0;
+    var touchBox=0, touchBoxX, touchBoxY;
       var len = event.touches.length;
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
@@ -28,12 +28,27 @@ function onTouchStart(event)  {
         if (cx>bx2 && cx<(bx2+289) && cy>by2 && cy<(by2+123))
           touchBox=4;
         
+        if(touchBox===1 || touchBox===3)
+          touchBoxX=bx1;
+        else
+          touchBoxX=bx2;
+
+        if(touchBox===1 || touchBox===2)
+          touchBoxY=by1;
+        else
+          touchBoxY=by2;
+
         if(currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
         {
           points+=qPointsIncr;
+          ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
         }
-        
-          leaveQuestionMode();
+        else
+        {
+          ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+        }
+        ctx.fillRect(touchBoxX, touchBoxY, 270, 100);
+        setTimeout(leaveQuestionMode, 2000);
         
       }
   }
