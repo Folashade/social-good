@@ -19,14 +19,21 @@ function onTouchStart(event)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
         // Just leave question mode if tap is in the right half, for now
-        if (cx>bx1 && cx<(bx1+289) && cy>by1 && cy<(by1+123))
+        if (cx>bx1 && cx<(bx1+289) && cy>by1 && cy<(by1+123)) {
           touchBox=1;
-        if (cx>bx2 && cx<(bx2+289) && cy>by1 && cy<(by1+123))
+        }
+        
+        if (cx>bx2 && cx<(bx2+289) && cy>by1 && cy<(by1+123)) {
           touchBox=2;
-        if (cx>bx1 && cx<(bx1+289) && cy>by2 && cy<(by2+123))
-          touchBox=3;
-        if (cx>bx2 && cx<(bx2+289) && cy>by2 && cy<(by2+123))
+        }
+        
+        if (cx>bx1 && cx<(bx1+289) && cy>by2 && cy<(by2+123)) {
+           touchBox=3;
+        }
+        
+        if (cx>bx2 && cx<(bx2+289) && cy>by2 && cy<(by2+123)) {
           touchBox=4;
+        }
         
         if(touchBox===1 || touchBox===3)
           touchBoxX=bx1;
@@ -39,16 +46,21 @@ function onTouchStart(event)  {
           touchBoxY=by2;
 
         //TODO: Make sure that touchBox actually exists!
-        //TODO: Make sure user cannot tap the thing twice - 
-        //      var, cleared on enter, set on boxClick.
+        
         if(currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
         {
-          points+=qPointsIncr;
-          ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
+          if (wasTouched === false)  {
+            points+=qPointsIncr;
+            ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
+            wasTouched = true;
+          }
         }
         else
         {
-          ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+          if (wasTouched === false)  {
+            ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
+            wasTouched = true;
+          }
         }
         ctx.fillRect(touchBoxX, touchBoxY, 270, 100);
         setTimeout(leaveQuestionMode, 2000);
