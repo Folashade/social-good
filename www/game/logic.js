@@ -37,6 +37,7 @@ function resetVariables() {
   window.content = [];
   window.waterLevels = [0.6, 0.6, 0.6];
   window.touches = [];
+  window.inGame = false;
 }
 
 
@@ -64,10 +65,10 @@ function enterQuestionMode()  {
 }
 
 function leaveQuestionMode()  {
-  // Since gameStep uses setTimeout from itself, we'll need to run it again
   if (!(window.inQuestion === false)) {
     window.inQuestion = false;
     window.isPaused = false;
+    window.questionNumber += 1;
   }
 }
 
