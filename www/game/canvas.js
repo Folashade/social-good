@@ -99,7 +99,6 @@ function drawQuestionScreen() {
   ctx.lineWidth=1;
   ctx.font='2em Maven Pro';
   var randomquestion= Math.floor(Math.random());
-  console.log(randomquestion);
   var option1= questions[randomquestion][1];
   var option2= questions[randomquestion][2];
   var option3= questions[randomquestion][3];
