@@ -51,7 +51,7 @@ spriteSheet.src = "assets/sprite_sheet_canvas.png";
 var button=new Image();
 button.src="assets/button.png";
 var questionNumber=0;
-// var questions=[["where are _______ shoes?", "they", "their", "there", "they re"], ["where are _______ shows", "they", "their", "there", "they re"]];
+ var bx1=100,by1=170, bx2= 390, by2=320;
 
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 function roundedRect(ctx,x,y,width,height,radius) {
@@ -89,7 +89,6 @@ function drawBalloons() {
 function drawQuestionScreen() {
   roundedRect(ctx, 75, 70, 630, 400, 20);
   var text = String(Math.ceil(window.questionTimer/1000));
-  ctx.font = "bold 14px sans-serif";
   ctx.textAlign = "right";
   ctx.fillStyle="14e2e2";
   ctx.font='5em Rumpelstiltskin';
@@ -106,14 +105,15 @@ function drawQuestionScreen() {
   var option2= currentSet.questions[questionNumber].answers[1].answer;
   var option3= currentSet.questions[questionNumber].answers[2].answer;
   var option4= currentSet.questions[questionNumber].answers[3].answer;
-  ctx.drawImage(button, 100, 170);
-  ctx.fillText(option1, 245, 230);
-  ctx.drawImage(button, 390, 170);
-  ctx.fillText(option2, 535, 230);
-  ctx.drawImage(button, 100, 320);
-  ctx.fillText(option3, 245, 380);
-  ctx.drawImage(button, 390, 320);
-  ctx.fillText(option4, 535, 380);
+ 
+  ctx.drawImage(button, bx1, by1);
+  ctx.fillText(option1, (bx1+145), (by1+60));
+  ctx.drawImage(button, bx2, by1);
+  ctx.fillText(option2, (bx2+145), (by1+60));
+  ctx.drawImage(button, bx1, by2);
+  ctx.fillText(option3, (bx1+145), (by2+60));
+  ctx.drawImage(button, bx2, by2);
+  ctx.fillText(option4, (bx2+145), (by2+60));
 }
 
 function drawPoints() {

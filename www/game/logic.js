@@ -17,7 +17,7 @@
 
 function resetVariables() {
   window.points = 0;
-  window.pointsIncr = 20;
+  window.pointsIncr = 10;
   window.qPointsIncr = 100;
   window.balloonsPopped = 0;
   window.timerDelay = 30;
@@ -211,7 +211,6 @@ function gameStep() {
             (inRadius(x, cx, y, cy, qRadius) === true) &&
             (curBalloon.popped === false))  {
           balloons[j].popped = true;
-          points += qPointsIncr;
           wasQuestionPopped = true;
         }
 

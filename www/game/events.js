@@ -13,14 +13,28 @@ function inRadius (x, cx, y, cy, radius) {
 function onTouchStart(event)  {
   event.preventDefault();
   if (window.inQuestion === true)  {
+    var touchBox=0;
       var len = event.touches.length;
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
         // Just leave question mode if tap is in the right half, for now
-        if (cx >= canvas.width/2)  {
-          leaveQuestionMode();
+        if (cx>bx1 && cx<(bx1+289) && cy>by1 && cy<(by1+123))
+          touchBox=1;
+        if (cx>bx2 && cx<(bx2+289) && cy>by1 && cy<(by1+123))
+          touchBox=2;
+        if (cx>bx1 && cx<(bx1+289) && cy>by2 && cy<(by2+123))
+          touchBox=3;
+        if (cx>bx2 && cx<(bx2+289) && cy>by2 && cy<(by2+123))
+          touchBox=4;
+        
+        if(currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
+        {
+          points+=qPointsIncr;
         }
+        
+          leaveQuestionMode();
+        
       }
   }
 }
