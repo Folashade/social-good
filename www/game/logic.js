@@ -20,7 +20,7 @@ function resetVariables() {
   window.pointsIncr = 20;
   window.qPointsIncr = 100;
   window.balloonsPopped = 0;
-  window.timerDelay = 20;
+  window.timerDelay = 30;
   window.qTimeout = 25000;
   window.radius = 60;
   window.qRadius = 100;
