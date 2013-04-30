@@ -128,7 +128,7 @@ function onTouchStart(event)  {
 function onTouchMove(event) {
   event.preventDefault();
   window.touches = event.touches;
-  console.log(window.touches);
+  //console.log(window.touches);
   return;
 }
 

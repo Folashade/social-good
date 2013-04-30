@@ -108,24 +108,17 @@ var balloon = function(x, y, vx, vy, color) {
   this.popped = false;
   this.frame = 0.0;
 
-  this.image = new Image();
-  this.image.src = window.images[this.color];
-
-  this.sprite = window.spriteSheet
-
   this.draw = function() {
     if (this.popped === false  || this.frame < 3 ) {
-      if (this.color == 3)  {   // If question balloon
-        ctx.drawImage(this.image, this.x-102, this.y-103);
-      }
-        
-      else  {  
-        ctx.drawImage(this.image, this.x-54, this.y-65);
-      }
+       ctx.drawImage(window.spriteSheet, 
+                    Math.floor(Math.floor(this.color + 11)%5)*194, 
+                    Math.floor(Math.floor(this.color + 11)/5)*216,
+                    194, 216, 
+                    this.x-97, this.y-108, 194, 216);
     }
 
     if (this.popped === true) {
-      ctx.drawImage(this.sprite, 
+      ctx.drawImage(window.spriteSheet, 
                     Math.floor(Math.floor(this.frame)%5)*194, 
                     Math.floor(Math.floor(this.frame)/5)*216, 
                     194, 216, 
