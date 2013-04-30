@@ -110,7 +110,6 @@ function getRandomColor() {
 }
 
 
-/* TODO: Add source image and touch info */
 var balloon = function(x, y, vx, vy, color) {
   this.x = x;
   this.y = y;
@@ -248,8 +247,7 @@ function gameStep() {
       enterQuestionMode();
     }
 
-    //TODO: Map or something more efficient?
-    // For now, need to recalculate length each time
+    // Since balloons.length might change while in loop - not anymore!
     for (i = 0; i < balloons.length; i++) {
       balloons[i].x += balloons[i].vx;
       balloons[i].y += balloons[i].vy;
