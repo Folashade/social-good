@@ -45,7 +45,7 @@ function resetVariables() {
 function enterQuestionMode()  {
   // If we're already in question mode, do nothing
   if (!(window.inQuestion === true))  {
-    window.questionTimer = 0;
+    window.questionTimer = window.qTimeout;
     window.inQuestion = true;
   }
 }
@@ -192,8 +192,8 @@ function createNewBalloon(option, isQuestionBalloon) {
 
 function gameStep() {
   if (window.inQuestion === true)  {
-    window.questionTimer += window.timerDelay;
-    if (window.questionTimer > window.qTimeout) {
+    window.questionTimer -= window.timerDelay;
+    if (window.questionTimer < 0.0) {
       leaveQuestionMode();
     }
   }
