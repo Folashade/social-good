@@ -38,6 +38,9 @@ function onTouchStart(event)  {
         else
           touchBoxY=by2;
 
+        //TODO: Make sure that touchBox actually exists!
+        //TODO: Make sure user cannot tap the thing twice - 
+        //      var, cleared on enter, set on boxClick.
         if(currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
         {
           points+=qPointsIncr;
