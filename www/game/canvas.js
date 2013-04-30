@@ -50,7 +50,8 @@ var spriteSheet = new Image();
 spriteSheet.src = "assets/sprite_sheet_canvas.png";
 var button=new Image();
 button.src="assets/button.png";
-var questions=[["where are _______ shows", "they", "their", "there", "they re"], ["where are _______ shows", "they", "their", "there", "they re"]];
+var questionNumber=0;
+// var questions=[["where are _______ shoes?", "they", "their", "there", "they re"], ["where are _______ shows", "they", "their", "there", "they re"]];
 
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 function roundedRect(ctx,x,y,width,height,radius) {
@@ -86,32 +87,33 @@ function drawBalloons() {
 }
 
 function drawQuestionScreen() {
-  roundedRect(ctx, 75, 100, 630, 340, 20);
+  roundedRect(ctx, 75, 70, 630, 400, 20);
   var text = String(Math.ceil(window.questionTimer/1000));
   ctx.font = "bold 14px sans-serif";
   ctx.textAlign = "right";
-  ctx.textBaseline = "middle";
   ctx.fillStyle="14e2e2";
-  ctx.lineWidth=1;
   ctx.font='5em Rumpelstiltskin';
-  ctx.fillText(text, 675, 150);
-  ctx.fillStyle="a77c50";
-  ctx.lineWidth=1;
+  ctx.fillText(text, 675, 120);
+
   ctx.font='2em Maven Pro';
-  var randomquestion= Math.floor(Math.random());
-  console.log(randomquestion);
-  var option1= questions[randomquestion][1];
-  var option2= questions[randomquestion][2];
-  var option3= questions[randomquestion][3];
-  var option4= questions[randomquestion][4];
-  ctx.drawImage(button, 80, 200);
-  ctx.fillText(option1, 150, 250);
-  ctx.drawImage(button, 410, 200);
-  ctx.fillText(option2, 500, 250);
-  ctx.drawImage(button, 80, 300);
-  ctx.fillText(option3, 150, 350);
-  ctx.drawImage(button, 410, 300);
-  ctx.fillText(option4, 500, 350);
+  ctx.fillStyle="fcfc63";
+  // var randomquestion= Math.floor(Math.random());
+  ctx.textAlign = "left";
+  ctx.fillText(currentSet.questions[questionNumber].question, 100, 130);
+  ctx.fillStyle="a77c50";
+  ctx.textAlign = "center";
+  var option1= currentSet.questions[questionNumber].answers[0].answer;
+  var option2= currentSet.questions[questionNumber].answers[1].answer;
+  var option3= currentSet.questions[questionNumber].answers[2].answer;
+  var option4= currentSet.questions[questionNumber].answers[3].answer;
+  ctx.drawImage(button, 100, 170);
+  ctx.fillText(option1, 245, 230);
+  ctx.drawImage(button, 390, 170);
+  ctx.fillText(option2, 535, 230);
+  ctx.drawImage(button, 100, 320);
+  ctx.fillText(option3, 245, 380);
+  ctx.drawImage(button, 390, 320);
+  ctx.fillText(option4, 535, 380);
 }
 
 function drawPoints() {
