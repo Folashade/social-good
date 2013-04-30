@@ -8,7 +8,6 @@
 // only if the second argument is true.
 // The balloon always appears at the bottom of the canvas, and its 
 // trajectory is guaranteed to stay within the canvas.
-// TODO: Make the whole balloon stay within the canvas, not just the center
 // If option is 1, the balloon moves on a right trajectory
 // If option is 2, the balloon moves on a left trajectory
 // If option is anything else, the balloon moves only vertically.
@@ -97,13 +96,13 @@ function _getRandomVy()  {
 
 // Range of a projectile = 2*vx*vy/acceleration
 function _getRandomVxRight(x, vy)  {
-  // Moving right, so our range is canvas.width-x
-  return (canvas.width - x) *acceleration / (2 * vy) * Math.random();
+  // Moving right, so our range is canvas.width-x-100
+  return (canvas.width - x - 100) *acceleration / (2 * vy) * Math.random();
 }
 
 function _getRandomVxLeft(x, vy)  {
-  // Moving left, so our range is just x
-  return -x * acceleration / (2 * vy) * Math.random();
+  // Moving left, so our range is just -x+100
+  return (-x+100) * acceleration / (2 * vy) * Math.random();
 }
 
 function getRandomColor() {
@@ -161,7 +160,7 @@ function createNewBalloon(option, isQuestionBalloon) {
   
   switch(option)  {
     case 1: {         //right
-      var x = canvas.width * Math.random();
+      var x = 100 + (canvas.width - 200) * Math.random();
       var y = canvas.height;
       var vy = _getRandomVy();
       var vx = _getRandomVxRight(x, Math.abs(vy));   
@@ -169,7 +168,7 @@ function createNewBalloon(option, isQuestionBalloon) {
     }
 
     case 2:  {   //left
-      var x = canvas.width * Math.random();
+      var x = 100 + (canvas.width - 200) * Math.random();
       var y = canvas.height;
       var vy = _getRandomVy();
       var vx = _getRandomVxLeft(x, Math.abs(vy));
@@ -178,7 +177,7 @@ function createNewBalloon(option, isQuestionBalloon) {
 
     default:  {
       // Pure vertical motion
-      var x = canvas.width * Math.random();
+      var x = 100 + (canvas.width - 200) * Math.random();
       var vx = 0;
       var y = canvas.height;
       var vy = _getRandomVy();
