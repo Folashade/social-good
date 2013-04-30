@@ -12,12 +12,6 @@
  */
 
 
-/* TODO:
- * touchStart, touchMove, touchEnd functions
- * updateAllPositions function
- * remove drawCircle and onclick
- */
-
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
