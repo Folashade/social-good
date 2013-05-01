@@ -77,7 +77,17 @@ function leaveQuestionMode()  {
 function endGame()  {
   resetVariables();
   window.isGameOver = true;
+  window.isPaused = true;
 }
+
+
+function startGame()  {
+  resetVariables();
+  window.isGameOver = false;
+  window.isPaused = false;
+  gameStep();
+}
+
 
 function isQuestionBalloon(balloon) {
   if (balloon.color === 3)
