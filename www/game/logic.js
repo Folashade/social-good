@@ -38,6 +38,8 @@ function resetVariables() {
   window.waterLevels = [$(orange).height(), $(green).height(), $(pink).height()];
   window.touches = [];
   window.inGame = false;
+  window.isGameOver = false;
+  window.questionNumber = 0;
   window.maxHeight = $(".box").height()
 }
 
@@ -88,6 +90,22 @@ function leaveQuestionMode()  {
     window.questionNumber += 1;
   }
 }
+
+function endGame()  {
+  resetVariables();
+  window.isGameOver = true;
+  window.isPaused = true;
+  window.waterLevels = [0, 0, 0];
+}
+
+
+function startGame()  {
+  resetVariables();
+  window.isGameOver = false;
+  window.isPaused = false;
+  gameStep();
+}
+
 
 function isQuestionBalloon(balloon) {
   if (balloon.color === 3)
@@ -245,12 +263,9 @@ function gameStep() {
         if ((isQuestionBalloon(curBalloon) === true) &&
             (inRadius(x, cx, y, cy, qRadius) === true) &&
             (curBalloon.popped === false))  {
-          balloons[j].popped = true;  
-		  console.log("QUESTION")
 
-		  console.log(curBalloon)
-     
-          // waterLevels = map(increaseLevel, waterLevels);
+          balloons[j].popped = true;  
+          // waterLevels = map(increaseLevel, waterLevels);			//
           wasQuestionPopped = true;
         }
 
@@ -280,9 +295,9 @@ function gameStep() {
         balloons.splice(i, 1);
       }
     }
-      
-    // Every now and then, create a bunch of balloons    // should be 1000 - fo
-    if (timer % 500 == 0)  {
+
+    // Every now and then, create a bunch of balloons
+    if (timer % 1000 == 0)  {
       var numBalloons = Math.floor(4*Math.random());
 
       for (i = 0; i < numBalloons; i++) {
@@ -295,7 +310,22 @@ function gameStep() {
     if (timer % 5000 == 0)  {
       var opt = Math.floor(1 + 2*Math.random());
       createNewBalloon(opt, true);
-    } 
+    }
+
+    // Check game-over conditions
+    var isLost = false;
+
+    if (window.questionNumber >= window.currentSet.questions.length)
+      isLost = true;
+
+    for (var j = 0; j < 3; j++) {
+      if (waterLevels[j] <= 0)
+        isLost = true;
+    }
+
+    if (isLost === true)  {
+      endGame();
+    }
   }
 
   if (window.isPaused === false)
