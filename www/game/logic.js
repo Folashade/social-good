@@ -78,6 +78,7 @@ function endGame()  {
   resetVariables();
   window.isGameOver = true;
   window.isPaused = true;
+  window.waterLevels = [0, 0, 0];
 }
 
 
@@ -246,7 +247,6 @@ function gameStep() {
             (inRadius(x, cx, y, cy, qRadius) === true) &&
             (curBalloon.popped === false))  {
           balloons[j].popped = true;       
-          waterLevels = map(increaseLevel, waterLevels);
           wasQuestionPopped = true;
         }
 
@@ -276,7 +276,8 @@ function gameStep() {
         balloons.splice(i, 1);
       }
     }
-      
+
+
     // Every now and then, create a bunch of balloons
     if (timer % 1000 == 0)  {
       var numBalloons = Math.floor(4*Math.random());
@@ -291,7 +292,22 @@ function gameStep() {
     if (timer % 5000 == 0)  {
       var opt = Math.floor(1 + 2*Math.random());
       createNewBalloon(opt, true);
-    } 
+    }
+
+    // Check game-over conditions
+    var isLost = false;
+
+    if (window.questionNumber > window.currentSet.questions.length)
+      isLost = true;
+
+    for (var j = 0; j < 3; j++) {
+      if (waterLevels[j] <= 0)
+        isLost = true;
+    }
+
+    if (isLost === true)  {
+      endGame();
+    }
   }
 
   if (window.isPaused === false)
