@@ -37,7 +37,8 @@ function resetVariables() {
   window.content = [];
   window.waterLevels = [0.6, 0.6, 0.6];
   window.touches = [];
-  window.inGame = false;
+  window.isGameOver = false;
+  window.questionNumber = 0;
 }
 
 
@@ -71,6 +72,11 @@ function leaveQuestionMode()  {
     window.isPaused = false;
     window.questionNumber += 1;
   }
+}
+
+function endGame()  {
+  resetVariables();
+  window.isGameOver = true;
 }
 
 function isQuestionBalloon(balloon) {
