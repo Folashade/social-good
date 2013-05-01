@@ -14,8 +14,8 @@
 ##23. Game is over if any water level goes below zero, Question balloon adds to all the water levels - srinivasan
 
 ##31. Fetch teacher list from client -- done
-33. Fetch content from server - sri
-32. Fetch (or parse from getContentByTeacher) content list by client
+33. Fetch content from server - sri (will use sessionStorage)
+32. Fetch (or parse from getContentByTeacher) content list by client - in js/ folder. Once stored, can parse easily.
 34. Implement questions UI (still)- nishita
 ##35. Game is also over when you run out of questions - questionNumber > currentSet.questions.length
 
