@@ -39,7 +39,7 @@ var isPaused;
 var inQuestion;
 var verbose;
 var touches;
-var inGame = false;
+var isGameOver;
 
 // Spritesheet
 var spriteSheet = new Image();
