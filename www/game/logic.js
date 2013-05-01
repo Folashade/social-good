@@ -35,9 +35,10 @@ function resetVariables() {
   window.teachers = [];
   window.contentList = [];
   window.content = [];
-  window.waterLevels = [0.6, 0.6, 0.6];
+  window.waterLevels = [$(orange).height(), $(green).height(), $(pink).height()];
   window.touches = [];
   window.inGame = false;
+  window.maxHeight = $(".box").height()
 }
 
 
@@ -49,8 +50,23 @@ function map(fn, list) {
     return result;
 }
 
-function increaseLevel(curLevel)  {
-  return Math.min(1.0, curLevel+0.5);
+function balloonColorToString(color){
+	if (color === 0) return "orange";
+	if (color === 1) return "pink";
+	if (color === 2) return "green";
+	if (color === 3) return "question";
+}
+
+function increaseLevel(curLevel, color)  {
+	// I dont use curlevel..
+   var color = balloonColorToString(color);
+   var balloonColor = "#" + color //add hash to access jQuery object
+   curLevel = $(balloonColor).height() //get current height from DOM
+   var newLevel = (curLevel + 10)/maxHeight // get percentage
+   newLevel = Math.floor(newLevel*100)
+   var percentage = "" + newLevel + "%" //converting to string percentage
+   $(balloonColor).height(percentage) // set DOM height to new Level
+   return;
 }
 
 
@@ -229,8 +245,12 @@ function gameStep() {
         if ((isQuestionBalloon(curBalloon) === true) &&
             (inRadius(x, cx, y, cy, qRadius) === true) &&
             (curBalloon.popped === false))  {
-          balloons[j].popped = true;       
-          waterLevels = map(increaseLevel, waterLevels);
+          balloons[j].popped = true;  
+		  console.log("QUESTION")
+
+		  console.log(curBalloon)
+     
+          // waterLevels = map(increaseLevel, waterLevels);
           wasQuestionPopped = true;
         }
 
@@ -239,7 +259,7 @@ function gameStep() {
                  (curBalloon.popped === false))  {
           balloons[j].popped = true;
           waterLevels[curBalloon.color] =
-              increaseLevel(waterLevels[curBalloon.color]);
+              increaseLevel(waterLevels[curBalloon.color], curBalloon.color);
           points += pointsIncr;
         }
       }
@@ -261,8 +281,8 @@ function gameStep() {
       }
     }
       
-    // Every now and then, create a bunch of balloons
-    if (timer % 1000 == 0)  {
+    // Every now and then, create a bunch of balloons    // should be 1000 - fo
+    if (timer % 500 == 0)  {
       var numBalloons = Math.floor(4*Math.random());
 
       for (i = 0; i < numBalloons; i++) {
