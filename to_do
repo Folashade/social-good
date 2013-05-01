@@ -10,7 +10,7 @@
   - srinivasan and nishita - DONE
   update: Have a waterLevels[], so you can change waterLevels[curBalloon.color].
 
-22. Hook up those water levels with the sidebar - foo
+#22. Hook up those water levels with the sidebar - foo
 23. Game is over if any water level goes below zero, Question balloon adds to all the water levels - srinivasan+help
 
 #31. Fetch teacher list from client -- done
