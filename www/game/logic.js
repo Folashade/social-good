@@ -38,6 +38,7 @@ function resetVariables() {
   window.waterLevels = [0.6, 0.6, 0.6];
   window.touches = [];
   window.inGame = false;
+  window.questionNumber = 0;
 }
 
 

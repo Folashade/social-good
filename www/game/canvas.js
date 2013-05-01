@@ -46,7 +46,7 @@ var spriteSheet = new Image();
 spriteSheet.src = "assets/sprite_sheet_canvas.png";
 var button=new Image();
 button.src="assets/button.png";
-var questionNumber=0;
+var questionNumber;
  var bx1=100,by1=170, bx2= 390, by2=320;
 
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
