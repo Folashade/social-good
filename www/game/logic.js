@@ -297,7 +297,7 @@ function gameStep() {
     // Check game-over conditions
     var isLost = false;
 
-    if (window.questionNumber > window.currentSet.questions.length)
+    if (window.questionNumber >= window.currentSet.questions.length)
       isLost = true;
 
     for (var j = 0; j < 3; j++) {
