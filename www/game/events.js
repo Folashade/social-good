@@ -52,6 +52,7 @@ function onTouchStart(event)  {
           {
             if (wasTouched === false)  {
               points+=qPointsIncr;
+              waterLevels = map(increaseLevel, waterLevels);
               ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
               wasTouched = true;
             }
