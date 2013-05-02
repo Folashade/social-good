@@ -335,6 +335,9 @@ function gameStep() {
     }
 
     if (isLost === true)  {
+      for (var c = 0; c < 3; c++) {
+        $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
+      }
       endGame();
     }
   }
