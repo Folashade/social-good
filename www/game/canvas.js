@@ -182,20 +182,20 @@ function run()  {
   })();
 }
 
-function gameOverScreen()
-{
+
+function gameOverScreen() {
   var endBg=new Image();
   endBg.src="assets/bg_startandend.png";
-  ctx.drawImage(endBg,0,0);
+  ctx.drawImage(endBg,0,0, endBg.width*wr, endBg.height*hr);
   var playagainButton=new Image();
   playagainButton.src="assets/balloon_big.png";
-  ctx.drawImage(playagainButton, 650*wr,100*hr, 
+  ctx.drawImage(playagainButton, 525*wr,100*hr, 
                 playagainButton.width*wr, playagainButton.height*hr);
 
   var playtext="PLAY";
   var againtext="AGAIN";
   ctx.textAlign="center";
-  ctx.font="2.5em Ravie";
+  ctx.font="2em Ravie";
   ctx.fillStyle="24e500";
   ctx.fillText(playtext, 670*wr, 270*hr);
   ctx.fillText(againtext, 670*wr, 320*hr);
@@ -203,7 +203,7 @@ function gameOverScreen()
   ctx.font="6em Rumpelstiltskin";
   ctx.fillStyle="black";
   ctx.textAlign="left";
-  ctx.fillText(gameover, 30*wr, 150*hr);
+  ctx.fillText(gameover, 30*wr, 100*hr);
   var score="Score: "+points;
   ctx.font="3.5em Rumpelstiltskin";
   ctx.fillText(score, 40*wr, 250*hr);
@@ -222,8 +222,9 @@ function gameOverScreen()
   ctx.drawImage(greenballoon, 300*wr, 330*hr, 
                 greenballoon.width*wr, greenballoon.height*hr);
   var menu="Menu";
-  ctx.fillText(menu, 360*wr, 520*hr);
+  ctx.fillText(menu, 350*wr, 520*hr);
 }
+
 
 resetVariables();
 run();
