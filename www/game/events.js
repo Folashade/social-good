@@ -53,7 +53,12 @@ function onTouchStart(event)  {
             if (wasTouched === false)  {
               points+=qPointsIncr;
               correctNumberofqs++;
-              waterLevels = map(increaseLevel, waterLevels);
+               for (var c = 0; c < 3; c++) {
+                $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
+               }
+             
+
+              waterLevels = map(qIncreaseLevel, waterLevels);
               ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
               wasTouched = true;
             }
