@@ -37,6 +37,11 @@ var qLevelIncr;
 var qTimeout;
 var wasTouched;
 
+var feedbackFill;
+var feedbackFillStyle;
+var touchBoxX;
+var touchBoxY;
+
 var radius;
 var qRadius;
 var maxVy;
@@ -120,13 +125,18 @@ function drawQuestionScreen() {
   ctx.fillText(option3, (bx1+145)*wr, (by2+60)*hr);
   ctx.drawImage(button, bx2*wr, by2*hr, (289)*wr, (123)*hr);
   ctx.fillText(option4, (bx2+145)*wr, (by2+60)*hr);
+
+  if (window.feedbackFill === true) {
+    ctx.fillStyle = window.feedbackFillStyle;
+    ctx.fillRect(window.touchBoxX*wr, window.touchBoxY*hr, 270*wr, 100*hr);
+  }
 }
 
 function drawPoints() {
   var text = String(window.points);
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
-  ctx.font='4em Rumpelstiltskin';
+  ctx.font='3em Rumpelstiltskin';
   ctx.fillStyle = "a77c50";
 
   ctx.fillText(text, 15, 25);
@@ -134,15 +144,17 @@ function drawPoints() {
 
 function render()  {
   // Background being drawn whether or not in question mode
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if(isGameOver===false)
-  {
-  drawBalloons();
-  drawPoints();
-  if (window.inQuestion === true)  {
-    drawQuestionScreen();
+  //if (window.inQuestion !== true)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+  if (isGameOver===false) {
+      drawBalloons();
+      drawPoints();
+      if (window.inQuestion === true)  {
+        drawQuestionScreen();
+      }
   }
-}
+  
   else if(isGameOver===true)
   {
     gameOverScreen();

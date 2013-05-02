@@ -46,6 +46,10 @@ function resetVariables() {
   window.qLevelIncr = 0.6;
   window.wr = canvas.width/window.htmlWidth;
   window.hr = canvas.height/window.htmlHeight;
+  window.feedbackFill = false;
+  window.feedbackFillStyle = "";
+  window.touchBoxX = 0;
+  window.touchBoxY = 0;
 }
 
 var colors = ["orange", "pink", "green"];
@@ -78,12 +82,18 @@ function enterQuestionMode()  {
   }
 }
 
+
 function leaveQuestionMode()  {
   if (!(window.inQuestion === false)) {
     window.inQuestion = false;
     window.isPaused = false;
+    window.feedbackFill = false;
     window.questionNumber += 1;
   }
+}
+
+function leaveQ_wrapper() {
+  setTimeout(leaveQuestionMode, 1200);
 }
 
 function endGame()  {
@@ -157,7 +167,7 @@ var balloon = function(x, y, vx, vy, color) {
                     Math.floor(194*wr), Math.floor(216*hr));
     }
 
-    if (this.popped === true) {
+    if (this.popped === true && this.frame < 10)  {
       ctx.drawImage(window.spriteSheet, 
                     Math.floor(Math.floor(this.frame)%5)*194, 
                     Math.floor(Math.floor(this.frame)/5)*216, 
@@ -165,7 +175,7 @@ var balloon = function(x, y, vx, vy, color) {
                     Math.floor(this.x-97*wr), Math.floor(this.y-108*hr), 
                     Math.floor(194*wr), Math.floor(216*hr));
       
-      if (this.frame < 9 && window.inQuestion === false) {
+      if (window.inQuestion === false) {
         this.frame += 0.3;
       }   
     }
@@ -290,7 +300,7 @@ function gameStep() {
     for (i = 0; i < balloons.length; i++) {
       balloons[i].x += balloons[i].vx*wr;
       balloons[i].y += balloons[i].vy*hr;
-      balloons[i].vy += window.acceleration;
+      balloons[i].vy += window.acceleration*hr;
 
       if (balloons[i].y > (canvas.height + 2*radius)) {
         //Balloon has fallen back. Remove it.

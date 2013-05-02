@@ -13,12 +13,11 @@ function inRadius (x, cx, y, cy, radius) {
 function onTouchStart(event)  {
   event.preventDefault();
   if (window.inQuestion === true)  {
-    var touchBox=0, touchBoxX, touchBoxY;
+      var touchBox=0, touchBoxX, touchBoxY;
       var len = event.touches.length;
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
-        // Just leave question mode if tap is in the right half, for now
         if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
           touchBox=1;
         }
@@ -54,6 +53,7 @@ function onTouchStart(event)  {
               points+=qPointsIncr;
               correctNumberofqs++;
               for (var c = 0; c < 3; c++) {
+                // Increase water levels in CSS
                 $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
               }
              
@@ -71,30 +71,13 @@ function onTouchStart(event)  {
             }
           }
         }
-        ctx.fillRect(touchBoxX*wr, touchBoxY*hr, 270*wr, 100*hr);
-        setTimeout(leaveQuestionMode, 1200);
-        
       }
+      window.feedbackFill = true;
+      window.feedbackFillStyle = ctx.fillStyle;
+      window.touchBoxX = touchBoxX;
+      window.touchBoxY = touchBoxY;
+      leaveQ_wrapper();
   }
-  /* if (window.isGameOver === true)  {
-      var len = event.touches.length;
-      for (var t = 0; t < len; t++)  {
-        var cx = event.touches[t].pageX - canvas.offsetLeft;
-        var cy = event.touches[t].pageY - canvas.offsetTop;
-        // Just leave question mode if tap is in the right half, for now
-        if (cx>450 && cx<(754) && cy>100 && cy<(444)) 
-        {
-          
-          startGame();
-        }
-        console.log(cx);
-        if (cx>225 && cx<(320) && cy>262 && cy<(540)) 
-        {
-          console.log(cx);
-          window.open('index.html',"_self");
-        }
-      }
-    } */
 }
 
 
