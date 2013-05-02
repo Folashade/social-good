@@ -30,10 +30,10 @@
 64. Make the animation for swipe movement - Nishita
 65. Make the animation start at the right position - Srinivas
 
-70. Make the questions screens and balloons of the right size. Includes events.
+##70. Make the questions screens and balloons of the right size. Includes events.
 
-9997. Make water levels increase after water falls off the screen 
-9998. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
+9997. Make water levels increase after water falls off the screen #wontdo
+9998. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE** #wontdo
 
 ##2 things - srinivasan
 ## a) Buttons on game over screen - event when swiped
@@ -41,4 +41,3 @@
 
 Final to-do list before submitting:
 - Remove highscores if not implemented
-
