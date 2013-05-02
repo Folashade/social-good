@@ -177,36 +177,40 @@ window.requestAnimFrame = (function(){
 
 function onTouchStart(event)  {
   event.preventDefault();
-    var touchBox=-1, touchBoxX, touchBoxY;
+    var touchBox=-1;
       var len = event.touches.length;
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
-		
-    if (screen == 1) {
-      var rowY=100*hr;
-  var x=0;
-  for (var i=0; i<3; i++)
-  {
-       var columnX=80*wr; 
-    for(var columns=0; columns<2; columns++)
-    {
-       if(teachers[x]!=null)
-    {
- if (cx>(columnX*wr) && cx<(columnX+289)*wr && cy>rowY*hr && cy<(rowY+123)*hr) {
-          touchBox=x;
-        }
-columnX+=(270*wr);
-x++;
-    }
-  }
-    rowY+=(110*hr);
-  
-  }
+		    var x=0;
+        if (screen == 1) {
+          var rowY=100*hr;
 
+          for (var i=0; i<3; i++)
+          {
+           var columnX=80*wr; 
+           for(var columns=0; columns<2; columns++)
+           {
+             if(x<teachers.length)
+             {
+              console.log(cx,cy,columnX*wr,(columnX+289)*wr, rowY*hr, (rowY+123)*hr);
+               if (cx>(columnX) && cx<columnX+(289*wr) && cy>(rowY) && cy<rowY+(123*hr)) {
+                touchBox=x;
+              }
+              columnX+=(270*wr);
+              x++;
+              }
+          }
+          rowY+=(110*hr);
+
+        }
+console.log(touchBox);
         
-        fetchByTeacher(teachers[x], loadContent);
+        if(touchBox!==-1)
+        {
+      fetchByTeacher(teachers[touchBox], loadContent);
 			screen = 2;
+    }
     }
 			
 		else if (screen == 2)  {
