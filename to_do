@@ -30,14 +30,10 @@
 64. Make the animation for swipe movement - Nishita
 65. Make the animation start at the right position - Srinivas
 
-.
-.
-.
-
 9997. Make water levels increase after water falls off the screen 
 9998. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
 
-##2 things:
+##2 things - srinivasan
 ## a) Buttons on game over screen - event when swiped
 ## b) Also actually implement button actions on game-over screen.
 
