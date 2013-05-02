@@ -18,6 +18,8 @@ var ctx = canvas.getContext("2d");
 var jCanvas = $('#myCanvas');
 jCanvas.prop('width', jCanvas.width());
 jCanvas.prop('height', jCanvas.height());
+var wr;  //width ratio
+var hr;  //height ratio
 
 
 // Declare globals
@@ -182,48 +184,44 @@ function run()  {
 
 function gameOverScreen()
 {
-canvas.width=780;
-canvas.height=540;
-var endBg=new Image();
-endBg.src="assets/bg_startandend.png";
-ctx.drawImage(endBg,0,0);
-var playagainButton=new Image();
-playagainButton.src="assets/balloon_big.png";
-ctx.drawImage(playagainButton, 650,100);
+  var endBg=new Image();
+  endBg.src="assets/bg_startandend.png";
+  ctx.drawImage(endBg,0,0);
+  var playagainButton=new Image();
+  playagainButton.src="assets/balloon_big.png";
+  ctx.drawImage(playagainButton, 650*wr,100*hr);
 
-var playtext="PLAY";
-var againtext="AGAIN";
-ctx.textAlign="center";
-ctx.font="2.5em Ravie";
-ctx.fillStyle="24e500";
-ctx.fillText(playtext, 790, 270);
-ctx.fillText(againtext, 790, 320);
-var gameover="Game Over!";
-ctx.font="7.5em Rumpelstiltskin";
-ctx.fillStyle="black";
-ctx.textAlign="left";
-ctx.fillText(gameover, 30, 150);
-var score="Score: "+points;
-ctx.font="3.5em Rumpelstiltskin";
-ctx.fillText(score, 40, 250);
-var stats;
-if(questionNumber===0)
-stats="No questions answered";
-else
-stats=correctNumberofqs+"/"+questionNumber+" questions correct";
-ctx.font="700 1.7em Maven Pro";
-ctx.fillStyle="a77c50";
-ctx.fillText(stats, 40, 300);
-var greenballoon=new Image();
-greenballoon.src="assets/balloon_instructions.png";
-ctx.drawImage(greenballoon, 300,330);
-var menu="Menu";
-ctx.fillText(menu, 360, 520);
-
+  var playtext="PLAY";
+  var againtext="AGAIN";
+  ctx.textAlign="center";
+  ctx.font="2.5em Ravie";
+  ctx.fillStyle="24e500";
+  ctx.fillText(playtext, 670*wr, 270*hr);
+  ctx.fillText(againtext, 670*wr, 320*hr);
+  var gameover="Game Over!";
+  ctx.font="7.5em Rumpelstiltskin";
+  ctx.fillStyle="black";
+  ctx.textAlign="left";
+  ctx.fillText(gameover, 30*wr, 150*hr);
+  var score="Score: "+points;
+  ctx.font="3.5em Rumpelstiltskin";
+  ctx.fillText(score, 40*wr, 250*hr);
+  var stats;
+  
+  if(window.questionNumber===0)
+    stats="No questions answered";
+  else
+    stats=""+correctNumberofqs+"/"+questionNumber+" questions correct";
+  
+  ctx.font="700 1.7em Maven Pro";
+  ctx.fillStyle="a77c50";
+  ctx.fillText(stats, 40*wr, 300*hr);
+  var greenballoon=new Image();
+  greenballoon.src="assets/balloon_instructions.png";
+  ctx.drawImage(greenballoon, 300*wr, 330*hr);
+  var menu="Menu";
+  ctx.fillText(menu, 360*wr, 520*hr);
 }
-
-
-
 
 resetVariables();
 run();
