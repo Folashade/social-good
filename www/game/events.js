@@ -76,7 +76,7 @@ function onTouchStart(event)  {
         
       }
   }
-  if (window.isGameOver === true)  {
+  /* if (window.isGameOver === true)  {
       var len = event.touches.length;
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
@@ -94,113 +94,33 @@ function onTouchStart(event)  {
           window.open('index.html',"_self");
         }
       }
-    }
+    } */
 }
 
 
-
-/* function onTouchStart(event)  {
-  event.preventDefault();
-  var t;
-  var l = event.touches.length;
-  if (window.verbose === true) console.log(event.touches);
-  for (t = 0; t < l; t++)  {   
-    var cx = event.touches[t].pageX - canvas.offsetLeft;
-    var cy = event.touches[t].pageY - canvas.offsetTop;
-    var wasQuestionPopped = false;
-
-
-    if (window.verbose === true)  {
-      console.log (cx + ", " + cy);
-    }
-
-    if (window.inQuestion === false)  {
-      var i;
-
-      
-      for (i = 0; i < balloons.length; i++) {
-        curBalloon = balloons[i];
-        x = curBalloon.x;
-        y = curBalloon.y;
-        if ((isQuestionBalloon(curBalloon) === true) &&
-            (inRadius(x, cx, y, cy, qRadius) === true) &&
-            (curBalloon.popped === false)) {
-          balloons[i].popped = true;
-          points += qPointsIncr;
-          wasQuestionPopped = true;
-        }
-
-        else if ((inRadius(x, cx, y, cy, radius) === true) &&
-                 curBalloon.popped === false) {
-          balloons[i].popped = true;
-          points += pointsIncr;
-        }
-      }
-        
-      if (wasQuestionPopped === true) {
-        enterQuestionMode(); 
-      }  
-    }
-
-    else if (window.inQuestion === true)  {
-      // Just leave question mode if tap is in the right half, for now
-      if (cx >= canvas.width/2)  {
-        leaveQuestionMode();
-      }
-    }
-  }
-} */
-
-/* function onMouseDown(event) {
-  var cx = event.pageX - canvas.offsetLeft;
-  var cy = event.pageY - canvas.offsetTop;
-  var wasQuestionPopped = false;
-
-  if (window.verbose === true)  {
-    console.log (cx + ", " + cy);
-  }
-
-  if (window.inQuestion === false)  {
-    var i;
-
-    
-    for (i = 0; i < balloons.length; i++) {
-      curBalloon = balloons[i];
-      x = curBalloon.x;
-      y = curBalloon.y;
-      if ((isQuestionBalloon(curBalloon) === true) &&
-          (inRadius(x, cx, y, cy, qRadius) === true) &&
-          (curBalloon.popped === false)) {
-        balloons[i].popped = true;
-        points += qPointsIncr;
-        wasQuestionPopped = true;
-      }
-
-      else if ((inRadius(x, cx, y, cy, radius) === true) &&
-               curBalloon.popped === false) {
-        balloons[i].popped = true;
-        points += pointsIncr;
-      }
-    }
-      
-    if (wasQuestionPopped === true) {
-      enterQuestionMode(); 
-    }  
-  }
-
-  else if (window.inQuestion === true)  {
-    // Just leave question mode if tap is in the right half, for now
-    if (cx >= canvas.width/2)  {
-      leaveQuestionMode();
-    }
-  }
-
-}*/
-
 function onTouchMove(event) {
   event.preventDefault();
-  window.touches = event.touches;
-  //console.log(window.touches);
+  if (window.isGameOver === false)
+    window.touches = event.touches;
+  
+  else {
+    //Menu has priority over replay
+    for (var i = 0; i < event.touches.length; i++)  {
+      var cx = event.touches[i].pageX - canvas.offsetLeft;
+      var cy = event.touches[i].pageY - canvas.offsetTop;
+
+      if ((300*wr < cx && cx < (300+181)*wr) &&
+          (330*hr < cy && cy < (330+193)*hr))  {
+        window.location.href = "index.html";
+      }
+
+      if ((525*wr < cx && cx < (525+304)*wr) &&
+          (100*hr < cy && cy < (100+344)*hr))     {
+        startGame();
+      }
+    }
+  }
+  
   return;
 }
 
