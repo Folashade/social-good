@@ -13,9 +13,9 @@ var content;
 //console.log(curQuestions[1]);
 
 function loadTeachers(data) {
-  window.teachers = data.teacherList;
-  for (var i=0; i < window.teachers.length; i++)  {
-    $("#t"+i).text(window.teachers[i].username);
+  window.teachers = [];
+  for (var i=0; i < data.teacherList.length; i++)  {
+    window.teachers.push(data.teacherList[i].username);
   }
 }
 
