@@ -15,6 +15,11 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
+var jCanvas = $('#myCanvas');
+jCanvas.prop('width', jCanvas.width());
+jCanvas.prop('height', jCanvas.height());
+
+
 // Declare globals
 var points;
 var pointsIncr;
