@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 var jCanvas = $('#selectCanvas');
 jCanvas.prop('width', jCanvas.width());
 jCanvas.prop('height', jCanvas.height());
+var teachers=[];
 
 window.htmlWidth = 780;
 window.htmlHeight = 540;
@@ -33,7 +34,7 @@ function selectTeacherScreen(){
   ctx.font="1em Maven Pro";
   ctx.fillStyle="#a77c50";
 
-  for (var row = 1; row < 4 ; row++) {
+  for (var row = 1; row < 1+Math.floor((teachers.length)/2) ; row++) {
   	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
   	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
   	  ctx.fillText(teachers[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
