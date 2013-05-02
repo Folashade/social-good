@@ -82,7 +82,6 @@ function roundedRect(ctx,x,y,width,height,radius) {
 
 
 
-
 function drawBalloons() {
   var len = window.balloons.length;
   var i;
@@ -92,15 +91,16 @@ function drawBalloons() {
   }
 }
 
+
 function drawQuestionScreen() {
   roundedRect(ctx, 75*wr, 70*hr, 630*wr, 400*hr, 20);
   var text = String(Math.ceil(window.questionTimer/1000));
   ctx.textAlign = "right";
   ctx.fillStyle="14e2e2";
-  ctx.font='5em Rumpelstiltskin';
+  ctx.font='3em Rumpelstiltskin';
   ctx.fillText(text, 675*wr, 120*hr);
 
-  ctx.font='2em Maven Pro';
+  ctx.font='1.5em Maven Pro';
   ctx.fillStyle="fcfc63";
   // var randomquestion= Math.floor(Math.random());
   ctx.textAlign = "left";
@@ -112,13 +112,13 @@ function drawQuestionScreen() {
   var option3= currentSet.questions[questionNumber].answers[2].answer;
   var option4= currentSet.questions[questionNumber].answers[3].answer;
  
-  ctx.drawImage(button, bx1*wr, by1*hr);
+  ctx.drawImage(button, bx1*wr, by1*hr, (289)*wr, (123)*hr);
   ctx.fillText(option1, (bx1+145)*wr, (by1+60)*hr);
-  ctx.drawImage(button, bx2*wr, by1*hr);
+  ctx.drawImage(button, bx2*wr, by1*hr, (289)*wr, (123)*hr);
   ctx.fillText(option2, (bx2+145)*wr, (by1+60)*hr);
-  ctx.drawImage(button, bx1*wr, by2*hr);
+  ctx.drawImage(button, bx1*wr, by2*hr, (289)*wr, (123)*hr);
   ctx.fillText(option3, (bx1+145)*wr, (by2+60)*hr);
-  ctx.drawImage(button, bx2*wr, by2*hr);
+  ctx.drawImage(button, bx2*wr, by2*hr, (289)*wr, (123)*hr);
   ctx.fillText(option4, (bx2+145)*wr, (by2+60)*hr);
 }
 
