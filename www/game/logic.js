@@ -40,7 +40,13 @@ function resetVariables() {
   window.touches = [];
   window.isGameOver = false;
   window.questionNumber = 0;
+  window.htmlWidth = 780;
+  window.htmlHeight = 540;
+  window.levelIncr = 0.15;
+  window.qLevelIncr = 0.6;
 }
+
+var colors = ["orange", "pink", "green"];
 
 
 // map -- from lecture notes
@@ -52,9 +58,12 @@ function map(fn, list) {
 }
 
 function increaseLevel(curLevel)  {
-  return Math.min(1.0, curLevel+0.5);
+  return Math.min(1.0, curLevel+levelIncr);
 }
 
+function qIncreaseLevel(curLevel)  {
+  return Math.min(1.0, curLevel+qLevelIncr);
+}
 
 
 // Using both inQuestion and isPaused for extensibility (pause button, etc)
@@ -99,13 +108,10 @@ function isQuestionBalloon(balloon) {
     return false;
 }
 
-function removeBalloon(i) {
-  // Add animations
-  //balloons[i].popped = true;
-}
 
-
-// AP Physics + 'up is down'
+/* AP Physics + 'up is down'
+ * Think before modifying
+ */
 function _findMaxVy()  {
   return -minVy + 2 - Math.sqrt(2 * acceleration * canvas.height);
 }
@@ -231,6 +237,12 @@ function gameStep() {
     window.timer += window.timerDelay;
     
     waterLevels = map(decreaseLevel, waterLevels);
+    
+    if (window.timer % 1000 === 0)  {   
+      for (var c = 0; c < 3; c++) {
+        $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
+       }
+    }
 
     // Before moving balloon positions, check touches
     var i, cx, cy, x, y, j, curBalloon;
@@ -259,6 +271,10 @@ function gameStep() {
           waterLevels[curBalloon.color] =
               increaseLevel(waterLevels[curBalloon.color]);
           points += pointsIncr;
+          
+          for (var c = 0; c < 3; c++) {
+            $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
+          }
         }
       }
     }
@@ -280,8 +296,8 @@ function gameStep() {
     }
 
 
-    // Every now and then, create a bunch of balloons
-    if (timer % 1000 == 0)  {
+    // Create some or no balloons
+    if (timer % 1000 == 0 && timer % 3000 !== 0 && timer !== 0)  {
       var numBalloons = Math.floor(4*Math.random());
 
       for (i = 0; i < numBalloons; i++) {
@@ -289,6 +305,17 @@ function gameStep() {
         createNewBalloon(opt, false);
       }
     } 
+
+    // Guaranteed balloons every 3 seconds
+    if (timer % 3000 == 0)  {
+      var numBalloons = Math.floor(1+3*Math.random());
+
+      for (i = 0; i < numBalloons; i++) {
+        var opt = Math.floor(1 + 2*Math.random());
+        createNewBalloon(opt, false);
+      }
+    } 
+
 
     // Every now and then, create a questionBalloon
     if (timer % 5000 == 0)  {

@@ -30,6 +30,8 @@ var waterLevels = [];
 var timer;
 var questionTimer;
 var timerDelay;
+var levelIncr;
+var qLevelIncr;
 var qTimeout;
 var wasTouched;
 
@@ -38,6 +40,8 @@ var qRadius;
 var maxVy;
 var acceleration;
 var minVy;
+var htmlWidth;
+var htmlHeight;
 
 var balloons;
 var isPaused;
