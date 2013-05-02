@@ -19,19 +19,19 @@ function onTouchStart(event)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
         // Just leave question mode if tap is in the right half, for now
-        if (cx>bx1 && cx<(bx1+289) && cy>by1 && cy<(by1+123)) {
+        if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
           touchBox=1;
         }
         
-        if (cx>bx2 && cx<(bx2+289) && cy>by1 && cy<(by1+123)) {
+        if (cx>bx2*wr && cx<(bx2+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
           touchBox=2;
         }
         
-        if (cx>bx1 && cx<(bx1+289) && cy>by2 && cy<(by2+123)) {
+        if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by2*hr && cy<(by2+123)*hr) {
            touchBox=3;
         }
         
-        if (cx>bx2 && cx<(bx2+289) && cy>by2 && cy<(by2+123)) {
+        if (cx>bx2*wr && cx<(bx2+289)*wr && cy>by2*hr && cy<(by2+123)*hr) {
           touchBox=4;
         }
         
@@ -71,7 +71,7 @@ function onTouchStart(event)  {
             }
           }
         }
-        ctx.fillRect(touchBoxX, touchBoxY, 270, 100);
+        ctx.fillRect(touchBoxX*wr, touchBoxY*hr, 270*wr, 100*hr);
         setTimeout(leaveQuestionMode, 1200);
         
       }
