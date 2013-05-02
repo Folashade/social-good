@@ -14,6 +14,9 @@
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+canvas.prop('width', canvas.width());
+canvas.prop('height', canvas.height());
+
 
 // Declare globals
 var points;
