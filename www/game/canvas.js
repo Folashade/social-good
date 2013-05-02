@@ -126,9 +126,9 @@ function drawPoints() {
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
   ctx.font='4em Rumpelstiltskin';
-  ctx.strokeStyle = "black";
+  ctx.fillStyle = "a77c50";
 
-  ctx.fillText(text, 50, 20);
+  ctx.fillText(text, 15, 25);
 }
 
 function render()  {
