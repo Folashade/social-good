@@ -1,3 +1,14 @@
+@font-face {
+font-family: Rumpelstiltskin;
+src: url(../fonts/Rumpelstiltskin.ttf);
+}
+
+
+@font-face {
+font-family: Ravie;
+src: url(../fonts/Ravie.ttf);
+}
+
 #Colors {
 	maroon: #c54232;
 	taupe: #c5b69b;
