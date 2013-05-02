@@ -34,6 +34,7 @@ function loadContent(data)  {
   for (var i = 0; i < window.content.content.content_sets.length; i++)  {
     window.contentList.push(window.content.content.content_sets[i].name);
   }
+  localStorage["content"]=JSON.stringify(window.content);
 }
 
 

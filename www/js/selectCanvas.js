@@ -114,7 +114,6 @@ function selectContentScreen(){
 	 //  ctx.fillText(contentList[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
   // }
 
-
 var rowY=100*hr;
   var x=0;
   for (var i=0; i<3; i++)
@@ -126,7 +125,7 @@ var rowY=100*hr;
     {
 ctx.drawImage(button, columnX, rowY, button.width*wr, button.height*hr);
 
-ctx.fillText(teachers[x], columnX+(145*wr), rowY+(61*hr));
+ctx.fillText(contentList[x], columnX+(145*wr), rowY+(61*hr));
 columnX+=(270*wr);
 x++;
     }
@@ -193,7 +192,7 @@ function onTouchStart(event)  {
            {
              if(x<teachers.length)
              {
-              console.log(cx,cy,columnX*wr,(columnX+289)*wr, rowY*hr, (rowY+123)*hr);
+              
                if (cx>(columnX) && cx<columnX+(289*wr) && cy>(rowY) && cy<rowY+(123*hr)) {
                 touchBox=x;
               }
@@ -204,7 +203,7 @@ function onTouchStart(event)  {
           rowY+=(110*hr);
 
         }
-console.log(touchBox);
+
         
         if(touchBox!==-1)
         {
@@ -214,9 +213,30 @@ console.log(touchBox);
     }
 			
 		else if (screen == 2)  {
+      x=0;
+      touchBox=-1;
+      var rowY=100*hr;
+      for (var i=0; i<3; i++)
+          {
+           var columnX=80*wr; 
+           for(var columns=0; columns<2; columns++)
+           {
+             if(x<contentList.length)
+             {
+ 
+               if (cx>(columnX) && cx<columnX+(289*wr) && cy>(rowY) && cy<rowY+(123*hr)) {
+                touchBox=x;
+              }
+              columnX+=(270*wr);
+              x++;
+              }
+          }
+          rowY+=(110*hr);
+        }
 
-			window.location.href = "gameplay.html";
-      localStorage["setNumber"] = j;
+
+		window.location.href = "gameplay.html";
+      localStorage["setNumber"] = touchBox;
     }
 		
         // Just leave question mode if tap is in the right half, for now
