@@ -72,9 +72,11 @@ function onTouchStart(event)  {
           }
         }
       }
-      ctx.fillRect(touchBoxX*wr, touchBoxY*hr, 270*wr, 100*hr);
-      console.log("Hi"+window.inQuestion+"");
-      leaveQ_wrapper(); 
+      window.feedbackFill = true;
+      window.feedbackFillStyle = ctx.fillStyle;
+      window.touchBoxX = touchBoxX;
+      window.touchBoxY = touchBoxY;
+      leaveQ_wrapper();
   }
 }
 
