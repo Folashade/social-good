@@ -56,7 +56,7 @@ spriteSheet.src = "assets/sprite_sheet_canvas.png";
 var button=new Image();
 button.src="assets/button.png";
 var questionNumber;
- var bx1=100,by1=170, bx2= 390, by2=320;
+var bx1=100,by1=170, bx2= 390, by2=320;
 
 //from http://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 function roundedRect(ctx,x,y,width,height,radius) {
@@ -71,12 +71,11 @@ function roundedRect(ctx,x,y,width,height,radius) {
     ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
     ctx.lineTo(x+radius,y);
     ctx.quadraticCurveTo(x,y,x,y+radius);
-ctx.closePath();
+    ctx.closePath();
     ctx.strokeStyle= "a77c50";
     ctx.lineWidth=5;
-
     ctx.fill();
-        ctx.stroke();
+    ctx.stroke();
 }
 
 
@@ -183,12 +182,12 @@ function run()  {
 
 function gameOverScreen()
 {
-canvas.width=960;
+canvas.width=780;
 canvas.height=540;
-  var endBg=new Image();
-  endBg.src="assets/bg_startandend.png";
-  ctx.drawImage(endBg,0,0);
-  var playagainButton=new Image();
+var endBg=new Image();
+endBg.src="assets/bg_startandend.png";
+ctx.drawImage(endBg,0,0);
+var playagainButton=new Image();
 playagainButton.src="assets/balloon_big.png";
 ctx.drawImage(playagainButton, 650,100);
 
