@@ -14,6 +14,11 @@
 
 // Think carefully before modifying any function starting with an underscore
 
+//From Piazza Post @239. Fixes Touch Offset on Canvas
+var canvas = $('#myCanvas');
+canvas.prop('width', canvas.width());
+canvas.prop('height', canvas.height());
+
 function resetVariables() {
   window.points = 0;
   window.pointsIncr = 10;
