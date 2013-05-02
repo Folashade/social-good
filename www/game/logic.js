@@ -78,12 +78,17 @@ function enterQuestionMode()  {
   }
 }
 
+
 function leaveQuestionMode()  {
   if (!(window.inQuestion === false)) {
     window.inQuestion = false;
     window.isPaused = false;
     window.questionNumber += 1;
   }
+}
+
+function leaveQ_wrapper() {
+  setTimeout(leaveQuestionMode, 1200);
 }
 
 function endGame()  {

@@ -126,7 +126,7 @@ function drawPoints() {
   var text = String(window.points);
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
-  ctx.font='4em Rumpelstiltskin';
+  ctx.font='3em Rumpelstiltskin';
   ctx.fillStyle = "a77c50";
 
   ctx.fillText(text, 15, 25);
@@ -135,14 +135,15 @@ function drawPoints() {
 function render()  {
   // Background being drawn whether or not in question mode
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if(isGameOver===false)
-  {
-  drawBalloons();
-  drawPoints();
-  if (window.inQuestion === true)  {
-    drawQuestionScreen();
+  
+  if (isGameOver===false) {
+      drawBalloons();
+      drawPoints();
+      if (window.inQuestion === true)  {
+        drawQuestionScreen();
+      }
   }
-}
+  
   else if(isGameOver===true)
   {
     gameOverScreen();
