@@ -16,5 +16,7 @@
     <author href="https://www.nishitamuhnot.com" email="team-elite@lists.andrew.cmu.edu">
         Nishita Srinivasan Folashade
     </author>
+    
+     <preference name="phonegap-version" value="2.5.0" />  
 
 </widget>
