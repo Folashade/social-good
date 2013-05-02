@@ -128,7 +128,7 @@ function drawQuestionScreen() {
 
   if (window.feedbackFill === true) {
     ctx.fillStyle = window.feedbackFillStyle;
-    ctx.fillRect(window.touchBoxX*wr, window.touchBoxY*hr, 270*wr, 100*hr);
+    ctx.fillRect((window.touchBoxX+15)*wr, (window.touchBoxY+20)*hr, 260*wr, 90*hr);
   }
 }
 
@@ -179,7 +179,7 @@ function run()  {
   maxVy = _findMaxVy();  // No point doing this calculation everytime; store it
   // Delete the first line
   var q = localStorage.setNumber;
-  console.log(q);
+ 
   window.currentSet = JSON.parse(localStorage.content).content.content_sets[q];
   canvas.addEventListener('touchstart', onTouchStart, false);
   canvas.addEventListener('touchend', onTouchEnd, false);
@@ -209,7 +209,7 @@ function gameOverScreen() {
   var playtext="PLAY";
   var againtext="AGAIN";
   ctx.textAlign="center";
-  ctx.font="2em Ravie";
+  ctx.font="1.6em Ravie";
   ctx.fillStyle="24e500";
   ctx.fillText(playtext, 670*wr, 270*hr);
   ctx.fillText(againtext, 670*wr, 320*hr);
