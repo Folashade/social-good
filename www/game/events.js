@@ -77,9 +77,16 @@ function onTouchStart(event)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
         // Just leave question mode if tap is in the right half, for now
-        if (cx>650 && cx<(650+304) && cy>100 && cy<(100+344)) 
+        if (cx>450 && cx<(754) && cy>100 && cy<(444)) 
         {
-          startGameOver();
+          
+          startGame();
+        }
+        console.log(cx);
+        if (cx>225 && cx<(320) && cy>262 && cy<(540)) 
+        {
+          console.log(cx);
+          window.open('index.html',"_self");
         }
       }
     }
