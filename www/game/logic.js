@@ -18,6 +18,7 @@ function resetVariables() {
   window.points = 0;
   window.pointsIncr = 10;
   window.qPointsIncr = 100;
+  window.correctNumberofqs=0;
   window.balloonsPopped = 0;
   window.timerDelay = 30;
   window.qTimeout = 25000;
@@ -79,6 +80,7 @@ function endGame()  {
   window.isGameOver = true;
   window.isPaused = true;
   window.waterLevels = [0, 0, 0];
+  gameOverScreen();
 }
 
 
