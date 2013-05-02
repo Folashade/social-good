@@ -2,29 +2,32 @@
 ##2. Change server routes to reflect www - srinivasan (done)
 3. PhoneGap - srinivasan and foo
 
-11. 4 lines of JavaScript to take care of the offset - foo
+##11. 4 lines of JavaScript to take care of the offset - foo
 
-15. Media queries for menu screens on both phones - nishita
+15. Canvas for initial screens  - Foo
 
 ##21. Add individual water levels for different colors, decrease with time, increase when popped a balloon of that color
 ##  - srinivasan and nishita - DONE
 ##  We have a waterLevels[], so you can change waterLevels[curBalloon.color].
 
-22. Hook up those water levels with the sidebar - foo
+##22. Hook up those water levels with the sidebar - foo
 ##23. Game is over if any water level goes below zero, Question balloon adds to all the water levels - srinivasan
 
 ##31. Fetch teacher list from client -- done
 33. Fetch content from server - sri (will use sessionStorage)
 32. Fetch (or parse from getContentByTeacher) content list by client - in js/ folder. Once stored, can parse easily.
-34. Implement questions UI (still)- nishita
+##34. Implement questions UI (still)- nishita
 ##35. Game is also over when you run out of questions - questionNumber > currentSet.questions.length
 
 ##41. Swipes - srinivasan -- works with touch emulation in Chrome but weird on S3.
 
-51. Add some visual feedback on whether or not their answer was correct - feedback is done but being cleared
+51. Add some visual feedback on whether or not their answer was correct - feedback is done but being cleared - Srinivas
 
 ##60. Make 61 possible - sri
-61. Game-over screen in the same canvas - nishita
+##61. Game-over screen in the same canvas - nishita
+62. Put the frame around the houses - Foo
+63. Remove the brown thin line on top of the game canvas - Foo
+64. Make the animation for swipe movement - Nishita
 
 .
 .
@@ -33,9 +36,10 @@
 9997. Make water levels increase after water falls off the screen 
 9998. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
 
-2 things:
+##2 things:
 a) Buttons on game over screen - event when swiped
 b) Also actually implement red bull.
 
 Final to-do list before submitting:
 - Remove highscores if not implemented
+
