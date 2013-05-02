@@ -44,6 +44,8 @@ function resetVariables() {
   window.htmlHeight = 540;
   window.levelIncr = 0.15;
   window.qLevelIncr = 0.6;
+  window.wr = canvas.width/window.htmlWidth;
+  window.hr = canvas.height/window.htmlHeight;
 }
 
 var colors = ["orange", "pink", "green"];
@@ -88,7 +90,6 @@ function endGame()  {
   resetVariables();
   window.isGameOver = true;
   window.isPaused = true;
-  window.waterLevels = [0, 0, 0];
   gameOverScreen();
 }
 

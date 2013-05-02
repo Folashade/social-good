@@ -53,9 +53,9 @@ function onTouchStart(event)  {
             if (wasTouched === false)  {
               points+=qPointsIncr;
               correctNumberofqs++;
-               for (var c = 0; c < 3; c++) {
+              for (var c = 0; c < 3; c++) {
                 $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
-               }
+              }
              
 
               waterLevels = map(qIncreaseLevel, waterLevels);
@@ -72,7 +72,7 @@ function onTouchStart(event)  {
           }
         }
         ctx.fillRect(touchBoxX, touchBoxY, 270, 100);
-        setTimeout(leaveQuestionMode, 2000);
+        setTimeout(leaveQuestionMode, 1200);
         
       }
   }
