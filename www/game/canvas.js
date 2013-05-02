@@ -119,13 +119,12 @@ function drawQuestionScreen() {
 
 function drawPoints() {
   var text = String(window.points);
-  ctx.font = "vold 14px sans-serif";
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
   ctx.font='4em Rumpelstiltskin';
   ctx.strokeStyle = "black";
 
-  ctx.fillText(text, 20, 20);
+  ctx.fillText(text, 50, 20);
 }
 
 function render()  {
@@ -188,10 +187,7 @@ canvas.height=540;
   var playagainButton=new Image();
 playagainButton.src="assets/balloon_big.png";
 ctx.drawImage(playagainButton, 650,100);
-playagainButton.onclick=function()
-{
-  startGame();
-}
+
 var playtext="PLAY";
 var againtext="AGAIN";
 ctx.textAlign="center";

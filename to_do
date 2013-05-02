@@ -28,5 +28,9 @@
 
 9999. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
 
+2 things:
+a) Buttons on game over screen - event when swiped
+b) Also actually implement red bull.
+
 Final to-do list before submitting:
 - Remove highscores if not implemented

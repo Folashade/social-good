@@ -71,6 +71,18 @@ function onTouchStart(event)  {
         
       }
   }
+  if (window.isGameOver === true)  {
+      var len = event.touches.length;
+      for (var t = 0; t < len; t++)  {
+        var cx = event.touches[t].pageX - canvas.offsetLeft;
+        var cy = event.touches[t].pageY - canvas.offsetTop;
+        // Just leave question mode if tap is in the right half, for now
+        if (cx>650 && cx<(650+304) && cy>100 && cy<(100+344)) 
+        {
+          startGameOver();
+        }
+      }
+    }
 }
 
 
