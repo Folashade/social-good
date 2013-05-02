@@ -143,7 +143,7 @@ function onTouchStart(event)  {
 		if (screen == 1) 
 			screen = 2;
 			
-		if (screen == 2) 
+		else if (screen == 2) 
 			window.location.href = "gameplay.html"
 		
         // Just leave question mode if tap is in the right half, for now
