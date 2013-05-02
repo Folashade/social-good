@@ -153,7 +153,8 @@ var balloon = function(x, y, vx, vy, color) {
                     Math.floor(Math.floor(this.color + 11)%5)*194, 
                     Math.floor(Math.floor(this.color + 11)/5)*216,
                     194, 216, 
-                    this.x-97*wr, this.y-108*hr, 194*wr, 216*hr);
+                    Math.floor(this.x-97*wr), Math.floor(this.y-108*hr), 
+                    Math.floor(194*wr), Math.floor(216*hr));
     }
 
     if (this.popped === true) {
@@ -161,7 +162,8 @@ var balloon = function(x, y, vx, vy, color) {
                     Math.floor(Math.floor(this.frame)%5)*194, 
                     Math.floor(Math.floor(this.frame)/5)*216, 
                     194, 216, 
-                    this.x-97*wr, this.y-108*hr, 194*wr, 216*hr);
+                    Math.floor(this.x-97*wr), Math.floor(this.y-108*hr), 
+                    Math.floor(194*wr), Math.floor(216*hr));
       
       if (this.frame < 9 && window.inQuestion === false) {
         this.frame += 0.3;

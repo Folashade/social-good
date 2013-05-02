@@ -139,89 +139,12 @@ function onTouchStart(event)  {
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
-		if (screen == 1) 
-			screen = 2;
+    		if (screen == 1) 
+		    	screen = 2;
 			
-		if (screen == 2) 
-			window.location.href = "gameplay.html"
-		
-        // Just leave question mode if tap is in the right half, for now
-        if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
-          touchBox=1;
-        }
-        
-        if (cx>bx2*wr && cx<(bx2+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
-          touchBox=2;
-        }
-        
-        if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by2*hr && cy<(by2+123)*hr) {
-           touchBox=3;
-        }
-        
-        if (cx>bx2*wr && cx<(bx2+289)*wr && cy>by2*hr && cy<(by2+123)*hr) {
-          touchBox=4;
-        }
-        
-        if(touchBox===1 || touchBox===3)
-          touchBoxX=bx1;
-        else
-          touchBoxX=bx2;
-
-        if(touchBox===1 || touchBox===2)
-          touchBoxY=by1;
-        else
-          touchBoxY=by2;
-
-        //TODO: Make sure that touchBox actually exists!
-        
-        if (touchBox !== 0)  {
-          if (currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
-          {
-            if (wasTouched === false)  {
-              points+=qPointsIncr;
-              correctNumberofqs++;
-              for (var c = 0; c < 3; c++) {
-                $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
-              }
-             
-
-              waterLevels = map(qIncreaseLevel, waterLevels);
-              ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
-              wasTouched = true;
-            }
-          }
-          else
-          {
-            if (wasTouched === false)  {
-              ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
-              wasTouched = true;
-            }
-          }
-        }
-        ctx.fillRect(touchBoxX*wr, touchBoxY*hr, 270*wr, 100*hr);
-        setTimeout(leaveQuestionMode, 1200);
-        
+	    	if (screen == 2) 
+			    window.location.href = "gameplay.html"      
       }
-
-  /* if (window.isGameOver === true)  {
-      var len = event.touches.length;
-      for (var t = 0; t < len; t++)  {
-        var cx = event.touches[t].pageX - canvas.offsetLeft;
-        var cy = event.touches[t].pageY - canvas.offsetTop;
-        // Just leave question mode if tap is in the right half, for now
-        if (cx>450 && cx<(754) && cy>100 && cy<(444)) 
-        {
-          
-          startGame();
-        }
-        console.log(cx);
-        if (cx>225 && cx<(320) && cy>262 && cy<(540)) 
-        {
-          console.log(cx);
-          window.open('index.html',"_self");
-        }
-      }
-    } */
 }
 
 
