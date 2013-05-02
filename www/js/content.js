@@ -29,13 +29,18 @@ function fetchTeachers(callbackFn) {
 
 function loadContent(data)  {
   window.content = data;
+  window.contentList = [];
+
+  for (var i = 0; i < window.content.content.content_sets.length; i++)  {
+    window.contentList.push(window.content.content.content_sets[i].name);
+  }
 }
 
 
 function fetchByTeacher(teacherID, callbackFn)  {
   $.ajax({
     type: "get",
-    url: "teachers/" + teacherID + "",
+    url: "/teacher/" + teacherID + "",
     success: callbackFn
   });
 }
