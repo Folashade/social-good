@@ -189,7 +189,8 @@ function gameOverScreen()
   ctx.drawImage(endBg,0,0);
   var playagainButton=new Image();
   playagainButton.src="assets/balloon_big.png";
-  ctx.drawImage(playagainButton, 650*wr,100*hr);
+  ctx.drawImage(playagainButton, 650*wr,100*hr, 
+                playagainButton.width*wr, playagainButton.height*hr);
 
   var playtext="PLAY";
   var againtext="AGAIN";
@@ -199,7 +200,7 @@ function gameOverScreen()
   ctx.fillText(playtext, 670*wr, 270*hr);
   ctx.fillText(againtext, 670*wr, 320*hr);
   var gameover="Game Over!";
-  ctx.font="7.5em Rumpelstiltskin";
+  ctx.font="6em Rumpelstiltskin";
   ctx.fillStyle="black";
   ctx.textAlign="left";
   ctx.fillText(gameover, 30*wr, 150*hr);
@@ -218,7 +219,8 @@ function gameOverScreen()
   ctx.fillText(stats, 40*wr, 300*hr);
   var greenballoon=new Image();
   greenballoon.src="assets/balloon_instructions.png";
-  ctx.drawImage(greenballoon, 300*wr, 330*hr);
+  ctx.drawImage(greenballoon, 300*wr, 330*hr, 
+                greenballoon.width*wr, greenballoon.height*hr);
   var menu="Menu";
   ctx.fillText(menu, 360*wr, 520*hr);
 }
