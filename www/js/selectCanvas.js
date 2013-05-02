@@ -10,6 +10,7 @@ window.htmlWidth = 780;
 window.htmlHeight = 540;
 window.wr = canvas.width/window.htmlWidth;
 window.hr = canvas.height/window.htmlHeight;
+var contentList=[];
 
 function selectTeacherScreen(){
   // Variables 
@@ -31,19 +32,40 @@ function selectTeacherScreen(){
   // console.log(teachers)
 
   ctx.textAlign="center";
-  ctx.font="1em Maven Pro";
-  ctx.fillStyle="#a77c50";
+  ctx.font="1.2em Maven Pro";
+  ctx.fillStyle="a77c50";
+  ctx.textBaseline="middle";
 
-  for (var row = 1; row < 1+Math.floor((teachers.length)/2) ; row++) {
-  	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  	  ctx.fillText(teachers[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
-	  ctx.fillText(teachers[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
+  // for (var row = 1; row < 1+Math.floor((teachers.length)/2) ; row++) {
+  // 	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
+  // 	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
+  // 	  ctx.fillText(teachers[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
+	 //  ctx.fillText(teachers[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
+  // }
+
+  var rowY=100*hr;
+  var x=0;
+  for (var i=0; i<3; i++)
+  {
+       var columnX=80*wr; 
+    for(var columns=0; columns<2; columns++)
+    {
+       if(teachers[x]!=null)
+    {
+ctx.drawImage(button, columnX, rowY, button.width*wr, button.height*hr);
+
+ctx.fillText(teachers[x], columnX+(145*wr), rowY+(61*hr));
+columnX+=(270*wr);
+x++;
+    }
+  }
+    rowY+=(110*hr);
+  
   }
 
   // ctx.shadowColor = rgb(1,1,1,0);
   // Back Button
-	ctx.font="3em Maven Pro";
+	ctx.font="2em Maven Pro";
   var backButton = new Image();
   backButton.src="assets/balloon_pink.png";
   // ctx.drawImage(backButton, 690*wr, 20*hr, backButton.width*wr, backButton.height*hr);
@@ -85,16 +107,36 @@ function selectContentScreen(){
   ctx.font="1em Maven Pro";
   ctx.fillStyle="#a77c50";
 
-  for (var row = 1; row < 4 ; row++) {
-  	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  	  ctx.fillText(contentList[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
-	  ctx.fillText(contentList[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
-  }
+  // for (var row = 1; row < 1+Math.floor(teachers.length/2) ; row++) {
+  // 	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
+  // 	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
+  // 	  ctx.fillText(contentList[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
+	 //  ctx.fillText(contentList[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
+  // }
 
+
+var rowY=100*hr;
+  var x=0;
+  for (var i=0; i<3; i++)
+  {
+       var columnX=80*wr; 
+    for(var columns=0; columns<2; columns++)
+    {
+       if(contentList[x]!=null)
+    {
+ctx.drawImage(button, columnX, rowY, button.width*wr, button.height*hr);
+
+ctx.fillText(teachers[x], columnX+(145*wr), rowY+(61*hr));
+columnX+=(270*wr);
+x++;
+    }
+  }
+    rowY+=(110*hr);
+  
+  }
   // ctx.shadowColor = rgb(1,1,1,0);
   // Back Button
-	ctx.font="3em Maven Pro";
+	ctx.font="2em Maven Pro";
   var backButton = new Image();
   backButton.src="assets/balloon_pink.png";
   // ctx.drawImage(backButton, 690*wr, 20*hr, backButton.width*wr, backButton.height*hr);
@@ -135,94 +177,49 @@ window.requestAnimFrame = (function(){
 
 function onTouchStart(event)  {
   event.preventDefault();
-    var touchBox=0, touchBoxX, touchBoxY;
+    var touchBox=-1, touchBoxX, touchBoxY;
       var len = event.touches.length;
       for (var t = 0; t < len; t++)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
-		if (screen == 1) 
+		
+    if (screen == 1) {
+      var rowY=100*hr;
+  var x=0;
+  for (var i=0; i<3; i++)
+  {
+       var columnX=80*wr; 
+    for(var columns=0; columns<2; columns++)
+    {
+       if(teachers[x]!=null)
+    {
+ if (cx>(columnX*wr) && cx<(columnX+289)*wr && cy>rowY*hr && cy<(rowY+123)*hr) {
+          touchBox=x;
+        }
+columnX+=(270*wr);
+x++;
+    }
+  }
+    rowY+=(110*hr);
+  
+  }
+
+        
+        fetchByTeacher(teachers[x], loadContent);
 			screen = 2;
+    }
 			
-		else if (screen == 2) 
-			window.location.href = "gameplay.html"
+		else if (screen == 2)  {
+
+			window.location.href = "gameplay.html";
+      localStorage["setNumber"] = j;
+    }
 		
         // Just leave question mode if tap is in the right half, for now
-        if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
-          touchBox=1;
+       
         }
         
-        if (cx>bx2*wr && cx<(bx2+289)*wr && cy>by1*hr && cy<(by1+123)*hr) {
-          touchBox=2;
-        }
-        
-        if (cx>bx1*wr && cx<(bx1+289)*wr && cy>by2*hr && cy<(by2+123)*hr) {
-           touchBox=3;
-        }
-        
-        if (cx>bx2*wr && cx<(bx2+289)*wr && cy>by2*hr && cy<(by2+123)*hr) {
-          touchBox=4;
-        }
-        
-        if(touchBox===1 || touchBox===3)
-          touchBoxX=bx1;
-        else
-          touchBoxX=bx2;
-
-        if(touchBox===1 || touchBox===2)
-          touchBoxY=by1;
-        else
-          touchBoxY=by2;
-
-        //TODO: Make sure that touchBox actually exists!
-        
-        if (touchBox !== 0)  {
-          if (currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
-          {
-            if (wasTouched === false)  {
-              points+=qPointsIncr;
-              correctNumberofqs++;
-              for (var c = 0; c < 3; c++) {
-                $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
-              }
-             
-
-              waterLevels = map(qIncreaseLevel, waterLevels);
-              ctx.fillStyle = "rgba(0, 255, 0, 0.8)";
-              wasTouched = true;
-            }
-          }
-          else
-          {
-            if (wasTouched === false)  {
-              ctx.fillStyle = "rgba(255, 0, 0, 0.8)";
-              wasTouched = true;
-            }
-          }
-        }
-        ctx.fillRect(touchBoxX*wr, touchBoxY*hr, 270*wr, 100*hr);
-        setTimeout(leaveQuestionMode, 1200);
-        
-      }
-
-  /* if (window.isGameOver === true)  {
-      var len = event.touches.length;
-      for (var t = 0; t < len; t++)  {
-        var cx = event.touches[t].pageX - canvas.offsetLeft;
-        var cy = event.touches[t].pageY - canvas.offsetTop;
-        // Just leave question mode if tap is in the right half, for now
-        if (cx>450 && cx<(754) && cy>100 && cy<(444)) 
-        {
-          
-          startGame();
-        }
-        console.log(cx);
-        if (cx>225 && cx<(320) && cy>262 && cy<(540)) 
-        {
-          console.log(cx);
-          window.open('index.html',"_self");
-        }
-      }
-    } */
+   
 }
 
 
@@ -242,7 +239,7 @@ function onTouchEnd(event)  {
 function run()  {
   screen = 1;
   fetchTeachers(loadTeachers);  
-  fetchByTeacher("epintar", loadContent);
+  
 
   canvas.addEventListener('touchstart', onTouchStart, false);
   canvas.addEventListener('touchend', onTouchEnd, false);
