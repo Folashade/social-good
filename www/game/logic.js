@@ -23,7 +23,7 @@ function resetVariables() {
   window.timerDelay = 30;
   window.qTimeout = 25000;
   window.radius = 60;
-  window.qRadius = 100;
+  window.qRadius = 70;
   window.maxVy;
   window.acceleration = 1;
   window.balloons = [];
@@ -125,12 +125,12 @@ function _getRandomVy()  {
 // Range of a projectile = 2*vx*vy/acceleration
 function _getRandomVxRight(x, vy)  {
   // Moving right, so our range is canvas.width-x-100
-  return (canvas.width - x - 100) *acceleration / (2 * vy) * Math.random();
+  return (canvas.width - x - 100*wr) *acceleration / (2 * vy) * Math.random();
 }
 
 function _getRandomVxLeft(x, vy)  {
   // Moving left, so our range is just -x+100
-  return (-x+100) * acceleration / (2 * vy) * Math.random();
+  return (-x+100*wr) * acceleration / (2 * vy) * Math.random();
 }
 
 function getRandomColor() {
@@ -153,7 +153,7 @@ var balloon = function(x, y, vx, vy, color) {
                     Math.floor(Math.floor(this.color + 11)%5)*194, 
                     Math.floor(Math.floor(this.color + 11)/5)*216,
                     194, 216, 
-                    this.x-97, this.y-108, 194, 216);
+                    this.x-97*wr, this.y-108*hr, 194*wr, 216*hr);
     }
 
     if (this.popped === true) {
@@ -161,7 +161,7 @@ var balloon = function(x, y, vx, vy, color) {
                     Math.floor(Math.floor(this.frame)%5)*194, 
                     Math.floor(Math.floor(this.frame)/5)*216, 
                     194, 216, 
-                    this.x-97, this.y-108, 194, 216);
+                    this.x-97*wr, this.y-108*hr, 194*wr, 216*hr);
       
       if (this.frame < 9 && window.inQuestion === false) {
         this.frame += 0.3;
@@ -259,14 +259,14 @@ function gameStep() {
 
         // Check if there is a touch on a question balloon
         if ((isQuestionBalloon(curBalloon) === true) &&
-            (inRadius(x, cx, y, cy, qRadius) === true) &&
+            (inRadius(x, cx, y, cy, qRadius*wr) === true) &&
             (curBalloon.popped === false))  {
           balloons[j].popped = true;       
           wasQuestionPopped = true;
         }
 
         // Check if there is a touch on a regular balloon
-        else if ((inRadius(x, cx, y, cy, radius) === true) &&
+        else if ((inRadius(x, cx, y, cy, radius*wr) === true) &&
                  (curBalloon.popped === false))  {
           balloons[j].popped = true;
           waterLevels[curBalloon.color] =
@@ -286,8 +286,8 @@ function gameStep() {
 
     // Since balloons.length might change while in loop - not anymore!
     for (i = 0; i < balloons.length; i++) {
-      balloons[i].x += balloons[i].vx;
-      balloons[i].y += balloons[i].vy;
+      balloons[i].x += balloons[i].vx*wr;
+      balloons[i].y += balloons[i].vy*hr;
       balloons[i].vy += window.acceleration;
 
       if (balloons[i].y > (canvas.height + 2*radius)) {
