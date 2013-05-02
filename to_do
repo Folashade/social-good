@@ -26,7 +26,12 @@
 ##60. Make 61 possible - sri
 61. Game-over screen in the same canvas - nishita
 
-9999. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
+.
+.
+.
+
+9997. Make water levels increase after water falls off the screen 
+9998. Highscores. **IF NOT IMPLEMENTED, REMOVE FROM FRONT PAGE**
 
 2 things:
 a) Buttons on game over screen - event when swiped
