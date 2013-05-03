@@ -226,11 +226,15 @@ function gameOverScreen() {
   if(window.questionNumber===0)
     stats="No questions answered";
   else
+  {
     stats=""+correctNumberofqs+"/"+questionNumber+" questions correct";
+
+  }
   
   ctx.font="700 1.7em Maven Pro";
   ctx.fillStyle="a77c50";
   ctx.fillText(stats, 40*wr, 300*hr);
+   
   var greenballoon=new Image();
   greenballoon.src="assets/balloon_instructions.png";
   ctx.drawImage(greenballoon, 300*wr, 330*hr, 

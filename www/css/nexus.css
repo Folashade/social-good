@@ -114,6 +114,14 @@ margin-bottom:0;
 text-shadow: 3px 3px 30px #a77c50;
 }
 
+#screeninstructions .back
+{
+	position:fixed;
+	top:5em;
+	
+} 
+
+
 .menu p{
 position: fixed;
 top: .2em;
