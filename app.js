@@ -9,7 +9,7 @@
  * http://www.cs.cmu.edu/~239/projects/techcafe-games/apidoc.html
  */
 
-var techcafe = require('./node_modules/node_techcafe/node_techcafe');
+var techcafe = require('./node_techcafe/node_techcafe');
 var express = require('express');
 var app = express();
 // var path = require("path");
