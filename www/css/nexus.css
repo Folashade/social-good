@@ -117,8 +117,9 @@ text-shadow: 3px 3px 30px #a77c50;
 #screeninstructions .back
 {
 	position:fixed;
-	top:5em;
-	
+	top:10em;
+	left:10em;
+
 } 
 
 
@@ -170,7 +171,7 @@ margin-top: .5em;
 
 #screeninstructions
 {
-	background: url(../assets/game_instructions.png);
+	background: url(../assets/game_instructions.png) no-repeat;
 }
 
 
