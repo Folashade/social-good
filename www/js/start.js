@@ -40,13 +40,26 @@ function onTouchMove(event)  {
     var cx = event.touches[i].pageX;
     var cy = event.touches[i].pageY;
 
-    if ((instPosition.x < cx && cx < instPosition.x+50) &&
-        (instPosition.y < cy && cy < instPosition.y+50))  {
-      instructions.onclick();
+    if ((instPosition.x < cx && cx < instPosition.x+100) &&
+        (instPosition.y < cy && cy < instPosition.y+100))  {
+       var screen1div = document.getElementById("screen1");
+       var screen2div = document.getElementById("screen2");
+       var screen3div = document.getElementById("screen3");
+       var menu = document.getElementsByClassName("menu");
+       var back = document.getElementsByClassName("back");
+       var playbutton = document.getElementById("play");
+       var instructions = document.getElementById("instructions");
+       var screeninstructions = document.getElementById("screeninstructions");
+       screen1div.style.visibility="hidden";
+       screen1div.style.display="none";
+       screeninstructions.style.visibility="visible";
+       screeninstructions.style.display="";
+       screen2div.style.display="none";
+       screen3div.style.display="none";
     }
 
-    if ((playPosition.x < cx && cx < playPosition.x+100) &&
-        (playPosition.y < cy && cy < playPosition.y+100))     {
+    if ((playPosition.x < cx && cx < playPosition.x+200) &&
+        (playPosition.y < cy && cy < playPosition.y+200))     {
       window.location.href = "init.html";
     }
   }
@@ -60,13 +73,13 @@ function onTouchEnd(event) {
 
 window.onload=function()
 {
-	//window.addEventListener('mousedown', onMouseDown, false);
- 	window.addEventListener('touchstart', onTouchStart, false);
- 	window.addEventListener('touchmove', onTouchMove, false);
+  window.addEventListener('mousedown', onMouseDown, false);
+  //window.addEventListener('touchstart', onTouchStart, false);
+  window.addEventListener('touchmove', onTouchMove, false);
   window.addEventListener('touchend', onTouchEnd, false);
   var screen1div = document.getElementById("screen1");
-	var screen2div = document.getElementById("screen2");
-	var screen3div = document.getElementById("screen3");
+  var screen2div = document.getElementById("screen2");
+  var screen3div = document.getElementById("screen3");
   var menu = document.getElementsByClassName("menu");
   var back = document.getElementsByClassName("back");
   var playbutton = document.getElementById("play");
@@ -135,8 +148,8 @@ window.onload=function()
                       screeninstructions.style.display="none";
                     }
 
-	
-	playbutton.onclick=function()
+  
+  playbutton.onclick=function()
   {
     window.location.href = "init.html";
     /* fetchTeachers(loadTeachers);   
@@ -147,14 +160,14 @@ window.onload=function()
     */
   };
 
-	var screen2buttons = document.getElementsByClassName("s2");
+  var screen2buttons = document.getElementsByClassName("s2");
                 for (var i = 0; i < screen2buttons.length; i++){
                     screen2buttons[i].onclick=function()
                     {
-                    	
-                   		screen2div.style.visibility="hidden";
+                      
+                      screen2div.style.visibility="hidden";
                       screen2div.style.display="none";
-                   		screen3div.style.visibility="visible";
+                      screen3div.style.visibility="visible";
                       screen3div.style.display="";
                     }
                 }
@@ -167,3 +180,4 @@ window.onload=function()
                     }
 
 }
+
