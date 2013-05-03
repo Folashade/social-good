@@ -1,3 +1,7 @@
+function onMouseDown()  {
+  event.preventDefault();
+}
+
 window.onload=function()
 {
 	var screen1div = document.getElementById("screen1");
@@ -12,6 +16,9 @@ window.onload=function()
   screen3div.style.display="none";
   screeninstructions.style.display="none";
 
+  window.addEventListener('mousedown', onMouseDown, false); 
+  
+  
   instructions.onclick=function()
   {
     screen1div.style.visibility="hidden";
