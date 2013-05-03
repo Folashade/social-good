@@ -29,11 +29,9 @@ function onTouchMove(event)  {
   // Get element positions
   var play = document.querySelector("#play");
   var playPosition = getPosition(play);
-  console.log("Play: " + playPosition.x + " " + playPosition.y);
 
   var inst = document.querySelector("#instructions");
   var instPosition = getPosition(inst);
-  console.log("Inst: " + instPosition.x + " " + instPosition.y)
 
   // Check of any of the touchmoves are over these elements.
   // Inst takes priority over play if both are touched
@@ -41,7 +39,6 @@ function onTouchMove(event)  {
   for (var i = 0; i < event.touches.length; i++)  {
     var cx = event.touches[i].pageX;
     var cy = event.touches[i].pageY;
-    console.log("C: " + cx + " " + cy);
 
     if ((instPosition.x < cx && cx < instPosition.x+50) &&
         (instPosition.y < cy && cy < instPosition.y+50))  {
