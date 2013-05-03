@@ -65,18 +65,16 @@ x++;
 
   // ctx.shadowColor = rgb(1,1,1,0);
   // Back Button
-	ctx.font="2em Maven Pro";
-  var backButton = new Image();
-  backButton.src="assets/balloon_pink.png";
-  // ctx.drawImage(backButton, 690*wr, 20*hr, backButton.width*wr, backButton.height*hr);
-  ctx.fillText("Back", 690*wr, 60*hr);
-
+	ctx.font="2em Rumpelstiltskin";
+ctx.fillStyle="black";
+ctx.shadowColor = 'yellow';
+      ctx.shadowBlur = 20;
+  ctx.fillText("Menu", 690*wr, 60*hr);
+ctx.shadowColor = 'rgba(0,0,0,0)';
 
   // Menu Button
-  var menuButton = new Image();
-  menuButton.src="assets/balloon_blue.png";
+
   // ctx.drawImage(menuButton, 325*wr , 430*hr , menuButton.width*wr, menuButton.height*hr);
-  ctx.fillText("Menu", 360*wr , 500*hr);
 
 
 }
@@ -135,19 +133,19 @@ x++;
   }
   // ctx.shadowColor = rgb(1,1,1,0);
   // Back Button
-	ctx.font="2em Maven Pro";
-  var backButton = new Image();
-  backButton.src="assets/balloon_pink.png";
+	ctx.font="2em Rumpelstiltskin";
+  ctx.shadowColor = 'yellow';
+      ctx.shadowBlur = 20;
+ctx.fillStyle="black";
   // ctx.drawImage(backButton, 690*wr, 20*hr, backButton.width*wr, backButton.height*hr);
-  ctx.fillText("Back", 690*wr, 60*hr);
+  ctx.fillText("Menu", 690*wr, 60*hr);
 
 
   // Menu Button
-  var menuButton = new Image();
-  menuButton.src="assets/balloon_blue.png";
-  // ctx.drawImage(menuButton, 325*wr , 430*hr , menuButton.width*wr, menuButton.height*hr);
-  ctx.fillText("Menu", 360*wr , 500*hr);
 
+  // ctx.drawImage(menuButton, 325*wr , 430*hr , menuButton.width*wr, menuButton.height*hr);
+  ctx.fillText("Back", 360*wr , 500*hr);
+ctx.shadowColor = 'rgba(0,0,0,0)';
 
 }
 
@@ -183,6 +181,16 @@ function onTouchStart(event)  {
         var cy = event.touches[t].pageY - canvas.offsetTop;
 		    var x=0;
         if (screen == 1) {
+
+if (cx>670*wr && cx<(670+150)*wr && cy>(30*hr) && cy<(30+70)*hr) {
+
+  window.location.href="index.html";
+
+}
+
+
+               
+
           var rowY=100*hr;
 
           for (var i=0; i<3; i++)
@@ -213,6 +221,18 @@ function onTouchStart(event)  {
     }
 			
 		else if (screen == 2)  {
+
+
+if (cx>670*wr && cx<(670+150)*wr && cy>(30*hr) && cy<(30+70)*hr) {
+
+  window.location.href="index.html";
+
+}
+if (cx>(340*wr) && cx<(340+100)*wr && cy>400*hr && cy<(400+200)*hr) {
+screen=1;
+
+
+}
       x=0;
       touchBox=-1;
       var rowY=100*hr;
