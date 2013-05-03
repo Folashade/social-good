@@ -205,8 +205,8 @@ function onTouchStart(event)  {
         }
 
         
-        if(touchBox!==-1)
-        {
+    if(touchBox!==-1)
+    {
       fetchByTeacher(teachers[touchBox], loadContent);
 			screen = 2;
     }
@@ -235,8 +235,13 @@ function onTouchStart(event)  {
         }
 
 
-		window.location.href = "gameplay.html";
+	  if(touchBox!==-1)
+    {
+      window.location.href = "gameplay.html";
       localStorage["setNumber"] = touchBox;
+    }
+	
+    
     }
 		
         // Just leave question mode if tap is in the right half, for now
