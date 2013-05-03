@@ -11,7 +11,8 @@
 
 var techcafe = require('./node_techcafe/node_techcafe');
 var express = require('express');
-var app = express();
+//var app = express();
+var app = express.createServer(express.logger());
 var PORT = process.env.PORT || 8889;
 
 
