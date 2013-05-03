@@ -97,7 +97,6 @@ function leaveQ_wrapper() {
 }
 
 function endGame()  {
-  resetVariables();
   window.isGameOver = true;
   window.isPaused = true;
   gameOverScreen();
