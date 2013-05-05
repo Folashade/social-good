@@ -144,8 +144,7 @@ function drawPoints() {
 
 function render()  {
   // Background being drawn whether or not in question mode
-  //if (window.inQuestion !== true)
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   if (isGameOver===false) {
       drawBalloons();
