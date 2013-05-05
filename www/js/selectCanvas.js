@@ -14,9 +14,6 @@ var contentList=[];
 
 function selectTeacherScreen(){
   // Variables 
-  // window.teachers = [];
-  // window.contentList = [];
-  // teachers = window.teachers;
   var verticalOffset = 10;
 
   // background
@@ -28,20 +25,10 @@ function selectTeacherScreen(){
   var button = new Image();
   button.src="assets/button.png";
 
-  // teachers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-  // console.log(teachers)
-
   ctx.textAlign="center";
   ctx.font="1.2em Maven Pro";
   ctx.fillStyle="a77c50";
   ctx.textBaseline="middle";
-
-  // for (var row = 1; row < 1+Math.floor((teachers.length)/2) ; row++) {
-  // 	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  // 	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  // 	  ctx.fillText(teachers[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
-	 //  ctx.fillText(teachers[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
-  // }
 
   var rowY=100*hr;
   var x=0;
@@ -72,21 +59,13 @@ ctx.shadowColor = 'yellow';
   ctx.fillText("Menu", 690*wr, 60*hr);
 ctx.shadowColor = 'rgba(0,0,0,0)';
 
-  // Menu Button
-
-  // ctx.drawImage(menuButton, 325*wr , 430*hr , menuButton.width*wr, menuButton.height*hr);
-
 
 }
 
-// selectTeacherScreen()
 
 
 function selectContentScreen(){
   // Variables 
-  // window.teachers = [];
-  // window.contentList = [];
-  // teachers = window.teachers;
   var verticalOffset = 10;
 
   // background
@@ -98,19 +77,10 @@ function selectContentScreen(){
   var button = new Image();
   button.src="assets/button.png";
 
-  // teachers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-  // console.log(teachers)
-
   ctx.textAlign="center";
   ctx.font="1em Maven Pro";
   ctx.fillStyle="#a77c50";
 
-  // for (var row = 1; row < 1+Math.floor(teachers.length/2) ; row++) {
-  // 	  ctx.drawImage(button, 80*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  // 	  ctx.drawImage(button, 350*wr, 100*hr*row + (verticalOffset*row), button.width*wr, button.height*hr);
-  // 	  ctx.fillText(contentList[row-1], 80*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3);
-	 //  ctx.fillText(contentList[row-1 + 3], 350*wr+ button.width/4 , 100*hr*row + (verticalOffset*row) + button.height/3); 
-  // }
 
 var rowY=100*hr;
   var x=0;
@@ -131,19 +101,15 @@ x++;
     rowY+=(110*hr);
   
   }
-  // ctx.shadowColor = rgb(1,1,1,0);
   // Back Button
 	ctx.font="2em Rumpelstiltskin";
   ctx.shadowColor = 'yellow';
       ctx.shadowBlur = 20;
 ctx.fillStyle="black";
-  // ctx.drawImage(backButton, 690*wr, 20*hr, backButton.width*wr, backButton.height*hr);
-  ctx.fillText("Menu", 690*wr, 60*hr);
 
 
   // Menu Button
 
-  // ctx.drawImage(menuButton, 325*wr , 430*hr , menuButton.width*wr, menuButton.height*hr);
   ctx.fillText("Back", 360*wr , 500*hr);
 ctx.shadowColor = 'rgba(0,0,0,0)';
 

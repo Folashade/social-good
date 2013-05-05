@@ -101,83 +101,79 @@ window.onload=function()
                       screen2div.style.display="none";
                       screen3div.style.display="none";
   }
-                    menu[0].onclick=function()
-                    {
+  
+  menu[0].onclick=function()
+  {
 
                       screen1div.style.visibility="visible";
                       screen1div.style.display="";
                       screen2div.style.visibility="hidden";
                       screen2div.style.display="none";
-                    }
+  }
                
   menu[1].onclick=function()
-                    {
+  {
 
                       screen1div.style.visibility="visible";
                       screen1div.style.display="";
                       screen3div.style.visibility="hidden";
                       screen3div.style.display="none";
-                    }
+  }
 
           
-
-                    back[0].onclick=function()
-                    {
+  back[0].onclick=function()
+  {
                       
                       screen1div.style.visibility="visible";
                       screen1div.style.display="";
                       screen2div.style.visibility="hidden";
                       screen2div.style.display="none";
-                    }
+  }
 
-                     back[1].onclick=function()
-                    {
+  back[1].onclick=function()
+  {
                       
                       screen2div.style.visibility="visible";
                       screen2div.style.display="";
                       screen3div.style.visibility="hidden";
                       screen3div.style.display="none";
-                    }
+  }
                 
-                    back[2].onclick=function()
-                    {
+  back[2].onclick=function()
+  {
 
                       screen1div.style.visibility="visible";
                       screen1div.style.display="";
                       screeninstructions.style.visibility="hidden";
                       screeninstructions.style.display="none";
-                    }
+  }
 
   
   playbutton.onclick=function()
   {
     window.location.href = "init.html";
-    /* fetchTeachers(loadTeachers);   
-    screen1div.style.visibility="hidden";
-    screen1div.style.display="none";
-    screen2div.style.visibility="visible";
-    screen2div.style.display="";
-    */
   };
 
   var screen2buttons = document.getElementsByClassName("s2");
-                for (var i = 0; i < screen2buttons.length; i++){
-                    screen2buttons[i].onclick=function()
-                    {
-                      
-                      screen2div.style.visibility="hidden";
-                      screen2div.style.display="none";
-                      screen3div.style.visibility="visible";
-                      screen3div.style.display="";
-                    }
-                }
-                  var screen3buttons = document.getElementsByClassName("s3");
-                for (var i = 0; i < screen3buttons.length; i++){
-                    screen3buttons[i].onclick=function()
-                    {
-                      window.open('gameplay.html',"_self");
-                      }
-                    }
+  
+  for (var i = 0; i < screen2buttons.length; i++){
+      screen2buttons[i].onclick=function()
+      {
+        screen2div.style.visibility="hidden";
+        screen2div.style.display="none";
+        screen3div.style.visibility="visible";
+        screen3div.style.display="";
+      }
+  }
+  
+  var screen3buttons = document.getElementsByClassName("s3");
+
+  for (var i = 0; i < screen3buttons.length; i++){
+    screen3buttons[i].onclick=function()
+    {
+       window.open('gameplay.html',"_self");
+    }
+  }
 
 }
 
