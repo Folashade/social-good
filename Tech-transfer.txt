@@ -1,0 +1,127 @@
+Please provide details for as many sections that apply to your specific project. For
+sections that do not apply, simply indicate the phrase N/A. 
+
+1. Provide instructions on how to checkout the code from the current repository and
+where to place it on the local machine (e.g., C:\MyProject).
+
+The code for the game currently hosted at https://github.com/Folashade/social-good
+To move it to the local machine, there are two options. Either the entire codebase can be
+downloaded as a zip file, or the git repository can be cloned using the 'git clone' command.
+
+The code for Phonegap is hosted at https://github.com/srinivasanv/phonegap-simple
+It can be downloaded to the local machine as above.
+After making any necessary modifications, the code can be zipped and uploaded to Adobe Phonegap Build
+at build.phonegap.com (free sign-up required), and the .apk file for Android can be downloaded from there.
+It can then be transferred over USB to an Android phone.
+
+
+2. List the platforms on which the project can compiled and built (Windows, Linux,
+Mac OS).
+The game itself is written using web technologies, so it is cross-platform and there is no compilation required.
+The game is currently hosted on Heroku. Any changes made to the game need to be pushed to Heroku.
+
+
+3. Since the project may be multifaceted, provide a list of the different components
+included in this project along with a description of each one stating its purpose
+and how it interacts with the other components.
+a) The client-side (inside the www/ directory) - which is the game
+b) The server-side (app.js) - to deliver content to phones
+c) Phonegap, to build an app for the phone, so it need not be run from inside the browser.
+
+
+4. Specify the tools needed to compile and build the project including compilers
+and/or IDEs. (e.g., Java SDK 1.6, gcc 4.3.2 on the Linux platform, Eclipse Juno,
+Visual Studio 10, etc...). 
+Heroku Toolbelt can be downloaded at https://toolbelt.heroku.com/
+It is available for Windows, Max OS X, Debian and Ubuntu. 
+For other Linux distributions, it can be compiled from source. 
+
+5. List any additional libraries that are needed for compiling, building and running
+the code (e.g., Boost C++ Library 1.53.0, Android API 15). 
+None
+
+6. Specify the locations where these tools can be acquired (e.g., URLs, FTP sites,
+local CMU servers). 
+N/A
+
+7. Indicate the location where these tools need to be installed on the local machine
+for project compilation, building and execution. 
+N/A
+
+
+8. Indicate if there are any project config files, what they are used for and
+provide information on where these files need to be located on the local machine.
+N/A
+
+
+9. Specify any settings within these config files for compiling, building and/or
+execution (e.g., BASEPATH=C:\Users\Bob\myProject\).
+N/A
+
+
+10. Provide instructions on how to compile and build the project using the specified
+tool(s) from item 4 (e.g., startup Eclipse, import project X, right click on file
+Main and select Run as -> Java Application) and also specify any compiler/build
+configuration settings (paths of include files and other dependencies).
+Copy-paste phonegap build stuff here
+
+11. Indicate the target platform on which the binary (or binaries) are intended to
+run (e.g., Windows, Android Device, Custom hardware).
+The .apk file from PhoneGap will run on Android.
+
+12. Indicate if the application requires any input files that are read and processed
+when the application executes (e.g., XML Files, text files, image files, etc).
+Image files for the game's artwork are located inside the www/assets folder on our Github.
+It is required that these are hosted on the server.
+
+13. Specify the locations where these input files can be obtained if not already
+included in the project (e.g., URL, CMU Serves, etc...).
+They are already in our project, in the www/assets folder.
+
+14. Specify the locations where these input files need to reside on the local
+machine when the application executes.
+N/A - they should be on the server.
+
+15. Indicate if the application generates output files.
+No
+
+16. Specify the location of where these output files will be written.
+N/A
+
+17. If using external hardware or mobile device, provide instructions on how this
+device needs to be connected to the computer.
+The .apk file can be downloaded to a computer and transferred over USB to the Android device.
+
+18. Regarding mobile devices and/or external hardware, indicate if any of the
+generated binaries from item 10 need to be installed on this device and provide
+instructions on how to install these binaries.
+The Phonegap code can be zipped and uploaded to Adobe Phonegap Build.
+at build.phonegap.com (free sign-up required), and the .apk file for Android can be downloaded from there.
+It can then be transferred over USB to an Android phone, or downloaded directly onto the phone from the Phonegap
+website by scanning the QR code.
+
+19. Specify any settings on the computer for the device (e.g., the COM port).
+N/A
+
+20. Provide instructions on how to run the application on the external hardware,
+mobile device and/or computer.
+After installing the .apk on the Android device, simply touch the app icon to run it.
+
+21. If the mobile device requires interaction with the computer, provide
+instructions on how this interaction should work from an end user standpoint (i.e.,
+first run application A on the laptop computer, then launch program B on the mobile
+device, next you should see a screen indicating a connection was made, etc...).
+No interaction with computer required once the .apk file has been downloaded.
+Interaction with the computer is not required unless the server is explicitly being run on the computer
+instead of on Heroku. If that's the case, the Node server must be running on the computer first
+(type node app.js)
+
+22. List any known bugs, configuration issues or other pitfalls to look out for when
+compiling, building and/or running the application.
+There are no known issues while building using PhoneGap.
+However, we recommend that you delete the .git folder the first time you download our code from our repository,
+since Heroku doesn't seem to work well with it.
+    
+23. Provide a list of future features/capabilities that you would like to see
+included in the existing tool.
+N/A
