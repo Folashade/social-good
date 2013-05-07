@@ -12,6 +12,28 @@ window.wr = canvas.width/window.htmlWidth;
 window.hr = canvas.height/window.htmlHeight;
 var contentList=[];
 
+var currentPage = 1; 
+var pages = Math.ceil((teachers.length)/6.0);
+
+
+function paginateTeachers(){
+	// var pages = (teachers.length)/6; 
+	//create the next button
+	if (pages > 1) {
+		// var nextArrow = new Image();
+		// nextArrow.src="assets/balloon_blue.png";
+		// ctx.drawImage(woodBG,0,0, woodBG.width*wr, woodBG.height*hr);	
+		ctx.font="2em Rumpelstiltskin";
+		ctx.fillStyle="black";
+		ctx.fillText("NEXT", 690*wr, 300*hr);
+	}
+	
+	//if the next button is pressed 
+	if (nextButtonPressed){
+		
+	}
+}
+
 function selectTeacherScreen(){
   // Variables 
   var verticalOffset = 10;
@@ -146,6 +168,8 @@ function onTouchStart(event)  {
         var cx = event.touches[t].pageX - canvas.offsetLeft;
         var cy = event.touches[t].pageY - canvas.offsetTop;
 		    var x=0;
+		
+		//screen 1 is teachers 
         if (screen == 1) {
 
 if (cx>670*wr && cx<(670+150)*wr && cy>(30*hr) && cy<(30+70)*hr) {
@@ -154,6 +178,11 @@ if (cx>670*wr && cx<(670+150)*wr && cy>(30*hr) && cy<(30+70)*hr) {
 
 }
 
+//if you click the Next Button 
+if ( (cx>670*wr && cx<(670+150)*wr && cy>(300*hr) && cy<(300+70)*hr)  && (pages>1) && (currentPage !== pages) ) {
+  currentPage++;
+  // select 
+}
 
                
 
