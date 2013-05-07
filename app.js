@@ -11,13 +11,11 @@
 
 var techcafe = require('./node_techcafe/node_techcafe');
 var express = require('express');
-//var app = express();
 var app = express.createServer(express.logger());
 var PORT = process.env.PORT || 8889;
 
 
 app.use(express.bodyParser());
-// app.use(express.static(path.join(__dirname, 'static')));
 
 /* Route to fetch teacher list. Callback responds to the client */
 app.get('/teachers', function(clientRequest, clientResponse)  {

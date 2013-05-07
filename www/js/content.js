@@ -10,7 +10,6 @@ var teachers;
 var contentList;
 var content;
 
-//console.log(curQuestions[1]);
 
 function loadTeachers(data) {
   window.teachers = [];
@@ -21,7 +20,7 @@ function loadTeachers(data) {
 
 function fetchTeachers(callbackFn) {
   $.ajax({
-    type: "get",  // read in cRud
+    type: "get", 
     url: "/teachers",
     success: callbackFn
   });
