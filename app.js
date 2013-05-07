@@ -9,10 +9,12 @@
  * http://www.cs.cmu.edu/~239/projects/techcafe-games/apidoc.html
  */
 
-var techcafe = require('./node_modules/node_techcafe/node_techcafe');
+var techcafe = require('./node_techcafe/node_techcafe');
 var express = require('express');
-var app = express();
-// var path = require("path");
+//var app = express();
+var app = express.createServer(express.logger());
+var PORT = process.env.PORT || 8889;
+
 
 app.use(express.bodyParser());
 // app.use(express.static(path.join(__dirname, 'static')));
@@ -75,6 +77,6 @@ app.get("/www/js/:staticFilename", function (request, response) {
 
 
 // Finally, activate the server at port 8889
- app.listen(8889, function(){
+ app.listen(PORT, function(){
 	console.log("Now Running on Port 8889....");
 });
