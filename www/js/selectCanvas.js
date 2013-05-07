@@ -4,7 +4,7 @@ var ctx = canvas.getContext("2d");
 var jCanvas = $('#selectCanvas');
 jCanvas.prop('width', jCanvas.width());
 jCanvas.prop('height', jCanvas.height());
-var teachers=[];
+var teachers=["one", "two", "threee", "four", "five", "six", "seven", "eight"];
 
 window.htmlWidth = 780;
 window.htmlHeight = 540;
@@ -12,8 +12,8 @@ window.wr = canvas.width/window.htmlWidth;
 window.hr = canvas.height/window.htmlHeight;
 var contentList=[];
 
-var currentPage = 1; 
-var pages = Math.ceil((teachers.length)/6.0);
+var currentPage = 0; 
+var pages = Math.ceil((teachers.length)/6.0); //total pages for teachers 
 
 
 function paginateTeachers(){
@@ -29,12 +29,68 @@ function paginateTeachers(){
 	}
 	
 	//if the next button is pressed 
-	if (nextButtonPressed){
-		
+	if (nextButtonPressed){	
 	}
+	
+	
 }
 
 function selectTeacherScreen(){
+	
+  // Variables 
+  var verticalOffset = 10;
+
+  // background
+  var woodBG = new Image();
+  woodBG.src="assets/bg_wood.png";
+  ctx.drawImage(woodBG,0,0, woodBG.width*wr, woodBG.height*hr);	
+
+  // Selection Buttons
+  var button = new Image();
+  button.src="assets/button.png";
+
+  ctx.textAlign="center";
+  ctx.font="1.2em Maven Pro";
+  ctx.fillStyle="a77c50";
+  ctx.textBaseline="middle";
+
+  var rowY=100*hr;
+  
+  // this is where we start in the array
+  // var x = (currentPage * 6)
+  var x=6;
+  
+	for (var i=0; i<3; i++)
+  {
+       var columnX=80*wr; 
+    for(var columns=0; columns<2; columns++)
+    {
+       if(teachers[x]!=null)
+    {
+ctx.drawImage(button, columnX, rowY, button.width*wr, button.height*hr);
+
+ctx.fillText(teachers[x], columnX+(145*wr), rowY+(61*hr));
+columnX+=(270*wr);
+x++;
+    }
+  }
+    rowY+=(110*hr);
+  
+  }
+
+  // ctx.shadowColor = rgb(1,1,1,0);
+  // Back Button
+	ctx.font="2em Rumpelstiltskin";
+ctx.fillStyle="black";
+ctx.shadowColor = 'yellow';
+      ctx.shadowBlur = 20;
+  ctx.fillText("Menu", 690*wr, 60*hr);
+ctx.shadowColor = 'rgba(0,0,0,0)';
+
+
+}
+
+function selectSplicedTeacherScreen(teacherSplice){
   // Variables 
   var verticalOffset = 10;
 
@@ -59,11 +115,11 @@ function selectTeacherScreen(){
        var columnX=80*wr; 
     for(var columns=0; columns<2; columns++)
     {
-       if(teachers[x]!=null)
+       if(teacherSplice[x]!=null)
     {
 ctx.drawImage(button, columnX, rowY, button.width*wr, button.height*hr);
 
-ctx.fillText(teachers[x], columnX+(145*wr), rowY+(61*hr));
+ctx.fillText(teacherSplice[x], columnX+(145*wr), rowY+(61*hr));
 columnX+=(270*wr);
 x++;
     }
@@ -282,7 +338,7 @@ function onTouchEnd(event)  {
 
 function run()  {
   screen = 1;
-  fetchTeachers(loadTeachers);  
+  // fetchTeachers(loadTeachers);  
   
 
   canvas.addEventListener('touchstart', onTouchStart, false);
