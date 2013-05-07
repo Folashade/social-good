@@ -44,8 +44,6 @@ function onTouchStart(event)  {
         else
           touchBoxY=by2;
 
-        //TODO: Make sure that touchBox actually exists!
-        
         if (touchBox !== 0)  {
           if (currentSet.questions[questionNumber].answers[touchBox-1].correct===true)
           {

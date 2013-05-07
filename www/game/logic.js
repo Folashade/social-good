@@ -178,8 +178,6 @@ var balloon = function(x, y, vx, vy, color) {
         this.frame += 0.3;
       }   
     }
-
-
   };
 };
 
@@ -252,6 +250,7 @@ function gameStep() {
     
     if (window.timer % 1000 === 0)  {   
       for (var c = 0; c < 3; c++) {
+        // CSS Water levels
         $("#"+colors[c]).height(""+waterLevels[c]*100+"%");
        }
     }

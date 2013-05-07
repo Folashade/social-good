@@ -107,7 +107,6 @@ function drawQuestionScreen() {
 
   ctx.font='1.5em Maven Pro';
   ctx.fillStyle="fcfc63";
-  // var randomquestion= Math.floor(Math.random());
   ctx.textAlign = "left";
   ctx.fillText(currentSet.questions[questionNumber].question, 100*wr, 130*hr);
   ctx.fillStyle="a77c50";
